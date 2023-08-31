@@ -12,18 +12,19 @@ let grillCount = 0;
 let dogFarmCount = 0;
 let facCount = 0;
 let bankCount = 0;
-const bunCost = 10;
+let bunCost = 10;
 let bunRate = 0.2;
-const dadCost = 100;
+let dadCost = 100;
 let dadRate = 2;
-const grillCost = 500;
+let grillCost = 500;
 let grillRate = 10;
-const dogFarmCost = 5000;
+let dogFarmCost = 5000;
 let dogFarmRate = 50;
-const facCost = 50000;
+let facCost = 50000;
 let facRate = 500;
-const bankCost = 250000;
+let bankCost = 250000;
 let bankRate = 2500;
+const increment = 1.3;
 const clickCountElement = document.getElementById("clickCount");
 const grillCountElement = document.getElementById("grillCount");
 const passiveClicksElement = document.getElementById("passive");
@@ -48,6 +49,7 @@ hotdogButton.addEventListener("click", function() {
 bunButton.addEventListener("click", function() {
     if (clickCount >= bunCost) {
         clickCount -= bunCost;
+        bunCost *= increment;
         clickCountElement.textContent = clickCount;
         bunCount++;
         bunCountElement.textContent = bunCount;
@@ -59,6 +61,7 @@ bunButton.addEventListener("click", function() {
 dadButton.addEventListener("click", function() {
     if (clickCount >= dadCost) {
         clickCount -= dadCost;
+        dadCost *= increment;
         clickCountElement.textContent = clickCount;
         dadCount++;
         dadCountElement.textContent = dadCount;
@@ -70,6 +73,7 @@ dadButton.addEventListener("click", function() {
 grillButton.addEventListener("click", function() {
     if (clickCount >= grillCost) {
         clickCount -= grillCost;
+        grillCost *= increment;
         clickCountElement.textContent = clickCount;
         grillCount++;
         grillCountElement.textContent = grillCount;
@@ -81,6 +85,7 @@ grillButton.addEventListener("click", function() {
 dogFarmButton.addEventListener("click", function() {
     if (clickCount >= dogFarmCost) {
         clickCount -= dogFarmCost;
+        dogFarmCost *= increment;
         clickCountElement.textContent = clickCount;
         dogFarmCount++;
         dogFarmCountElement.textContent = dogFarmCount;
@@ -92,6 +97,7 @@ dogFarmButton.addEventListener("click", function() {
 facButton.addEventListener("click", function() {
     if (clickCount >= facCost) {
         clickCount -= facCost;
+        facCost *= increment;
         clickCountElement.textContent = clickCount;
         facCount++;
         facCountElement.textContent = facCount;
@@ -103,6 +109,7 @@ facButton.addEventListener("click", function() {
 bankButton.addEventListener("click", function() {
     if (clickCount >= bankCost) {
         clickCount -= bankCost;
+        bankCost *= increment;
         clickCountElement.textContent = clickCount;
         bankCount++;
         bankCountElement.textContent = bankCount;
