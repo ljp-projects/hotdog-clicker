@@ -1,4 +1,4 @@
-var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
+      var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
       var bun = new Audio("crunch-crispy-breadbun-41340.mp3")
       var dad = new Audio("dad-says-yummy-113126.mp3")
       let passiveClicks = 0;
@@ -72,3 +72,31 @@ var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
           grill.play();
         }
       });
+
+
+// Upgrades
+
+const mustardCost = 1000;
+const tSauceCost = 5000;
+const tSauceButton = document.getElementById("tSauceButton");
+const mustardButton = document.getElementById("mustardButton");
+
+tSauceButton.addEventListener("click", function() {
+    if (clickCount >= tSauceCost) {
+        clickCount -= tSauceCost;
+        grillCountElement.textContent = clickCount;
+        tSauceButton.style.display = "none";
+        passiveClicks += 30;
+        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+    }
+});
+
+mustardButton.addEventListener("click", function() {
+    if (clickCount >= mustardCost) {
+        clickCount -= mustardCost;
+        grillCountElement.textContent = clickCount;
+        mustardButton.style.display = "none";
+        passiveClicks += 200;
+        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+    }
+});
