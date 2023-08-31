@@ -2,6 +2,15 @@
 <html>
   <head>
     <title>Hotdog Clicker</title>
+    <style>
+      h1, h2, h3, h4, h5, h6, b, p, label, span, button {
+        font-family: arial;
+        color: white;
+      }
+      body {
+        background-color: black;
+      }
+    </style>
   </head>
   <body>
     <h1>Hotdog Clicker</h1>
@@ -39,7 +48,7 @@
 
       hotdogButton.addEventListener("click", function() {
         clickCount++;
-        clickCountElement.textContent = Math.ceil(clickCount);
+        clickCountElement.textContent = clickCount.tofixed(1);
       });
 
       bunButton.addEventListener("click", function() {
@@ -49,10 +58,10 @@
           bunCount++;
           bunCountElement.textContent = bunCount;
           passiveClicks += bunRate;
-          passiveClicksElement.textContent = Math.ceil(passiveClicks);
+          passiveClicksElement.textContent = passiveClicks.tofixed(1);
           setInterval(function() {
             clickCount += bunRate;
-            clickCountElement.textContent = Math.ceil(clickCount);
+            clickCountElement.textContent = clickCount.tofixed(1);
           }, 1000);
         }
       });
@@ -63,10 +72,10 @@
           dadCount++;
           dadCountElement.textContent = dadCount;
           passiveClicks += dadRate;
-          passiveClicksElement.textContent = Math.ceil(passiveClicks);
+          passiveClicksElement.textContent = passiveClicks.tofixed(1);
           setInterval(function() {
             clickCount += dadRate;
-            clickCountElement.textContent = Math.ceil(clickCount);
+            clickCountElement.textContent = clickCount.tofixed(1);
           }, 1000);
         }
       });
@@ -77,10 +86,10 @@
           grillCount++;
           grillCountElement.textContent = grillCount;
           passiveClicks += grillRate;
-          passiveClicksElement.textContent = Math.ceil(passiveClicks);
+          passiveClicksElement.textContent = passiveClicks.tofixed(1);
           setInterval(function() {
             clickCount += grillRate;
-            clickCountElement.textContent = Math.ceil(clickCount);
+            clickCountElement.textContent = clickCount.tofixed(1);
           }, 1000);
         }
       });
