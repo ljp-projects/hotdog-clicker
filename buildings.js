@@ -106,7 +106,7 @@ tSauceButton.addEventListener("click", function() {
         clickCount -= tSauceCost;
         grillCountElement.textContent = clickCount;
         tSauceButton.style.display = "none";
-        passiveClicks += 300;
+        passiveClicks += 25;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
     }
 });
@@ -116,7 +116,7 @@ mustardButton.addEventListener("click", function() {
         clickCount -= mustardCost;
         grillCountElement.textContent = clickCount;
         mustardButton.style.display = "none";
-        passiveClicks += 2000;
+        passiveClicks += 50;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
     }
 });
