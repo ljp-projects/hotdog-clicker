@@ -53,10 +53,6 @@ bunButton.addEventListener("click", function() {
         bunCountElement.textContent = bunCount;
         passiveClicks += bunRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
-        setInterval(function() {
-            clickCount += bunRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-        }, 1000);
         bun.play();
     }
 });
@@ -68,10 +64,6 @@ dadButton.addEventListener("click", function() {
         dadCountElement.textContent = dadCount;
         passiveClicks += dadRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
-        setInterval(function() {
-            clickCount += dadRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-        }, 1000);
         dad.play();
     }
 });
@@ -83,10 +75,6 @@ grillButton.addEventListener("click", function() {
         grillCountElement.textContent = grillCount;
         passiveClicks += grillRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
-        setInterval(function() {
-            clickCount += grillRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-        }, 1000);
         grill.play();
     }
 });
@@ -98,10 +86,6 @@ dogFarmButton.addEventListener("click", function() {
         dogFarmCountElement.textContent = dogFarmCount;
         passiveClicks += dogFarmRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
-        setInterval(function() {
-            clickCount += dogFarmRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-        }, 1000);
         farm.play();
     }
 });
@@ -113,10 +97,6 @@ facButton.addEventListener("click", function() {
         facCountElement.textContent = facCount;
         passiveClicks += facRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
-        setInterval(function() {
-            clickCount += facRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-        }, 1000);
         factory.play();
     }
 });
@@ -128,10 +108,6 @@ bankButton.addEventListener("click", function() {
         bankCountElement.textContent = bankCount;
         passiveClicks += bankRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
-        setInterval(function() {
-            clickCount += bankRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-        }, 1000);
         bank.play();
     }
 });
@@ -199,6 +175,10 @@ const load = () => {
     window.sessionStorage.getItem("Farms") != null ? (dogFarmCount = window.sessionStorage.getItem("Farms"), dogFarmCountElement.textContent = dogFarmCount) : console.log("is null")
     window.sessionStorage.getItem("Factories") != null ? (facCount = window.sessionStorage.getItem("Factories"), facCountElement.textContent = facCount) : console.log("is null")
     window.sessionStorage.getItem("Banks") != null ? (bankCount = window.sessionStorage.getItem("Banks"), bankCountElement.textContent = bankCount) : console.log("is null")
+    setInterval(function() {
+        clickCount += passive;
+        clickCountElement.textContent = clickCount.toFixed(1);
+    }, 1000);
 }
 
 load()
