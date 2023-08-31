@@ -39,7 +39,7 @@
 
       hotdogButton.addEventListener("click", function() {
         clickCount++;
-        clickCountElement.textContent = clickCount;
+        clickCountElement.textContent = Math.ceil(clickCount);
       });
 
       bunButton.addEventListener("click", function() {
@@ -49,10 +49,10 @@
           bunCount++;
           bunCountElement.textContent = bunCount;
           passiveClicks += bunRate;
-          passiveClicksElement.textContent = passiveClicks;
+          passiveClicksElement.textContent = Math.ceil(passiveClicks);
           setInterval(function() {
             clickCount += bunRate;
-            clickCountElement.textContent = clickCount;
+            clickCountElement.textContent = Math.ceil(clickCount);
           }, 1000);
         }
       });
@@ -63,10 +63,10 @@
           dadCount++;
           dadCountElement.textContent = dadCount;
           passiveClicks += dadRate;
-          passiveClicksElement.textContent = passiveClicks;
+          passiveClicksElement.textContent = Math.ceil(passiveClicks);
           setInterval(function() {
             clickCount += dadRate;
-            clickCountElement.textContent = clickCount;
+            clickCountElement.textContent = Math.ceil(clickCount);
           }, 1000);
         }
       });
@@ -76,11 +76,11 @@
           grillCountElement.textContent = clickCount;
           grillCount++;
           grillCountElement.textContent = grillCount;
-          passiveClicks += dadRate;
-          passiveClicksElement.textContent = passiveClicks;
+          passiveClicks += grillRate;
+          passiveClicksElement.textContent = Math.ceil(passiveClicks);
           setInterval(function() {
             clickCount += grillRate;
-            clickCountElement.textContent = clickCount;
+            clickCountElement.textContent = Math.ceil(clickCount);
           }, 1000);
         }
       });
