@@ -29,6 +29,9 @@
     <button id="grillButton">Buy Grill (500 hotdogs)</button>
     <p>Grills owned: <span id="grillCount">0</span></p>
     <script>
+      var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
+      var bun = new Audio("crunch-crispy-breadbun-41340.mp3")
+      var dad = new Audio("dad-says-yummy-113126.mp3")
       let passiveClicks = 0;
       let clickCount = 0;
       let bunCount = 0;
@@ -67,6 +70,7 @@
             clickCount += bunRate;
             clickCountElement.textContent = clickCount.toFixed(1);
           }, 1000);
+          bun.play();
         }
       });
       dadButton.addEventListener("click", function() {
@@ -81,6 +85,7 @@
             clickCount += dadRate;
             clickCountElement.textContent = clickCount.toFixed(1);
           }, 1000);
+          dad.play();
         }
       });
       grillButton.addEventListener("click", function() {
@@ -95,6 +100,7 @@
             clickCount += grillRate;
             clickCountElement.textContent = clickCount.toFixed(1);
           }, 1000);
+          grill.play();
         }
       });
     </script>
