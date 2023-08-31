@@ -76,8 +76,8 @@
 
 // Upgrades
 
-const mustardCost = 1000;
-const tSauceCost = 5000;
+const mustardCost = 5000;
+const tSauceCost = 1000;
 const tSauceButton = document.getElementById("tSauceButton");
 const mustardButton = document.getElementById("mustardButton");
 
