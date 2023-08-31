@@ -22,87 +22,19 @@
     <button id="hotdogButton"><img src="./hotdog.png" width="1000px" height="500px" alt="Hotdog"></button>
     <p>Hotdogs: <span id="clickCount">0</span></p>
     <p>Hotdogs Per Second: <span id="passive">0</span></p>
-    <button id="bunButton">Buy Hamburger Bun (10 hotdogs)</button>
-    <p>Buns owned: <span id="bunCount">0</span></p>
-    <button id="dadButton">Buy Dad (100 hotdogs)</button>
-    <p>Dads owned: <span id="dadCount">0</span></p>
-    <button id="grillButton">Buy Grill (500 hotdogs)</button>
-    <p>Grills owned: <span id="grillCount">0</span></p>
-    <script>
-      var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
-      var bun = new Audio("crunch-crispy-breadbun-41340.mp3")
-      var dad = new Audio("dad-says-yummy-113126.mp3")
-      let passiveClicks = 0;
-      let clickCount = 0;
-      let bunCount = 0;
-      let dadCount = 0;
-      let grillCount = 0;
-      const bunCost = 10;
-      const bunRate = 0.2;
-      const dadCost = 100;
-      const dadRate = 2;
-      const grillCost = 500;
-      const grillRate = 5;
-      const clickCountElement = document.getElementById("clickCount");
-      const grillCountElement = document.getElementById("grillCount");
-      const passiveClicksElement = document.getElementById("passive");
-      const bunCountElement = document.getElementById("bunCount");
-      const dadCountElement = document.getElementById("dadCount");
-      const hotdogButton = document.getElementById("hotdogButton");
-      const bunButton = document.getElementById("bunButton");
-      const dadButton = document.getElementById("dadButton");
-      const grillButton = document.getElementById("grillButton");
-
-      hotdogButton.addEventListener("click", function() {
-        clickCount++;
-        clickCountElement.textContent = clickCount.toFixed(1);
-      });
-
-      bunButton.addEventListener("click", function() {
-        if (clickCount >= bunCost) {
-          clickCount -= bunCost;
-          clickCountElement.textContent = clickCount;
-          bunCount++;
-          bunCountElement.textContent = bunCount;
-          passiveClicks += bunRate;
-          passiveClicksElement.textContent = passiveClicks.toFixed(1);
-          setInterval(function() {
-            clickCount += bunRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-          }, 1000);
-          bun.play();
-        }
-      });
-      dadButton.addEventListener("click", function() {
-        if (clickCount >= dadCost) {
-          clickCount -= dadCost;
-          clickCountElement.textContent = clickCount;
-          dadCount++;
-          dadCountElement.textContent = dadCount;
-          passiveClicks += dadRate;
-          passiveClicksElement.textContent = passiveClicks.toFixed(1);
-          setInterval(function() {
-            clickCount += dadRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-          }, 1000);
-          dad.play();
-        }
-      });
-      grillButton.addEventListener("click", function() {
-        if (clickCount >= grillCost) {
-          clickCount -= grillCost;
-          grillCountElement.textContent = clickCount;
-          grillCount++;
-          grillCountElement.textContent = grillCount;
-          passiveClicks += grillRate;
-          passiveClicksElement.textContent = passiveClicks.toFixed(1);
-          setInterval(function() {
-            clickCount += grillRate;
-            clickCountElement.textContent = clickCount.toFixed(1);
-          }, 1000);
-          grill.play();
-        }
-      });
-    </script>
+    <div id="store">
+      <div id="buildings">
+        <button id="bunButton">Buy Hamburger Bun (10 hotdogs)</button>
+        <p>Buns owned: <span id="bunCount">0</span></p>
+        <button id="dadButton">Buy Dad (100 hotdogs)</button>
+        <p>Dads owned: <span id="dadCount">0</span></p>
+        <button id="grillButton">Buy Grill (500 hotdogs)</button>
+        <p>Grills owned: <span id="grillCount">0</span></p>
+      </div>
+      <div id="upgrades">
+        
+      </div>
+    </div>
+    <script src="./upgrades.js"></script>
   </body>
 </html>
