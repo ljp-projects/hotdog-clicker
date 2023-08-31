@@ -51,10 +51,10 @@ const save = () => {
     window.sessionStorage.setItem("Banks", bankCount)
 }
 
-window.onbeforeunload = () => {
+window.addEventListener("beforeunload", () => {
     alert("Saving the game...")
     save();
-};
+});
 
 const load = () => {
     clickCount = window.sessionStorage.getItem("Clicks")
