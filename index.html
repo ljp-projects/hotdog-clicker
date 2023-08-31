@@ -12,20 +12,27 @@
     <p>Buns owned: <span id="bunCount">0</span></p>
     <button id="dadButton">Buy Dad (100 clicks)</button>
     <p>Buns owned: <span id="dadCount">0</span></p>
+    <button id="grillButton">Buy Dad (100 clicks)</button>
+    <p>Buns owned: <span id="grillCount">0</span></p>
     <script>
       let clickCount = 0;
       let bunCount = 0;
       let dadCount = 0;
+      let grillCount = 0;
       const bunCost = 10;
       const bunRate = 0.2;
       const dadCost = 100;
       const dadRate = 2;
+      const grillCost = 500;
+      const grillRate = 5;
       const clickCountElement = document.getElementById("clickCount");
+      const grillCountElement = document.getElementById("grillCount");
       const bunCountElement = document.getElementById("bunCount");
       const dadCountElement = document.getElementById("dadCount");
       const hotdogButton = document.getElementById("hotdogButton");
       const bunButton = document.getElementById("bunButton");
       const dadButton = document.getElementById("dadButton");
+      const grillButton = document.getElementById("grillButton");
 
       hotdogButton.addEventListener("click", function() {
         clickCount++;
@@ -52,6 +59,18 @@
           dadCountElement.textContent = dadCount;
           setInterval(function() {
             clickCount += dadRate;
+            clickCountElement.textContent = clickCount;
+          }, 1000);
+        }
+      });
+      grillButton.addEventListener("click", function() {
+        if (clickCount >= grillCost) {
+          clickCount -= grillCost;
+          grillCountElement.textContent = clickCount;
+          grillCount++;
+          grillCountElement.textContent = grillCount;
+          setInterval(function() {
+            clickCount += grillRate;
             clickCountElement.textContent = clickCount;
           }, 1000);
         }
