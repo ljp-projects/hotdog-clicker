@@ -167,18 +167,27 @@ window.addEventListener("beforeunload", () => {
 });
 
 const load = () => {
-    window.sessionStorage.getItem("Clicks") != null ? (clickCount = window.sessionStorage.getItem("Clicks"), clickCountElement.textContent = clickCount.toFixed(1)) : console.log("is null")
-    window.sessionStorage.getItem("Passive") != null ? (passiveClicks = window.sessionStorage.getItem("Passive"), passiveClicksElement.textContent = passiveClicks.toFixed(1)) : console.log("is null")
-    window.sessionStorage.getItem("Buns") != null ? (bunCount = window.sessionStorage.getItem("Buns"), bunCountElement.textContent = bunCount) : console.log("is null")
-    window.sessionStorage.getItem("Dads") != null ? (dadCount = window.sessionStorage.getItem("Dads"), dadCountElement.textContent = dadCount) : console.log("is null")
-    window.sessionStorage.getItem("Grills") != null ? (grillCount = window.sessionStorage.getItem("Grills"), grillCountElement.textContent = grillCount) : console.log("is null")
-    window.sessionStorage.getItem("Farms") != null ? (dogFarmCount = window.sessionStorage.getItem("Farms"), dogFarmCountElement.textContent = dogFarmCount) : console.log("is null")
-    window.sessionStorage.getItem("Factories") != null ? (facCount = window.sessionStorage.getItem("Factories"), facCountElement.textContent = facCount) : console.log("is null")
-    window.sessionStorage.getItem("Banks") != null ? (bankCount = window.sessionStorage.getItem("Banks"), bankCountElement.textContent = bankCount) : console.log("is null")
-    setInterval(function() {
-        clickCount += passive;
-        clickCountElement.textContent = clickCount.toFixed(1);
-    }, 1000);
+    clickCount = window.sessionStorage.getItem("Clicks");
+    clickCountElement.textContent = clickCount.toFixed(1);
+    passiveClicks = window.sessionStorage.getItem("Passive");
+    passiveClicksElement.textContent = passiveClicks.toFixed(1);
+    bunCount = window.sessionStorage.getItem("Buns");
+    bunCountElement.textContent = bunCount;
+    dadCount = window.sessionStorage.getItem("Dads");
+    dadCountElement.textContent = dadCount;
+    grillCount = window.sessionStorage.getItem("Grills");
+    grillCountElement.textContent = grillCount;
+    dogFarmCount = window.sessionStorage.getItem("Farms");
+    dogFarmCountElement.textContent = dogFarmCount;
+    facCount = window.sessionStorage.getItem("Factories");
+    facCountElement.textContent = facCount;
+    bankCount = window.sessionStorage.getItem("Banks");
+    bankCountElement.textContent = bankCount;
 }
 
 load()
+
+setInterval(function() {
+    clickCount += passive;
+    clickCountElement.textContent = clickCount.toFixed(1);
+}, 1000);
