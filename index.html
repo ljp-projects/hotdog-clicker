@@ -8,7 +8,10 @@
         color: white;
       }
       body {
-        background-color: black;
+        background-color: red;
+      }
+      button {
+        background-color: red;
       }
     </style>
   </head>
@@ -48,7 +51,7 @@
 
       hotdogButton.addEventListener("click", function() {
         clickCount++;
-        clickCountElement.textContent = clickCount.tofixed(1);
+        clickCountElement.textContent = clickCount.toFixed(1);
       });
 
       bunButton.addEventListener("click", function() {
@@ -58,10 +61,10 @@
           bunCount++;
           bunCountElement.textContent = bunCount;
           passiveClicks += bunRate;
-          passiveClicksElement.textContent = passiveClicks.tofixed(1);
+          passiveClicksElement.textContent = passiveClicks.toFixed(1);
           setInterval(function() {
             clickCount += bunRate;
-            clickCountElement.textContent = clickCount.tofixed(1);
+            clickCountElement.textContent = clickCount.toFixed(1);
           }, 1000);
         }
       });
@@ -72,10 +75,10 @@
           dadCount++;
           dadCountElement.textContent = dadCount;
           passiveClicks += dadRate;
-          passiveClicksElement.textContent = passiveClicks.tofixed(1);
+          passiveClicksElement.textContent = passiveClicks.toFixed(1);
           setInterval(function() {
             clickCount += dadRate;
-            clickCountElement.textContent = clickCount.tofixed(1);
+            clickCountElement.textContent = clickCount.toFixed(1);
           }, 1000);
         }
       });
@@ -86,10 +89,10 @@
           grillCount++;
           grillCountElement.textContent = grillCount;
           passiveClicks += grillRate;
-          passiveClicksElement.textContent = passiveClicks.tofixed(1);
+          passiveClicksElement.textContent = passiveClicks.toFixed(1);
           setInterval(function() {
             clickCount += grillRate;
-            clickCountElement.textContent = clickCount.tofixed(1);
+            clickCountElement.textContent = clickCount.toFixed(1);
           }, 1000);
         }
       });
