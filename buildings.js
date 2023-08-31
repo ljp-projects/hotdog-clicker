@@ -32,7 +32,7 @@ const bunButton = document.getElementById("bunButton");
 const dadButton = document.getElementById("dadButton");
 const grillButton = document.getElementById("grillButton");
 const dogFarmButton = document.getElementById("dogFarmButton");
-const facButton = document.getElementById("docFacButton");
+const facButton = document.getElementById("dogFacButton");
 
 hotdogButton.addEventListener("click", function() {
     clickCount++;
