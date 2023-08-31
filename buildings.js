@@ -40,6 +40,35 @@ const dogFarmButton = document.getElementById("dogFarmButton");
 const facButton = document.getElementById("dogFacButton");
 const bankButton = document.getElementById("dogBankButton")
 
+const save = () => {
+    window.sessionStorage.setItem("Clicks", clickCount)
+    window.sessionStorage.setItem("Passive", passiveClicks)
+    window.sessionStorage.setItem("Buns", bunCount)
+    window.sessionStorage.setItem("Dads", dadCount)
+    window.sessionStorage.setItem("Grills", grillCount)
+    window.sessionStorage.setItem("Farms", dogFarmCount)
+    window.sessionStorage.setItem("Factories", facCount)
+    window.sessionStorage.setItem("Banks", bankCount)
+}
+
+window.onbeforeunload = () => {
+    alert("Saving the game...")
+    save();
+};
+
+const load = () => {
+    clickCount = window.sessionStorage.getItem("Clicks")
+    passiveClicks = window.sessionStorage.getItem("Passive")
+    bunCount = window.sessionStorage.getItem("Buns")
+    dadCount = window.sessionStorage.getItem("Dads")
+    grillCount = window.sessionStorage.getItem("Grills")
+    dogFarmCount = window.sessionStorage.getItem("Farms")
+    facCount = window.sessionStorage.getItem("Factories")
+    bankCount = window.sessionStorage.getItem("Banks")
+}
+
+load()
+
 hotdogButton.addEventListener("click", function() {
     clickCount++;
     clickCountElement.textContent = clickCount.toFixed(1);
@@ -78,7 +107,7 @@ dadButton.addEventListener("click", function() {
 grillButton.addEventListener("click", function() {
     if (clickCount >= grillCost) {
         clickCount -= grillCost;
-        grillCountElement.textContent = clickCount;
+        clickCountElement.textContent = clickCount;
         grillCount++;
         grillCountElement.textContent = grillCount;
         passiveClicks += grillRate;
@@ -93,7 +122,7 @@ grillButton.addEventListener("click", function() {
 dogFarmButton.addEventListener("click", function() {
     if (clickCount >= dogFarmCost) {
         clickCount -= dogFarmCost;
-        grillCountElement.textContent = dogFarmCount;
+        clickCountElement.textContent = clickCount;
         dogFarmCount++;
         dogFarmCountElement.textContent = dogFarmCount;
         passiveClicks += dogFarmRate;
@@ -108,9 +137,9 @@ dogFarmButton.addEventListener("click", function() {
 facButton.addEventListener("click", function() {
     if (clickCount >= facCost) {
         clickCount -= facCost;
-        facCountElement.textContent = facCount;
+        clickCountElement.textContent = clickCount;
         facCount++;
-        grillCountElement.textContent = facCount;
+        facCountElement.textContent = facCount;
         passiveClicks += facRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
         setInterval(function() {
@@ -123,7 +152,7 @@ facButton.addEventListener("click", function() {
 bankButton.addEventListener("click", function() {
     if (clickCount >= bankCost) {
         clickCount -= bankCost;
-        facCountElement.textContent = bankCount;
+        clickCountElement.textContent = clickCount;
         bankCount++;
         bankCountElement.textContent = bankCount;
         passiveClicks += bankRate;
