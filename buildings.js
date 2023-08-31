@@ -2,6 +2,7 @@ var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
 var bun = new Audio("crunch-crispy-breadbun-41340.mp3")
 var dad = new Audio("dad-says-yummy-113126.mp3")
 var farm = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3")
+var factory = new Audio("some-kind-of-machine-103152.mp3")
 let passiveClicks = 0;
 let clickCount = 0;
 let bunCount = 0;
@@ -88,7 +89,7 @@ dogFarmButton.addEventListener("click", function() {
         clickCount -= dogFarmCost;
         grillCountElement.textContent = dogFarmCount;
         dogFarmCount++;
-        grillCountElement.textContent = dogFarmCount;
+        dogFarmCountElement.textContent = dogFarmCount;
         passiveClicks += dogFarmRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
         setInterval(function() {
@@ -96,6 +97,21 @@ dogFarmButton.addEventListener("click", function() {
             clickCountElement.textContent = clickCount.toFixed(1);
         }, 1000);
         farm.play();
+    }
+});
+facButton.addEventListener("click", function() {
+    if (clickCount >= facCost) {
+        clickCount -= facCost;
+        facCountElement.textContent = facCount;
+        dogFarmCount++;
+        grillCountElement.textContent = facCount;
+        passiveClicks += facRate;
+        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        setInterval(function() {
+            clickCount += facRate;
+            clickCountElement.textContent = clickCount.toFixed(1);
+        }, 1000);
+        factory.play();
     }
 });
 
