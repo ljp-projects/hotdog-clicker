@@ -3,6 +3,7 @@ var bun = new Audio("crunch-crispy-breadbun-41340.mp3")
 var dad = new Audio("dad-says-yummy-113126.mp3")
 var farm = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3")
 var factory = new Audio("some-kind-of-machine-103152.mp3")
+var bank = new Audio("cash-register-purchase-87313.mp3")
 let passiveClicks = 0;
 let clickCount = 0;
 let bunCount = 0;
@@ -10,29 +11,34 @@ let dadCount = 0;
 let grillCount = 0;
 let dogFarmCount = 0;
 let facCount = 0;
+let bankCount = 0;
 const bunCost = 10;
-const bunRate = 0.2;
+let bunRate = 0.2;
 const dadCost = 100;
-const dadRate = 2;
+let dadRate = 2;
 const grillCost = 500;
-const grillRate = 10;
+let grillRate = 10;
 const dogFarmCost = 5000;
-const dogFarmRate = 50;
+let dogFarmRate = 50;
 const facCost = 50000;
-const facRate = 500;
+let facRate = 500;
+const bankCost = 250000;
+let bankRate = 2500;
 const clickCountElement = document.getElementById("clickCount");
 const grillCountElement = document.getElementById("grillCount");
 const passiveClicksElement = document.getElementById("passive");
 const bunCountElement = document.getElementById("bunCount");
 const dadCountElement = document.getElementById("dadCount");
 const dogFarmCountElement = document.getElementById("dogFarmCount");
-const facCountElement = document.getElementById("docFacCount");
+const facCountElement = document.getElementById("dogFacCount");
+const bankCountElement = document.getElementById("dogBankCount")
 const hotdogButton = document.getElementById("hotdogButton");
 const bunButton = document.getElementById("bunButton");
 const dadButton = document.getElementById("dadButton");
 const grillButton = document.getElementById("grillButton");
 const dogFarmButton = document.getElementById("dogFarmButton");
 const facButton = document.getElementById("dogFacButton");
+const bankButton = document.getElementById("dogBankButton")
 
 hotdogButton.addEventListener("click", function() {
     clickCount++;
@@ -103,7 +109,7 @@ facButton.addEventListener("click", function() {
     if (clickCount >= facCost) {
         clickCount -= facCost;
         facCountElement.textContent = facCount;
-        dogFarmCount++;
+        facCount++;
         grillCountElement.textContent = facCount;
         passiveClicks += facRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
@@ -114,18 +120,35 @@ facButton.addEventListener("click", function() {
         factory.play();
     }
 });
+bankButton.addEventListener("click", function() {
+    if (clickCount >= bankCost) {
+        clickCount -= bankCost;
+        facCountElement.textContent = bankCount;
+        bankCount++;
+        bankCountElement.textContent = bankCount;
+        passiveClicks += bankRate;
+        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        setInterval(function() {
+            clickCount += bankRate;
+            clickCountElement.textContent = clickCount.toFixed(1);
+        }, 1000);
+        bank.play();
+    }
+});
 
 // Upgrades
 
 const mustardCost = 5000;
 const tSauceCost = 1000;
+const crispCost = 5000;
 const tSauceButton = document.getElementById("tSauceButton");
 const mustardButton = document.getElementById("mustardButton");
+const crispButton = document.getElementById("crispButton");
 
 tSauceButton.addEventListener("click", function() {
     if (clickCount >= tSauceCost) {
         clickCount -= tSauceCost;
-        grillCountElement.textContent = clickCount;
+        clickCountElement.textContent = clickCount.toFixed(1);
         tSauceButton.style.display = "none";
         passiveClicks += 25;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
@@ -135,9 +158,18 @@ tSauceButton.addEventListener("click", function() {
 mustardButton.addEventListener("click", function() {
     if (clickCount >= mustardCost) {
         clickCount -= mustardCost;
-        grillCountElement.textContent = clickCount;
+        clickCountElement.textContent = clickCount.toFixed(1);
         mustardButton.style.display = "none";
         passiveClicks += 50;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
+    }
+});
+
+crispButton.addEventListener("click", function() {
+    if (clickCount >= crispCost) {
+        clickCount -= crispCost;
+        clickCountElement.textContent = clickCount.toFixed(1);
+        crispButton.style.display = "none";
+        bunRate *= 2;
     }
 });
