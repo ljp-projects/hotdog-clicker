@@ -200,7 +200,7 @@ const load = () => {
     Number(getS("Banks")) != NaN ? bankCount = Number(getS("Banks")) : console.log("Not A Number");
 
     clickCountElement.textContent = clickCount
-    passiveCountElement.textContent = passiveClicks
+    passiveClicksElement.textContent = passiveClicks
     bunCountElement.textContent = bunCount
     dadCountElement.textContent = dadCount
     grillCountElement.textContent = grillCount
