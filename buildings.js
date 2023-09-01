@@ -170,11 +170,6 @@ crispButton.addEventListener("click", function() {
 });
 
 setInterval(function() {
-    if (!isNaN(clickCount)) {
-        clickCount += passive;
-        clickCountElement.textContent = clickCount.toFixed(1);
-    } else {
-        clickCount = 0;
-        clickCountElement.textContent = clickCount.toFixed(1);
-    }
+    clickCount += passive;
+    clickCountElement.textContent = clickCount.toFixed(1);
 }, 1000);
