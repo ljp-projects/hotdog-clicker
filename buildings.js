@@ -169,48 +169,6 @@ crispButton.addEventListener("click", function() {
     }
 });
 
-const save = () => {
-    sessionStorage.setItem("Clicks", clickCount)
-    sessionStorage.setItem("Passive", passiveClicks)
-    sessionStorage.setItem("Buns", bunCount)
-    sessionStorage.setItem("Dads", dadCount)
-    sessionStorage.setItem("Grills", grillCount)
-    sessionStorage.setItem("Farms", dogFarmCount)
-    sessionStorage.setItem("Factories", facCount)
-    sessionStorage.setItem("Banks", bankCount)
-}
-
-window.addEventListener("beforeunload", () => {
-    alert("Saving the game...")
-    save();
-});
-
-const getS = key => {
-    return sessionStorage.getItem(key)
-}
-
-const load = () => {
-    Number(getS("Clicks")) != NaN ? clickCount = Number(getS("Clicks")) : console.log("Not A Number");
-    Number(getS("Passive")) != NaN ? passiveClicks = Number(getS("Passive")) : console.log("Not A Number");
-    Number(getS("Buns")) != NaN ? bunCount = Number(getS("Buns")) : console.log("Not A Number");
-    Number(getS("Dads")) != NaN ? dadCount = Number(getS("Dads")) : console.log("Not A Number");
-    Number(getS("Grills")) != NaN ? grillCount = Number(getS("Grills")) : console.log("Not A Number");
-    Number(getS("Farms")) != NaN ? farmCount = Number(getS("Farms")) : console.log("Not A Number");
-    Number(getS("Factories")) != NaN ? facCount = Number(getS("Factories")) : console.log("Not A Number");
-    Number(getS("Banks")) != NaN ? bankCount = Number(getS("Banks")) : console.log("Not A Number");
-
-    clickCountElement.textContent = clickCount
-    passiveClicksElement.textContent = passiveClicks
-    bunCountElement.textContent = bunCount
-    dadCountElement.textContent = dadCount
-    grillCountElement.textContent = grillCount
-    dogFarmCountElement.textContent = dogFarmCount
-    facCountElement.textContent = facCount
-    bankCountElement.textContent = bankCount
-}
-
-load()
-
 setInterval(function() {
     if (!isNaN(clickCount)) {
         clickCount += passive;
