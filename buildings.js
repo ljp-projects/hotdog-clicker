@@ -212,6 +212,7 @@ const load = () => {
 load()
 
 setInterval(function() {
+    clickCount = Number(sessionStorage.getItem("Clicks"))
     clickCount += passive;
     clickCountElement.textContent = clickCount.toFixed(1);
 }, 1000);
