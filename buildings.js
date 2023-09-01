@@ -170,14 +170,14 @@ crispButton.addEventListener("click", function() {
 });
 
 const save = () => {
-    window.sessionStorage.setItem("Clicks", clickCount)
-    window.sessionStorage.setItem("Passive", passiveClicks)
-    window.sessionStorage.setItem("Buns", bunCount)
-    window.sessionStorage.setItem("Dads", dadCount)
-    window.sessionStorage.setItem("Grills", grillCount)
-    window.sessionStorage.setItem("Farms", dogFarmCount)
-    window.sessionStorage.setItem("Factories", facCount)
-    window.sessionStorage.setItem("Banks", bankCount)
+    sessionStorage.setItem("Clicks", clickCount)
+    sessionStorage.setItem("Passive", passiveClicks)
+    sessionStorage.setItem("Buns", bunCount)
+    sessionStorage.setItem("Dads", dadCount)
+    sessionStorage.setItem("Grills", grillCount)
+    sessionStorage.setItem("Farms", dogFarmCount)
+    sessionStorage.setItem("Factories", facCount)
+    sessionStorage.setItem("Banks", bankCount)
 }
 
 window.addEventListener("beforeunload", () => {
@@ -185,23 +185,28 @@ window.addEventListener("beforeunload", () => {
     save();
 });
 
+const getS = key => {
+    return sessionStorage.getItem(key)
+}
+
 const load = () => {
-    clickCount = Number(window.sessionStorage.getItem("Clicks"));
-    clickCountElement.textContent = Number(clickCount).toFixed(1);
-    passiveClicks = window.sessionStorage.getItem("Passive");
-    passiveClicksElement.textContent = Number(passiveClicks).toFixed(1);
-    bunCount = Number(window.sessionStorage.getItem("Buns"));
-    bunCountElement.textContent = bunCount;
-    dadCount = Number(window.sessionStorage.getItem("Dads"));
-    dadCountElement.textContent = dadCount;
-    grillCount = Number(window.sessionStorage.getItem("Grills"));
-    grillCountElement.textContent = grillCount;
-    dogFarmCount = Number(window.sessionStorage.getItem("Farms"));
-    dogFarmCountElement.textContent = dogFarmCount;
-    facCount = Number(window.sessionStorage.getItem("Factories"));
-    facCountElement.textContent = facCount;
-    bankCount = Number(window.sessionStorage.getItem("Banks"));
-    bankCountElement.textContent = bankCount;
+    Number(getS("Clicks")) != NaN ? clickCount = Number(getS("Clicks")) : console.log("Not A Number");
+    Number(getS("Passive")) != NaN ? passiveClicks = Number(getS("Passive")) : console.log("Not A Number");
+    Number(getS("Buns")) != NaN ? bunCount = Number(getS("Buns")) : console.log("Not A Number");
+    Number(getS("Dads")) != NaN ? dadCount = Number(getS("Dads")) : console.log("Not A Number");
+    Number(getS("Grills")) != NaN ? grillCount = Number(getS("Grills")) : console.log("Not A Number");
+    Number(getS("Farms")) != NaN ? farmCount = Number(getS("Farms")) : console.log("Not A Number");
+    Number(getS("Factories")) != NaN ? facCount = Number(getS("Factories")) : console.log("Not A Number");
+    Number(getS("Banks")) != NaN ? bankCount = Number(getS("Banks")) : console.log("Not A Number");
+
+    clickCountElement.textContent = clickCount
+    passiveCountElement.textContent = passiveClicks
+    bunCountElement.textContent = bunCount
+    dadCountElement.textContent = dadCount
+    grillCountElement.textContent = grillCount
+    dogFarmCountElement.textContent = dogFarmCount
+    facCountElement.textContent = facCount
+    bankCountElement.textContent = bankCount
 }
 
 load()
