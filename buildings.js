@@ -212,8 +212,7 @@ const load = () => {
 load()
 
 setInterval(function() {
-    clickCount = Number(sessionStorage.getItem("Clicks"))
-    if (typeof clickCount === "number") {
+    if (!isNaN(clickCount)) {
         clickCount += passive;
         clickCountElement.textContent = clickCount.toFixed(1);
     } else {
