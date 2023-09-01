@@ -186,7 +186,7 @@ window.addEventListener("beforeunload", () => {
 });
 
 const load = () => {
-    clickCount = window.sessionStorage.getItem("Clicks");
+    clickCount = Number(window.sessionStorage.getItem("Clicks"));
     clickCountElement.textContent = Number(clickCount).toFixed(1);
     passiveClicks = window.sessionStorage.getItem("Passive");
     passiveClicksElement.textContent = Number(passiveClicks).toFixed(1);
