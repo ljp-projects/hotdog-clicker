@@ -213,6 +213,11 @@ load()
 
 setInterval(function() {
     clickCount = Number(sessionStorage.getItem("Clicks"))
-    clickCount += passive;
-    clickCountElement.textContent = clickCount.toFixed(1);
+    if (typeof clickCount === "number") {
+        clickCount += passive;
+        clickCountElement.textContent = clickCount.toFixed(1);
+    } else {
+        clickCount = 0;
+        clickCountElement.textContent = clickCount.toFixed(1);
+    }
 }, 1000);
