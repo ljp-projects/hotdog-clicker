@@ -187,20 +187,20 @@ window.addEventListener("beforeunload", () => {
 
 const load = () => {
     clickCount = window.sessionStorage.getItem("Clicks");
-    clickCountElement.textContent = clickCount.toFixed(1);
+    clickCountElement.textContent = Number(clickCount).toFixed(1);
     passiveClicks = window.sessionStorage.getItem("Passive");
-    passiveClicksElement.textContent = passiveClicks.toFixed(1);
-    bunCount = window.sessionStorage.getItem("Buns");
+    passiveClicksElement.textContent = Number(passiveClicks).toFixed(1);
+    bunCount = Number(window.sessionStorage.getItem("Buns"));
     bunCountElement.textContent = bunCount;
-    dadCount = window.sessionStorage.getItem("Dads");
+    dadCount = Number(window.sessionStorage.getItem("Dads"));
     dadCountElement.textContent = dadCount;
-    grillCount = window.sessionStorage.getItem("Grills");
+    grillCount = Number(window.sessionStorage.getItem("Grills"));
     grillCountElement.textContent = grillCount;
-    dogFarmCount = window.sessionStorage.getItem("Farms");
+    dogFarmCount = Number(window.sessionStorage.getItem("Farms"));
     dogFarmCountElement.textContent = dogFarmCount;
-    facCount = window.sessionStorage.getItem("Factories");
+    facCount = Number(window.sessionStorage.getItem("Factories"));
     facCountElement.textContent = facCount;
-    bankCount = window.sessionStorage.getItem("Banks");
+    bankCount = Number(window.sessionStorage.getItem("Banks"));
     bankCountElement.textContent = bankCount;
 }
 
