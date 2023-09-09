@@ -102,43 +102,43 @@ bunImage?.addEventListener("mouseup", () => {
 })
 
 dadImage?.addEventListener("mousedown", () => {
-    bunImage.src = dadClicked;
+    dadImage.src = dadClicked;
 })
 
 dadImage?.addEventListener("mouseup", () => {
-    bunImage.src = dadUnclicked;
+    dadImage.src = dadUnclicked;
 })
 
 grillImage?.addEventListener("mousedown", () => {
-    bunImage.src = grillClicked;
+    grillImage.src = grillClicked;
 })
 
 grillImage?.addEventListener("mouseup", () => {
-    bunImage.src = grillUnclicked;
+    grillImage.src = grillUnclicked;
 })
 
 farmImage?.addEventListener("mousedown", () => {
-    bunImage.src = farmClicked;
+    farmImage.src = farmClicked;
 })
 
 farmImage?.addEventListener("mouseup", () => {
-    bunImage.src = farmUnclicked;
+    farmImage.src = farmUnclicked;
 })
 
 facImage?.addEventListener("mousedown", () => {
-    bunImage.src = facClicked;
+    facImage.src = facClicked;
 })
 
 facImage?.addEventListener("mouseup", () => {
-    bunImage.src = facUnclicked;
+    facImage.src = facUnclicked;
 })
 
 bankImage?.addEventListener("mousedown", () => {
-    bunImage.src = bankClicked;
+    bankImage.src = bankClicked;
 })
 
 bankImage?.addEventListener("mouseup", () => {
-    bunImage.src = bankUnclicked;
+    bankImage.src = bankUnclicked;
 })
 
 bunButton?.addEventListener("click", function() {
