@@ -81,34 +81,34 @@ bunImage === null || bunImage === void 0 ? void 0 : bunImage.addEventListener("m
     bunImage.src = bunUnclicked;
 });
 dadImage === null || dadImage === void 0 ? void 0 : dadImage.addEventListener("mousedown", () => {
-    bunImage.src = dadClicked;
+    dadImage.src = dadClicked;
 });
 dadImage === null || dadImage === void 0 ? void 0 : dadImage.addEventListener("mouseup", () => {
-    bunImage.src = dadUnclicked;
+    dadImage.src = dadUnclicked;
 });
 grillImage === null || grillImage === void 0 ? void 0 : grillImage.addEventListener("mousedown", () => {
-    bunImage.src = grillClicked;
+    grillImage.src = grillClicked;
 });
 grillImage === null || grillImage === void 0 ? void 0 : grillImage.addEventListener("mouseup", () => {
-    bunImage.src = grillUnclicked;
+    grillImage.src = grillUnclicked;
 });
 farmImage === null || farmImage === void 0 ? void 0 : farmImage.addEventListener("mousedown", () => {
-    bunImage.src = farmClicked;
+    farmImage.src = farmClicked;
 });
 farmImage === null || farmImage === void 0 ? void 0 : farmImage.addEventListener("mouseup", () => {
-    bunImage.src = farmUnclicked;
+    farmImage.src = farmUnclicked;
 });
 facImage === null || facImage === void 0 ? void 0 : facImage.addEventListener("mousedown", () => {
-    bunImage.src = facClicked;
+    facImage.src = facClicked;
 });
 facImage === null || facImage === void 0 ? void 0 : facImage.addEventListener("mouseup", () => {
-    bunImage.src = facUnclicked;
+    facImage.src = facUnclicked;
 });
 bankImage === null || bankImage === void 0 ? void 0 : bankImage.addEventListener("mousedown", () => {
-    bunImage.src = bankClicked;
+    bankImage.src = bankClicked;
 });
 bankImage === null || bankImage === void 0 ? void 0 : bankImage.addEventListener("mouseup", () => {
-    bunImage.src = bankUnclicked;
+    bankImage.src = bankUnclicked;
 });
 bunButton === null || bunButton === void 0 ? void 0 : bunButton.addEventListener("click", function () {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
