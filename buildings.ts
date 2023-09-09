@@ -5,6 +5,24 @@ var farm: HTMLAudioElement | null = new Audio("zapsplat_impacts_hit_loose_ground
 var factory: HTMLAudioElement | null = new Audio("some-kind-of-machine-103152.mp3")
 var bank: HTMLAudioElement | null = new Audio("cash-register-purchase-87313.mp3")
 
+var bunClicked: string = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Clicked.svg"
+var bunUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Unclicked.svg"
+
+var dadClicked: string = "https://kotlinc.github.io/hotdog-clicker/Dad-Button-Clicked.svg"
+var dadUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Dad-Button-Unclicked.svg"
+
+var grillClicked: string = "https://kotlinc.github.io/hotdog-clicker/Grill-Button-Clicked.svg"
+var grillUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Grill-Button-Unclicked.svg"
+
+var farmClicked: string = "https://kotlinc.github.io/hotdog-clicker/Farm-Button-Clicked.svg"
+var farmUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Farm-Button-Unclicked.svg"
+
+var facClicked: string = "https://kotlinc.github.io/hotdog-clicker/Factory-Button-Clicked.svg"
+var facUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Factory-Button-Unclicked.svg"
+
+var bankClicked: string = "https://kotlinc.github.io/hotdog-clicker/Bank-Button-Clicked.svg"
+var bankUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Bank-Button-Unclicked.svg"
+
 let passiveClicks: number = 0;
 let clickCount: number = 0;
 let bunCount: number = 0;
@@ -59,6 +77,13 @@ const farmPriceElement: HTMLElement | null = document.getElementById("farmPrice"
 const facPriceElement: HTMLElement | null = document.getElementById("facPrice")
 const bankPriceElement: HTMLElement | null = document.getElementById("bankPrice")
 
+const bunImage: HTMLImageElement | null = document.getElementById("bunImg") as HTMLImageElement
+const dadImage: HTMLImageElement | null = document.getElementById("dadImg") as HTMLImageElement
+const grillImage: HTMLImageElement | null = document.getElementById("grillImg") as HTMLImageElement
+const farmImage: HTMLImageElement | null = document.getElementById("farmImg") as HTMLImageElement
+const facImage: HTMLImageElement | null = document.getElementById("facImg") as HTMLImageElement
+const bankImage: HTMLImageElement | null = document.getElementById("bankImg") as HTMLImageElement
+
 hotdogButton?.addEventListener("click", function() {
     if (clickCountElement != null) {
         clickCount++;
@@ -67,6 +92,54 @@ hotdogButton?.addEventListener("click", function() {
         console.log("Could not find clickCountElement")
     }
 });
+
+bunImage?.addEventListener("mousedown", () => {
+    bunImage.src = bunClicked;
+})
+
+bunImage?.addEventListener("mouseup", () => {
+    bunImage.src = bunUnclicked;
+})
+
+dadImage?.addEventListener("mousedown", () => {
+    bunImage.src = dadClicked;
+})
+
+dadImage?.addEventListener("mouseup", () => {
+    bunImage.src = dadUnclicked;
+})
+
+grillImage?.addEventListener("mousedown", () => {
+    bunImage.src = grillClicked;
+})
+
+grillImage?.addEventListener("mouseup", () => {
+    bunImage.src = grillUnclicked;
+})
+
+farmImage?.addEventListener("mousedown", () => {
+    bunImage.src = farmClicked;
+})
+
+farmImage?.addEventListener("mouseup", () => {
+    bunImage.src = farmUnclicked;
+})
+
+facImage?.addEventListener("mousedown", () => {
+    bunImage.src = facClicked;
+})
+
+facImage?.addEventListener("mouseup", () => {
+    bunImage.src = facUnclicked;
+})
+
+bankImage?.addEventListener("mousedown", () => {
+    bunImage.src = bankClicked;
+})
+
+bankImage?.addEventListener("mouseup", () => {
+    bunImage.src = bankUnclicked;
+})
 
 bunButton?.addEventListener("click", function() {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
