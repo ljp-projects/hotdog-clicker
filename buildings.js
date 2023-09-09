@@ -1,51 +1,70 @@
+"use strict";
 var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3");
 var bun = new Audio("crunch-crispy-breadbun-41340.mp3");
 var dad = new Audio("dad-says-yummy-113126.mp3");
 var farm = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3");
 var factory = new Audio("some-kind-of-machine-103152.mp3");
 var bank = new Audio("cash-register-purchase-87313.mp3");
-var passiveClicks = 0;
-var clickCount = 0;
-var bunCount = 0;
-var dadCount = 0;
-var grillCount = 0;
-var dogFarmCount = 0;
-var facCount = 0;
-var bankCount = 0;
-var bunCost = 10;
-var bunRate = 0.2;
-var dadCost = 100;
-var dadRate = 2;
-var grillCost = 500;
-var grillRate = 10;
-var dogFarmCost = 5000;
-var dogFarmRate = 50;
-var facCost = 50000;
-var facRate = 500;
-var bankCost = 250000;
-var bankRate = 2500;
-var increment = 1.3;
-var passiveClicksElement = document.getElementById("passive");
-var clickCountElement = document.getElementById("clickCount");
-var grillCountElement = document.getElementById("grillCount");
-var bunCountElement = document.getElementById("bunCount");
-var dadCountElement = document.getElementById("dadCount");
-var dogFarmCountElement = document.getElementById("dogFarmCount");
-var facCountElement = document.getElementById("dogFacCount");
-var bankCountElement = document.getElementById("dogBankCount");
-var hotdogButton = document.getElementById("hotdogButton");
-var bunButton = document.getElementById("bunButton");
-var dadButton = document.getElementById("dadButton");
-var grillButton = document.getElementById("grillButton");
-var dogFarmButton = document.getElementById("dogFarmButton");
-var facButton = document.getElementById("dogFacButton");
-var bankButton = document.getElementById("dogBankButton");
-var bunPriceElement = document.getElementById("bunPrice");
-var dadPriceElement = document.getElementById("dadPrice");
-var grillPriceElement = document.getElementById("grillPrice");
-var farmPriceElement = document.getElementById("farmPrice");
-var facPriceElement = document.getElementById("facPrice");
-var bankPriceElement = document.getElementById("bankPrice");
+var bunClicked = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Clicked.svg";
+var bunUnclicked = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Unclicked.svg";
+var dadClicked = "https://kotlinc.github.io/hotdog-clicker/Dad-Button-Clicked.svg";
+var dadUnclicked = "https://kotlinc.github.io/hotdog-clicker/Dad-Button-Unclicked.svg";
+var grillClicked = "https://kotlinc.github.io/hotdog-clicker/Grill-Button-Clicked.svg";
+var grillUnclicked = "https://kotlinc.github.io/hotdog-clicker/Grill-Button-Unclicked.svg";
+var farmClicked = "https://kotlinc.github.io/hotdog-clicker/Farm-Button-Clicked.svg";
+var farmUnclicked = "https://kotlinc.github.io/hotdog-clicker/Farm-Button-Unclicked.svg";
+var facClicked = "https://kotlinc.github.io/hotdog-clicker/Factory-Button-Clicked.svg";
+var facUnclicked = "https://kotlinc.github.io/hotdog-clicker/Factory-Button-Unclicked.svg";
+var bankClicked = "https://kotlinc.github.io/hotdog-clicker/Bank-Button-Clicked.svg";
+var bankUnclicked = "https://kotlinc.github.io/hotdog-clicker/Bank-Button-Unclicked.svg";
+let passiveClicks = 0;
+let clickCount = 0;
+let bunCount = 0;
+let dadCount = 0;
+let grillCount = 0;
+let dogFarmCount = 0;
+let facCount = 0;
+let bankCount = 0;
+let bunCost = 10;
+let bunRate = 0.2;
+let dadCost = 100;
+let dadRate = 2;
+let grillCost = 500;
+let grillRate = 10;
+let dogFarmCost = 5000;
+let dogFarmRate = 50;
+let facCost = 50000;
+let facRate = 500;
+let bankCost = 250000;
+let bankRate = 2500;
+const increment = 1.3;
+const passiveClicksElement = document.getElementById("passive");
+const clickCountElement = document.getElementById("clickCount");
+const grillCountElement = document.getElementById("grillCount");
+const bunCountElement = document.getElementById("bunCount");
+const dadCountElement = document.getElementById("dadCount");
+const dogFarmCountElement = document.getElementById("dogFarmCount");
+const facCountElement = document.getElementById("dogFacCount");
+const bankCountElement = document.getElementById("dogBankCount");
+const hotdogButton = document.getElementById("hotdogButton");
+const bunButton = document.getElementById("bunButton");
+const dadButton = document.getElementById("dadButton");
+const grillButton = document.getElementById("grillButton");
+const dogFarmButton = document.getElementById("dogFarmButton");
+const facButton = document.getElementById("dogFacButton");
+const bankButton = document.getElementById("dogBankButton");
+const bunPriceElement = document.getElementById("bunPrice");
+const dadPriceElement = document.getElementById("dadPrice");
+const grillPriceElement = document.getElementById("grillPrice");
+const farmPriceElement = document.getElementById("farmPrice");
+const facPriceElement = document.getElementById("facPrice");
+const bankPriceElement = document.getElementById("bankPrice");
+const bunImage = document.getElementById("bunImg");
+const dadImage = document.getElementById("dadImg");
+const grillImage = document.getElementById("grillImg");
+const farmImage = document.getElementById("farmImg");
+const facImage = document.getElementById("facImg");
+const bankImage = document.getElementById("bankImg");
 hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEventListener("click", function () {
     if (clickCountElement != null) {
         clickCount++;
@@ -54,6 +73,42 @@ hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEven
     else {
         console.log("Could not find clickCountElement");
     }
+});
+bunImage === null || bunImage === void 0 ? void 0 : bunImage.addEventListener("mousedown", () => {
+    bunImage.src = bunClicked;
+});
+bunImage === null || bunImage === void 0 ? void 0 : bunImage.addEventListener("mouseup", () => {
+    bunImage.src = bunUnclicked;
+});
+dadImage === null || dadImage === void 0 ? void 0 : dadImage.addEventListener("mousedown", () => {
+    bunImage.src = dadClicked;
+});
+dadImage === null || dadImage === void 0 ? void 0 : dadImage.addEventListener("mouseup", () => {
+    bunImage.src = dadUnclicked;
+});
+grillImage === null || grillImage === void 0 ? void 0 : grillImage.addEventListener("mousedown", () => {
+    bunImage.src = grillClicked;
+});
+grillImage === null || grillImage === void 0 ? void 0 : grillImage.addEventListener("mouseup", () => {
+    bunImage.src = grillUnclicked;
+});
+farmImage === null || farmImage === void 0 ? void 0 : farmImage.addEventListener("mousedown", () => {
+    bunImage.src = farmClicked;
+});
+farmImage === null || farmImage === void 0 ? void 0 : farmImage.addEventListener("mouseup", () => {
+    bunImage.src = farmUnclicked;
+});
+facImage === null || facImage === void 0 ? void 0 : facImage.addEventListener("mousedown", () => {
+    bunImage.src = facClicked;
+});
+facImage === null || facImage === void 0 ? void 0 : facImage.addEventListener("mouseup", () => {
+    bunImage.src = facUnclicked;
+});
+bankImage === null || bankImage === void 0 ? void 0 : bankImage.addEventListener("mousedown", () => {
+    bunImage.src = bankClicked;
+});
+bankImage === null || bankImage === void 0 ? void 0 : bankImage.addEventListener("mouseup", () => {
+    bunImage.src = bankUnclicked;
 });
 bunButton === null || bunButton === void 0 ? void 0 : bunButton.addEventListener("click", function () {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
@@ -134,12 +189,12 @@ bankButton === null || bankButton === void 0 ? void 0 : bankButton.addEventListe
     }
 });
 // Upgrades
-var mustardCost = 5000;
-var tSauceCost = 1000;
-var crispCost = 5000;
-var tSauceButton = document.getElementById("tSauceButton");
-var mustardButton = document.getElementById("mustardButton");
-var crispButton = document.getElementById("crispButton");
+const mustardCost = 5000;
+const tSauceCost = 1000;
+const crispCost = 5000;
+const tSauceButton = document.getElementById("tSauceButton");
+const mustardButton = document.getElementById("mustardButton");
+const crispButton = document.getElementById("crispButton");
 tSauceButton === null || tSauceButton === void 0 ? void 0 : tSauceButton.addEventListener("click", function () {
     if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= tSauceCost;
