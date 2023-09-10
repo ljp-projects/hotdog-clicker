@@ -115,7 +115,7 @@ const checkBuyables = () => {
         return
     }
     if (clickCount >= dogFarmCost) {
-        grillImage.src = farmBuyable
+        farmImage.src = farmBuyable
     } else {
         console.log("Cant buy farm; therefore, cant buy anything more expensive than grill.")
         grillImage.src = farmUnBuyable
