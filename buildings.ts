@@ -98,6 +98,11 @@ const checkBuyables = () => {
     } else {
         console.log("Cant buy bun; therefore, cant buy anything.")
         bunImage.src = bunUnBuyable
+        dadImage.src = dadUnBuyable
+        grillImage.src = grillUnBuyable
+        farmImage.src = farmUnBuyable
+        facImage.src = facUnBuyable
+        bankImage.src = bankUnBuyable
         return
     }
     if (clickCount >= dadCost) {
@@ -105,20 +110,29 @@ const checkBuyables = () => {
     } else {
         console.log("Cant buy dad; therefore, cant buy anything more expensive than bun.")
         dadImage.src = dadUnBuyable
+        grillImage.src = grillUnBuyable
+        farmImage.src = farmUnBuyable
+        facImage.src = facUnBuyable
+        bankImage.src = bankUnBuyable
         return
     }
     if (clickCount >= grillCost) {
-        dadImage.src = grillUnBuyable
+        grillImage.src = grillUnBuyable
     } else {
         console.log("Cant buy grill; therefore, cant buy anything more expensive than dad.")
         grillImage.src = grillUnBuyable
+        farmImage.src = farmUnBuyable
+        facImage.src = facUnBuyable
+        bankImage.src = bankUnBuyable
         return
     }
     if (clickCount >= dogFarmCost) {
         farmImage.src = farmBuyable
     } else {
         console.log("Cant buy farm; therefore, cant buy anything more expensive than grill.")
-        grillImage.src = farmUnBuyable
+        farmImage.src = farmUnBuyable
+        facImage.src = facUnBuyable
+        bankImage.src = bankUnBuyable
         return
     }
     if (clickCount >= facCost) {
@@ -126,6 +140,7 @@ const checkBuyables = () => {
     } else {
         console.log("Cant buy farm; therefore, cant buy anything more expensive than farm.")
         facImage.src = facUnBuyable
+        bankImage.src = bankUnBuyable
         return
     }
     if (clickCount >= bankCost) {
