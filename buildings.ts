@@ -4,6 +4,9 @@ var dad: HTMLAudioElement | null = new Audio("dad-says-yummy-113126.mp3")
 var farm: HTMLAudioElement | null = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3")
 var factory: HTMLAudioElement | null = new Audio("some-kind-of-machine-103152.mp3")
 var bank: HTMLAudioElement | null = new Audio("cash-register-purchase-87313.mp3")
+var ambience: HTMLAudioElement | null = new Audio("./Hotdog-Clicker-Ambience.m4a")
+ambience.loop = true;
+ambience.play()
 
 var bunClicked: string = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Clicked.svg"
 var bunUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Unclicked.svg"
