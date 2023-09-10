@@ -6,25 +6,30 @@ var factory: HTMLAudioElement | null = new Audio("some-kind-of-machine-103152.mp
 var bank: HTMLAudioElement | null = new Audio("cash-register-purchase-87313.mp3")
 var ambience: HTMLAudioElement | null = new Audio("./Hotdog-Clicker-Ambience.m4a")
 ambience.loop = true;
-ambience.play()
 
-var bunClicked: string = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Clicked.svg"
-var bunUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Hotdog-Button-Unclicked.svg"
+var bunBuyable: string = "./Can-Buy-Bun-Button.svg"
+var bunUnBuyable: string = "./Cant-Buy-Bun-Button.svg"
+var bunBuying: string = "./Buying-Bun-Button.svg"
 
-var dadClicked: string = "https://kotlinc.github.io/hotdog-clicker/Dad-Button-Clicked.svg"
-var dadUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Dad-Button-Unclicked.svg"
+var dadBuyable: string = "./Can-Buy-Dad-Button.svg"
+var dadUnBuyable: string = "./Cant-Buy-Dad-Button.svg"
+var dadBuying: string = "./Buying-Dad-Button.svg"
 
-var grillClicked: string = "https://kotlinc.github.io/hotdog-clicker/Grill-Button-Clicked.svg"
-var grillUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Grill-Button-Unclicked.svg"
+var grillBuyable: string = "./Can-Buy-Grill-Button.svg"
+var grillUnBuyable: string = "./Cant-Buy-Grill-Button.svg"
+var grillBuying: string = "./Buying-Grill-Button.svg"
 
-var farmClicked: string = "https://kotlinc.github.io/hotdog-clicker/Farm-Button-Clicked.svg"
-var farmUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Farm-Button-Unclicked.svg"
+var farmBuyable: string = "./Can-Buy-Farm-Button.svg"
+var farmUnBuyable: string = "./Cant-Buy-Farm-Button.svg"
+var farmBuying: string = "./Buying-Farm-Button.svg"
 
-var facClicked: string = "https://kotlinc.github.io/hotdog-clicker/Factory-Button-Clicked.svg"
-var facUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Factory-Button-Unclicked.svg"
+var facBuyable: string = "./Can-Buy-Fac-Button.svg"
+var facUnBuyable: string = "./Cant-Buy-Fac-Button.svg"
+var facBuying: string = "./Buying-Fac-Button.svg"
 
-var bankClicked: string = "https://kotlinc.github.io/hotdog-clicker/Bank-Button-Clicked.svg"
-var bankUnclicked: string = "https://kotlinc.github.io/hotdog-clicker/Bank-Button-Unclicked.svg"
+var bankBuyable: string = "./Can-Buy-Bank-Button.svg"
+var bankUnBuyable: string = "./Cant-Buy-Bank-Button.svg"
+var bankBuying: string = "./Buying-Bank-Button.svg"
 
 let passiveClicks: number = 0;
 let clickCount: number = 0;
@@ -87,69 +92,71 @@ const farmImage: HTMLImageElement | null = document.getElementById("farmImg") as
 const facImage: HTMLImageElement | null = document.getElementById("facImg") as HTMLImageElement
 const bankImage: HTMLImageElement | null = document.getElementById("bankImg") as HTMLImageElement
 
+const checkBuyables = () => {
+    if (clickCount >= bunCost) {
+        bunImage.src = bunBuyable
+    } else {
+        console.log("Cant buy bun; therefore, cant buy anything.")
+        bunImage.src = bunUnBuyable
+        return
+    }
+    if (clickCount >= dadCost) {
+        dadImage.src = dadBuyable
+    } else {
+        console.log("Cant buy dad; therefore, cant buy anything more expensive than bun.")
+        dadImage.src = dadUnBuyable
+        return
+    }
+    if (clickCount >= grillCost) {
+        dadImage.src = grillUnBuyable
+    } else {
+        console.log("Cant buy grill; therefore, cant buy anything more expensive than dad.")
+        grillImage.src = grillUnBuyable
+        return
+    }
+    if (clickCount >= dogFarmCost) {
+        grillImage.src = farmBuyable
+    } else {
+        console.log("Cant buy farm; therefore, cant buy anything more expensive than grill.")
+        grillImage.src = farmUnBuyable
+        return
+    }
+    if (clickCount >= facCost) {
+        facImage.src = facBuyable
+    } else {
+        console.log("Cant buy farm; therefore, cant buy anything more expensive than farm.")
+        facImage.src = facUnBuyable
+        return
+    }
+    if (clickCount >= bankCost) {
+        bankImage.src = bankBuyable
+    } else {
+        console.log("Cant buy bank; therefore, cant buy anything more expensive than fac.")
+        bankImage.src = bankUnBuyable
+        return
+    }
+}
+
 hotdogButton?.addEventListener("click", function() {
+    if (clickCount == 0.0) {
+        ambience?.play()
+    }
     if (clickCountElement != null) {
         clickCount++;
         clickCountElement.textContent = clickCount.toFixed(1);
+        checkBuyables();
     } else {
         console.log("Could not find clickCountElement")
     }
 });
 
-bunImage?.addEventListener("mousedown", () => {
-    bunImage.src = bunClicked;
-})
-
-bunImage?.addEventListener("mouseup", () => {
-    bunImage.src = bunUnclicked;
-})
-
-dadImage?.addEventListener("mousedown", () => {
-    dadImage.src = dadClicked;
-})
-
-dadImage?.addEventListener("mouseup", () => {
-    dadImage.src = dadUnclicked;
-})
-
-grillImage?.addEventListener("mousedown", () => {
-    grillImage.src = grillClicked;
-})
-
-grillImage?.addEventListener("mouseup", () => {
-    grillImage.src = grillUnclicked;
-})
-
-farmImage?.addEventListener("mousedown", () => {
-    farmImage.src = farmClicked;
-})
-
-farmImage?.addEventListener("mouseup", () => {
-    farmImage.src = farmUnclicked;
-})
-
-facImage?.addEventListener("mousedown", () => {
-    facImage.src = facClicked;
-})
-
-facImage?.addEventListener("mouseup", () => {
-    facImage.src = facUnclicked;
-})
-
-bankImage?.addEventListener("mousedown", () => {
-    bankImage.src = bankClicked;
-})
-
-bankImage?.addEventListener("mouseup", () => {
-    bankImage.src = bankUnclicked;
-})
-
 bunButton?.addEventListener("click", function() {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
         clickCount -= bunCost;
         bunCost *= increment;
-        bunPriceElement.textContent = String(bunCost);
-        clickCountElement.textContent = String(clickCount);
+        checkBuyables();
+        bunPriceElement.textContent = String(bunCost.toFixed(1));
+        clickCountElement.textContent = String(clickCount.toFixed(1));
         bunCount++;
         bunCountElement.textContent = String(bunCount);
         passiveClicks += bunRate;
@@ -161,8 +168,9 @@ dadButton?.addEventListener("click", function() {
     if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
         clickCount -= dadCost;
         dadCost *= increment;
-        dadPriceElement.textContent = String(dadCost);
-        clickCountElement.textContent = String(clickCount);
+        checkBuyables();
+        dadPriceElement.textContent = String(dadCost.toFixed(1));
+        clickCountElement.textContent = String(clickCount.toFixed(1));
         dadCount++;
         dadCountElement.textContent = String(dadCount);
         passiveClicks += dadRate;
@@ -174,8 +182,9 @@ grillButton?.addEventListener("click", function() {
     if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
         clickCount -= grillCost;
         grillCost *= increment;
-        grillPriceElement.textContent = String(grillCost);
-        clickCountElement.textContent = String(clickCount);
+        checkBuyables();
+        grillPriceElement.textContent = String(grillCost.toFixed(1));
+        clickCountElement.textContent = String(clickCount.toFixed(1));
         grillCount++;
         grillCountElement.textContent = String(grillCount);
         passiveClicks += grillRate;
@@ -187,8 +196,9 @@ dogFarmButton?.addEventListener("click", function() {
     if (clickCount >= dogFarmCost && farmPriceElement != null && clickCountElement != null && dogFarmCountElement != null && passiveClicksElement != null) {
         clickCount -= dogFarmCost;
         dogFarmCost *= increment;
-        farmPriceElement.textContent = String(dogFarmCost);
-        clickCountElement.textContent = String(clickCount);
+        checkBuyables();
+        farmPriceElement.textContent = String(dogFarmCost.toFixed(1));
+        clickCountElement.textContent = String(clickCount.toFixed(1));
         dogFarmCount++;
         dogFarmCountElement.textContent = String(dogFarmCount);
         passiveClicks += dogFarmRate;
@@ -200,10 +210,11 @@ facButton?.addEventListener("click", function() {
     if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
         clickCount -= facCost;
         facCost *= increment;
-        facPriceElement.textContent = String(facCost);
-        clickCountElement.textContent = String(clickCount);
+        checkBuyables();
+        facPriceElement.textContent = String(facCost.toFixed(1));
+        clickCountElement.textContent = String(clickCount.toFixed(1));
         facCount++;
-        facCountElement.textContent = String(facCount);
+        facCountElement.textContent = String(facCount.toFixed(1));
         passiveClicks += facRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
         factory?.play();
@@ -213,10 +224,11 @@ bankButton?.addEventListener("click", function() {
     if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
         clickCount -= bankCost;
         bankCost *= increment;
-        bankPriceElement.textContent = String(bankCost);
-        clickCountElement.textContent = String(clickCount);
+        checkBuyables();
+        bankPriceElement.textContent = String(bankCost.toFixed(1));
+        clickCountElement.textContent = String(clickCount.toFixed(1));
         bankCount++;
-        bankCountElement.textContent = String(bankCount);
+        bankCountElement.textContent = String(bankCount.toFixed(1));
         passiveClicks += bankRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
         bank?.play();
@@ -236,6 +248,7 @@ const crispButton = document.getElementById("crispButton");
 tSauceButton?.addEventListener("click", function() {
     if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= tSauceCost;
+        checkBuyables();
         clickCountElement.textContent = clickCount.toFixed(1);
         tSauceButton.style.display = "none";
         passiveClicks += 25;
@@ -246,6 +259,7 @@ tSauceButton?.addEventListener("click", function() {
 mustardButton?.addEventListener("click", function() {
     if (clickCount >= mustardCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= mustardCost;
+        checkBuyables();
         clickCountElement.textContent = clickCount.toFixed(1);
         mustardButton.style.display = "none";
         passiveClicks += 50;
@@ -256,6 +270,7 @@ mustardButton?.addEventListener("click", function() {
 crispButton?.addEventListener("click", function() {
     if (clickCount >= crispCost && clickCountElement != null) {
         clickCount -= crispCost;
+        checkBuyables();
         clickCountElement.textContent = clickCount.toFixed(1);
         crispButton.style.display = "none";
         bunRate *= 2;
@@ -266,5 +281,6 @@ setInterval(function() {
     if (clickCountElement != null) {
         clickCount += passiveClicks;
         clickCountElement.textContent = clickCount.toFixed(1);
+        checkBuyables();
     }
 }, 1000);
