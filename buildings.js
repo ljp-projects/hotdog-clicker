@@ -140,6 +140,7 @@ bunButton === null || bunButton === void 0 ? void 0 : bunButton.addEventListener
         clickCount -= bunCost;
         bunCost *= increment;
         checkBuyables();
+        bunImage.src = bunBuying;
         bunPriceElement.textContent = String(bunCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         bunCount++;
@@ -154,6 +155,7 @@ dadButton === null || dadButton === void 0 ? void 0 : dadButton.addEventListener
         clickCount -= dadCost;
         dadCost *= increment;
         checkBuyables();
+        dadImage.src = dadBuying;
         dadPriceElement.textContent = String(dadCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         dadCount++;
@@ -168,6 +170,7 @@ grillButton === null || grillButton === void 0 ? void 0 : grillButton.addEventLi
         clickCount -= grillCost;
         grillCost *= increment;
         checkBuyables();
+        grillImage.src = grillBuying;
         grillPriceElement.textContent = String(grillCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         grillCount++;
@@ -182,6 +185,7 @@ dogFarmButton === null || dogFarmButton === void 0 ? void 0 : dogFarmButton.addE
         clickCount -= dogFarmCost;
         dogFarmCost *= increment;
         checkBuyables();
+        farmImage.src = farmBuying;
         farmPriceElement.textContent = String(dogFarmCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         dogFarmCount++;
@@ -196,6 +200,7 @@ facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener
         clickCount -= facCost;
         facCost *= increment;
         checkBuyables();
+        facImage.src = facBuying;
         facPriceElement.textContent = String(facCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         facCount++;
@@ -210,6 +215,7 @@ bankButton === null || bankButton === void 0 ? void 0 : bankButton.addEventListe
         clickCount -= bankCost;
         bankCost *= increment;
         checkBuyables();
+        bankImage.src = bankBuying;
         bankPriceElement.textContent = String(bankCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         bankCount++;

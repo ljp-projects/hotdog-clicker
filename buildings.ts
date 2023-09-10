@@ -155,6 +155,7 @@ bunButton?.addEventListener("click", function() {
         clickCount -= bunCost;
         bunCost *= increment;
         checkBuyables();
+        bunImage.src = bunBuying
         bunPriceElement.textContent = String(bunCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         bunCount++;
@@ -169,6 +170,7 @@ dadButton?.addEventListener("click", function() {
         clickCount -= dadCost;
         dadCost *= increment;
         checkBuyables();
+        dadImage.src = dadBuying
         dadPriceElement.textContent = String(dadCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         dadCount++;
@@ -183,6 +185,7 @@ grillButton?.addEventListener("click", function() {
         clickCount -= grillCost;
         grillCost *= increment;
         checkBuyables();
+        grillImage.src = grillBuying
         grillPriceElement.textContent = String(grillCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         grillCount++;
@@ -197,6 +200,7 @@ dogFarmButton?.addEventListener("click", function() {
         clickCount -= dogFarmCost;
         dogFarmCost *= increment;
         checkBuyables();
+        farmImage.src = farmBuying
         farmPriceElement.textContent = String(dogFarmCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         dogFarmCount++;
@@ -211,6 +215,7 @@ facButton?.addEventListener("click", function() {
         clickCount -= facCost;
         facCost *= increment;
         checkBuyables();
+        facImage.src = facBuying
         facPriceElement.textContent = String(facCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         facCount++;
@@ -225,6 +230,7 @@ bankButton?.addEventListener("click", function() {
         clickCount -= bankCost;
         bankCost *= increment;
         checkBuyables();
+        bankImage.src = bankBuying
         bankPriceElement.textContent = String(bankCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
         bankCount++;
