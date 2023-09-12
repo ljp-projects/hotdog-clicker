@@ -18,6 +18,11 @@
     </style>
   </head>
   <body>
+    <script>
+      if (!window.location.href.endsWith("?play=true")) {
+        window.location.replace("google.com.au")
+      }
+    </script>
     <audio src="./Hotdog-Clicker-Ambience.m4a" loop></audio>
     <h1>Hotdog Clicker</h1>
     <p>Click the hotdog to get clicks!</p>
