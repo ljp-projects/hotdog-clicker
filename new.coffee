@@ -94,52 +94,52 @@ bankImage = document.getElementById 'bankImg'
  
 checkBuyables = () -> 
     if clickCount >= bunCost 
-        bunImage?.textContent = bunBuyable
+        bunImage?.src = bunBuyable
      else
-        bunImage?.textContent = bunUnBuyable
-        dadImage?.textContent = dadUnBuyable
-        grillImage?.textContent = grillUnBuyable
-        farmImage?.textContent = farmUnBuyable
-        facImage?.textContent = facUnBuyable
-        bankImage?.textContent = bankUnBuyable
+        bunImage?.src = bunUnBuyable
+        dadImage?.src = dadUnBuyable
+        grillImage?.src = grillUnBuyable
+        farmImage?.src = farmUnBuyable
+        facImage?.src = facUnBuyable
+        bankImage?.src = bankUnBuyable
         return
     if clickCount >= dadCost 
-        dadImage?.textContent = dadBuyable
+        dadImage?.src = dadBuyable
      else
-        dadImage?.textContent = dadUnBuyable
-        grillImage?.textContent = grillUnBuyable
-        farmImage?.textContent = farmUnBuyable
-        facImage?.textContent = facUnBuyable
-        bankImage?.textContent = bankUnBuyable
+        dadImage?.src = dadUnBuyable
+        grillImage?.src = grillUnBuyable
+        farmImage?.src = farmUnBuyable
+        facImage?.src = facUnBuyable
+        bankImage?.src = bankUnBuyable
         return
     
     if clickCount >= grillCost 
-        grillImage?.textContent = grillBuyable
+        grillImage?.src = grillBuyable
      else 
-        grillImage?.textContent = grillUnBuyable
-        farmImage?.textContent = farmUnBuyable
-        facImage?.textContent = facUnBuyable
-        bankImage?.textContent = bankUnBuyable
+        grillImage?.src = grillUnBuyable
+        farmImage?.src = farmUnBuyable
+        facImage?.src = facUnBuyable
+        bankImage?.src = bankUnBuyable
         return
         
     if clickCount >= dogFarmCost 
-        farmImage?.textContent = farmBuyable
+        farmImage?.src = farmBuyable
      else 
-        farmImage?.textContent = farmUnBuyable
-        facImage?.textContent = facUnBuyable
-        bankImage?.textContent = bankUnBuyable
+        farmImage?.src = farmUnBuyable
+        facImage?.src = facUnBuyable
+        bankImage?.src = bankUnBuyable
         return
         
     if clickCount >= facCost 
-        facImage?.textContent = facBuyable
+        facImage?.src = facBuyable
     else
-        facImage?.textContent = facUnBuyable
-        bankImage?.textContent = bankUnBuyable
+        facImage?.src = facUnBuyable
+        bankImage?.src = bankUnBuyable
         return
     if clickCount >= bankCost 
-        bankImage?.textContent = bankBuyable
+        bankImage?.src = bankBuyable
     else
-        bankImage?.textContent = bankUnBuyable
+        bankImage?.src = bankUnBuyable
         return
         
 hotdogButton?.addEventListener 'click', () ->
@@ -154,7 +154,7 @@ bunButton?.addEventListener 'click', () ->
         clickCount -= bunCost
         bunCost *= increment
         checkBuyables() 
-        bunImage?.textContent = bunBuying
+        bunImage?.src = bunBuying
         bunPriceElement?.textContent = bunCost.toFixed 1
         clickCountElement?.textContent = clickCount.toFixed 1
         bunCount++
@@ -169,7 +169,7 @@ dadButton?.addEventListener 'click', () ->
         clickCount -= dadCost
         dadCost *= increment
         checkBuyables() 
-        dadImage?.textContent = dadBuying
+        dadImage?.src = dadBuying
         dadPriceElement?.textContent = dadCost.toFixed 1
         clickCountElement?.textContent = clickCount.toFixed 1
         dadCount++
@@ -184,7 +184,7 @@ grillButton?.addEventListener 'click', () ->
         clickCount -= grillCost
         grillCost *= increment
         checkBuyables() 
-        grillImage?.textContent = grillBuying
+        grillImage?.src = grillBuying
         grillPriceElement?.textContent = grillCost.toFixed 1
         clickCountElement?.textContent = clickCount.toFixed 1
         grillCount++
@@ -199,7 +199,7 @@ dogFarmButton?.addEventListener 'click', () ->
         clickCount -= dogFarmCost
         dogFarmCost *= increment
         checkBuyables() 
-        farmImage?.textContent = farmBuying
+        farmImage?.src = farmBuying
         farmPriceElement?.textContent = dogFarmCost.toFixed 1
         clickCountElement?.textContent = clickCount.toFixed 1
         dogFarmCount++
@@ -214,7 +214,7 @@ facButton?.addEventListener 'click', () ->
         clickCount -= facCost
         facCost *= increment
         checkBuyables() 
-        facImage?.textContent = facBuying
+        facImage?.src = facBuying
         facPriceElement?.textContent = facCost.toFixed 1
         clickCountElement?.textContent = clickCount.toFixed 1
         facCount++
@@ -229,7 +229,7 @@ bankButton?.addEventListener 'click', () ->
         clickCount -= bankCost
         bankCost *= increment
         checkBuyables() 
-        bankImage?.textContent = bankBuying
+        bankImage?.src = bankBuying
         bankPriceElement?.textContent = bankCost.toFixed 1
         clickCountElement?.textContent = clickCount.toFixed 1
         bankCount++

@@ -152,104 +152,104 @@ bankImage = document.getElementById('bankImg');
 checkBuyables = function() {
   if (clickCount >= bunCost) {
     if (bunImage != null) {
-      bunImage.textContent = bunBuyable;
+      bunImage.src = bunBuyable;
     }
   } else {
     if (bunImage != null) {
-      bunImage.textContent = bunUnBuyable;
+      bunImage.src = bunUnBuyable;
     }
     if (dadImage != null) {
-      dadImage.textContent = dadUnBuyable;
+      dadImage.src = dadUnBuyable;
     }
     if (grillImage != null) {
-      grillImage.textContent = grillUnBuyable;
+      grillImage.src = grillUnBuyable;
     }
     if (farmImage != null) {
-      farmImage.textContent = farmUnBuyable;
+      farmImage.src = farmUnBuyable;
     }
     if (facImage != null) {
-      facImage.textContent = facUnBuyable;
+      facImage.src = facUnBuyable;
     }
     if (bankImage != null) {
-      bankImage.textContent = bankUnBuyable;
+      bankImage.src = bankUnBuyable;
     }
     return;
   }
   if (clickCount >= dadCost) {
     if (dadImage != null) {
-      dadImage.textContent = dadBuyable;
+      dadImage.src = dadBuyable;
     }
   } else {
     if (dadImage != null) {
-      dadImage.textContent = dadUnBuyable;
+      dadImage.src = dadUnBuyable;
     }
     if (grillImage != null) {
-      grillImage.textContent = grillUnBuyable;
+      grillImage.src = grillUnBuyable;
     }
     if (farmImage != null) {
-      farmImage.textContent = farmUnBuyable;
+      farmImage.src = farmUnBuyable;
     }
     if (facImage != null) {
-      facImage.textContent = facUnBuyable;
+      facImage.src = facUnBuyable;
     }
     if (bankImage != null) {
-      bankImage.textContent = bankUnBuyable;
+      bankImage.src = bankUnBuyable;
     }
     return;
   }
   if (clickCount >= grillCost) {
     if (grillImage != null) {
-      grillImage.textContent = grillBuyable;
+      grillImage.src = grillBuyable;
     }
   } else {
     if (grillImage != null) {
-      grillImage.textContent = grillUnBuyable;
+      grillImage.src = grillUnBuyable;
     }
     if (farmImage != null) {
-      farmImage.textContent = farmUnBuyable;
+      farmImage.src = farmUnBuyable;
     }
     if (facImage != null) {
-      facImage.textContent = facUnBuyable;
+      facImage.src = facUnBuyable;
     }
     if (bankImage != null) {
-      bankImage.textContent = bankUnBuyable;
+      bankImage.src = bankUnBuyable;
     }
     return;
   }
   if (clickCount >= dogFarmCost) {
     if (farmImage != null) {
-      farmImage.textContent = farmBuyable;
+      farmImage.src = farmBuyable;
     }
   } else {
     if (farmImage != null) {
-      farmImage.textContent = farmUnBuyable;
+      farmImage.src = farmUnBuyable;
     }
     if (facImage != null) {
-      facImage.textContent = facUnBuyable;
+      facImage.src = facUnBuyable;
     }
     if (bankImage != null) {
-      bankImage.textContent = bankUnBuyable;
+      bankImage.src = bankUnBuyable;
     }
     return;
   }
   if (clickCount >= facCost) {
     if (facImage != null) {
-      facImage.textContent = facBuyable;
+      facImage.src = facBuyable;
     }
   } else {
     if (facImage != null) {
-      facImage.textContent = facUnBuyable;
+      facImage.src = facUnBuyable;
     }
     if (bankImage != null) {
-      bankImage.textContent = bankUnBuyable;
+      bankImage.src = bankUnBuyable;
     }
     return;
   }
   if (clickCount >= bankCost) {
-    return bankImage != null ? bankImage.textContent = bankBuyable : void 0;
+    return bankImage != null ? bankImage.src = bankBuyable : void 0;
   } else {
     if (bankImage != null) {
-      bankImage.textContent = bankUnBuyable;
+      bankImage.src = bankUnBuyable;
     }
   }
 };
@@ -271,7 +271,7 @@ if (bunButton != null) {
       bunCost *= increment;
       checkBuyables();
       if (bunImage != null) {
-        bunImage.textContent = bunBuying;
+        bunImage.src = bunBuying;
       }
       if (bunPriceElement != null) {
         bunPriceElement.textContent = bunCost.toFixed(1);
@@ -299,7 +299,7 @@ if (dadButton != null) {
       dadCost *= increment;
       checkBuyables();
       if (dadImage != null) {
-        dadImage.textContent = dadBuying;
+        dadImage.src = dadBuying;
       }
       if (dadPriceElement != null) {
         dadPriceElement.textContent = dadCost.toFixed(1);
@@ -327,7 +327,7 @@ if (grillButton != null) {
       grillCost *= increment;
       checkBuyables();
       if (grillImage != null) {
-        grillImage.textContent = grillBuying;
+        grillImage.src = grillBuying;
       }
       if (grillPriceElement != null) {
         grillPriceElement.textContent = grillCost.toFixed(1);
@@ -355,7 +355,7 @@ if (dogFarmButton != null) {
       dogFarmCost *= increment;
       checkBuyables();
       if (farmImage != null) {
-        farmImage.textContent = farmBuying;
+        farmImage.src = farmBuying;
       }
       if (farmPriceElement != null) {
         farmPriceElement.textContent = dogFarmCost.toFixed(1);
@@ -383,7 +383,7 @@ if (facButton != null) {
       facCost *= increment;
       checkBuyables();
       if (facImage != null) {
-        facImage.textContent = facBuying;
+        facImage.src = facBuying;
       }
       if (facPriceElement != null) {
         facPriceElement.textContent = facCost.toFixed(1);
@@ -411,7 +411,7 @@ if (bankButton != null) {
       bankCost *= increment;
       checkBuyables();
       if (bankImage != null) {
-        bankImage.textContent = bankBuying;
+        bankImage.src = bankBuying;
       }
       if (bankPriceElement != null) {
         bankPriceElement.textContent = bankCost.toFixed(1);
