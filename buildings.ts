@@ -114,6 +114,7 @@ const load = (): void => {
 
     clickCount = Number(get('hotdogs'))
     passiveClicks = Number(get('hotdogs/sec'))
+    
     const bunInfo: string[] = get('bun').split(',')
     const dadInfo: string[] = get('dad').split(',')
     const grillInfo: string[] = get('grill').split(',')
@@ -121,7 +122,15 @@ const load = (): void => {
     const facInfo: string[] = get('factory').split(',')
     const bankInfo: string[] = get('bank').split(',')
 
-    console.log(bunInfo)
+    bunCount = Number(bunInfo[0])
+    bunRate = Number(bunInfo[1])
+    bunCost = Number(bunInfo[2])
+
+    dadCount = Number(dadInfo[0])
+    dadRate = Number(dadInfo[1])
+    dadCost = Number(dadInfo[2])
+
+    checkBuyables()
 }
 
 const checkBuyables = () => {

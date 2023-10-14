@@ -98,7 +98,13 @@ const load = () => {
     const farmInfo = get('farm').split(',');
     const facInfo = get('factory').split(',');
     const bankInfo = get('bank').split(',');
-    console.log(bunInfo);
+    bunCount = Number(bunInfo[0]);
+    bunRate = Number(bunInfo[1]);
+    bunCost = Number(bunInfo[2]);
+    dadCount = Number(dadInfo[0]);
+    dadRate = Number(dadInfo[1]);
+    dadCost = Number(dadInfo[2]);
+    checkBuyables();
 };
 const checkBuyables = () => {
     if (clickCount >= bunCost) {
