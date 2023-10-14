@@ -107,6 +107,23 @@ const save = (): void => {
     set('bank', `${bankCount},${bankRate},${bankCost}`)
 }
 
+const load = (): void => {
+    const get = (key: string): string => {
+        return localStorage.getItem(key) || ""
+    }
+
+    clickCount = Number(get('hotdogs'))
+    passiveClicks = Number(get('hotdogs/sec'))
+    const bunInfo: string[] = get('bun').split(',')
+    const dadInfo: string[] = get('dad').split(',')
+    const grillInfo: string[] = get('grill').split(',')
+    const farmInfo: string[] = get('farm').split(',')
+    const facInfo: string[] = get('factory').split(',')
+    const bankInfo: string[] = get('bank').split(',')
+
+    console.log(bunInfo)
+}
+
 const checkBuyables = () => {
     if (clickCount >= bunCost) {
         bunImage.src = bunBuyable

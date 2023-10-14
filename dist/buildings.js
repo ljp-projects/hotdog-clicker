@@ -86,6 +86,20 @@ const save = () => {
     set('factory', `${facCount},${facRate},${facCost}`);
     set('bank', `${bankCount},${bankRate},${bankCost}`);
 };
+const load = () => {
+    const get = (key) => {
+        return localStorage.getItem(key) || "";
+    };
+    clickCount = Number(get('hotdogs'));
+    passiveClicks = Number(get('hotdogs/sec'));
+    const bunInfo = get('bun').split(',');
+    const dadInfo = get('dad').split(',');
+    const grillInfo = get('grill').split(',');
+    const farmInfo = get('farm').split(',');
+    const facInfo = get('factory').split(',');
+    const bankInfo = get('bank').split(',');
+    console.log(bunInfo);
+};
 const checkBuyables = () => {
     if (clickCount >= bunCost) {
         bunImage.src = bunBuyable;
