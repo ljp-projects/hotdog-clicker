@@ -78,6 +78,8 @@ const update = () => {
     passiveClicksElement != null ? passiveClicksElement.innerText = clickCount.toFixed(1) : null;
     bunCountElement != null ? bunCountElement.innerText = String(bunCount) : null;
     bunPriceElement != null ? bunPriceElement.innerText = String(bunCost) : null;
+    dadCountElement != null ? dadCountElement.innerText = String(dadCount) : null;
+    dadPriceElement != null ? dadPriceElement.innerText = String(dadCost) : null;
 };
 const save = () => {
     const set = (key, value) => {
@@ -105,11 +107,11 @@ const load = () => {
     const facInfo = get('factory').split(',');
     const bankInfo = get('bank').split(',');
     bunCount = Number(bunInfo[0]) || 0;
-    bunRate = Number(bunInfo[1]) || 0;
-    bunCost = Number(bunInfo[2]) || 0;
+    bunRate = Number(bunInfo[1]) || 0.2;
+    bunCost = Number(bunInfo[2]) || 10;
     dadCount = Number(dadInfo[0]) || 0;
-    dadRate = Number(dadInfo[1]) || 0;
-    dadCost = Number(dadInfo[2]) || 0;
+    dadRate = Number(dadInfo[1]) || 2;
+    dadCost = Number(dadInfo[2]) || 100;
     checkBuyables();
     update();
 };
