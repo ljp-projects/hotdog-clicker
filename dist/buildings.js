@@ -91,7 +91,6 @@ const checkBuyables = () => {
         bunImage.src = bunBuyable;
     }
     else {
-        console.log("Cant buy bun; therefore, cant buy anything.");
         bunImage.src = bunUnBuyable;
         dadImage.src = dadUnBuyable;
         grillImage.src = grillUnBuyable;
@@ -104,7 +103,6 @@ const checkBuyables = () => {
         dadImage.src = dadBuyable;
     }
     else {
-        console.log("Cant buy dad; therefore, cant buy anything more expensive than bun.");
         dadImage.src = dadUnBuyable;
         grillImage.src = grillUnBuyable;
         farmImage.src = farmUnBuyable;
@@ -116,7 +114,6 @@ const checkBuyables = () => {
         grillImage.src = grillBuyable;
     }
     else {
-        console.log("Cant buy grill; therefore, cant buy anything more expensive than dad.");
         grillImage.src = grillUnBuyable;
         farmImage.src = farmUnBuyable;
         facImage.src = facUnBuyable;
@@ -127,7 +124,6 @@ const checkBuyables = () => {
         farmImage.src = farmBuyable;
     }
     else {
-        console.log("Cant buy farm; therefore, cant buy anything more expensive than grill.");
         farmImage.src = farmUnBuyable;
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
@@ -137,7 +133,6 @@ const checkBuyables = () => {
         facImage.src = facBuyable;
     }
     else {
-        console.log("Cant buy farm; therefore, cant buy anything more expensive than farm.");
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
         return;
@@ -146,7 +141,6 @@ const checkBuyables = () => {
         bankImage.src = bankBuyable;
     }
     else {
-        console.log("Cant buy bank; therefore, cant buy anything more expensive than fac.");
         bankImage.src = bankUnBuyable;
         return;
     }
@@ -161,7 +155,7 @@ hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEven
         checkBuyables();
     }
     else {
-        console.log("Could not find clickCountElement");
+        alert('Hotdog Clicker has encountered a fatal error.');
     }
 });
 bunButton === null || bunButton === void 0 ? void 0 : bunButton.addEventListener("click", function () {
@@ -295,6 +289,8 @@ setInterval(function () {
         clickCount += passiveClicks;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
-        save();
     }
 }, 1000);
+setInterval(() => {
+    save();
+}, 10000);

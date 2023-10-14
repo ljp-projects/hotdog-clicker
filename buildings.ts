@@ -111,7 +111,6 @@ const checkBuyables = () => {
     if (clickCount >= bunCost) {
         bunImage.src = bunBuyable
     } else {
-        console.log("Cant buy bun; therefore, cant buy anything.")
         bunImage.src = bunUnBuyable
         dadImage.src = dadUnBuyable
         grillImage.src = grillUnBuyable
@@ -123,7 +122,6 @@ const checkBuyables = () => {
     if (clickCount >= dadCost) {
         dadImage.src = dadBuyable
     } else {
-        console.log("Cant buy dad; therefore, cant buy anything more expensive than bun.")
         dadImage.src = dadUnBuyable
         grillImage.src = grillUnBuyable
         farmImage.src = farmUnBuyable
@@ -134,7 +132,6 @@ const checkBuyables = () => {
     if (clickCount >= grillCost) {
         grillImage.src = grillBuyable
     } else {
-        console.log("Cant buy grill; therefore, cant buy anything more expensive than dad.")
         grillImage.src = grillUnBuyable
         farmImage.src = farmUnBuyable
         facImage.src = facUnBuyable
@@ -144,7 +141,6 @@ const checkBuyables = () => {
     if (clickCount >= farmCost) {
         farmImage.src = farmBuyable
     } else {
-        console.log("Cant buy farm; therefore, cant buy anything more expensive than grill.")
         farmImage.src = farmUnBuyable
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
@@ -153,7 +149,6 @@ const checkBuyables = () => {
     if (clickCount >= facCost) {
         facImage.src = facBuyable
     } else {
-        console.log("Cant buy farm; therefore, cant buy anything more expensive than farm.")
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
         return
@@ -161,7 +156,6 @@ const checkBuyables = () => {
     if (clickCount >= bankCost) {
         bankImage.src = bankBuyable
     } else {
-        console.log("Cant buy bank; therefore, cant buy anything more expensive than fac.")
         bankImage.src = bankUnBuyable
         return
     }
@@ -176,7 +170,7 @@ hotdogButton?.addEventListener("click", function() {
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
     } else {
-        console.log("Could not find clickCountElement")
+        alert('Hotdog Clicker has encountered a fatal error.')
     }
 });
 
@@ -318,6 +312,9 @@ setInterval(function() {
         clickCount += passiveClicks;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
-        save()
     }
 }, 1000);
+
+setInterval(() => {
+    save()
+}, 10000)
