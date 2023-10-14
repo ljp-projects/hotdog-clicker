@@ -105,14 +105,14 @@ const save = (): void => {
         localStorage.setItem(key, value)
     }
 
-    set('hotdogs', `${clickCount}`)
-    set('hotdogs/sec', `${passiveClicks}`)
-    set('bun', `${bunCount},${bunRate},${bunCost}`)
-    set('dad', `${dadCount},${dadRate},${dadCost}`)
-    set('grill', `${grillCount},${grillRate},${grillCost}`)
-    set('farm', `${farmCount},${farmRate},${farmCost}`)
-    set('factory', `${facCount},${facRate},${facCost}`)
-    set('bank', `${bankCount},${bankRate},${bankCost}`)
+    set('hotdogs', `${clickCount.toFixed(1)}`)
+    set('hotdogs/sec', `${passiveClicks.toFixed(1)}`)
+    set('bun', `${bunCount.toFixed(1)},${bunRate.toFixed(1)},${bunCost.toFixed(1)}`)
+    set('dad', `${dadCount.toFixed(1)},${dadRate.toFixed(1)},${dadCost.toFixed(1)}`)
+    set('grill', `${grillCount.toFixed(1)},${grillRate.toFixed(1)},${grillCost.toFixed(1)}`)
+    set('farm', `${farmCount.toFixed(1)},${farmRate.toFixed(1)},${farmCost.toFixed(1)}`)
+    set('factory', `${facCount.toFixed(1)},${facRate.toFixed(1)},${facCost.toFixed(1)}`)
+    set('bank', `${bankCount.toFixed(1)},${bankRate.toFixed(1)},${bankCost.toFixed(1)}`)
 }
 
 const load = (): void => {
@@ -120,8 +120,8 @@ const load = (): void => {
         return localStorage.getItem(key) || ""
     }
 
-    clickCount = Number(get('hotdogs'))
-    passiveClicks = Number(get('hotdogs/sec'))
+    clickCount = Number(get('hotdogs')) || 0
+    passiveClicks = Number(get('hotdogs/sec')) || 0
     
     const bunInfo: string[] = get('bun').split(',')
     const dadInfo: string[] = get('dad').split(',')
@@ -130,13 +130,13 @@ const load = (): void => {
     const facInfo: string[] = get('factory').split(',')
     const bankInfo: string[] = get('bank').split(',')
 
-    bunCount = Number(bunInfo[0])
-    bunRate = Number(bunInfo[1])
-    bunCost = Number(bunInfo[2])
+    bunCount = Number(bunInfo[0]) || 0
+    bunRate = Number(bunInfo[1]) || 0
+    bunCost = Number(bunInfo[2]) || 0
 
-    dadCount = Number(dadInfo[0])
-    dadRate = Number(dadInfo[1])
-    dadCost = Number(dadInfo[2])
+    dadCount = Number(dadInfo[0]) || 0
+    dadRate = Number(dadInfo[1]) || 0
+    dadCost = Number(dadInfo[2]) || 0
 
     checkBuyables()
     update()
