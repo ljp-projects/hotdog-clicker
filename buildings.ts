@@ -112,7 +112,7 @@ const save = (): void => {
     }
 
     set('hotdogs', `${clickCount.toFixed(1)}`)
-    set('hotdogs/sec', `${passiveClicks.toFixed(1)}`)
+    set('hotdogs-sec', `${passiveClicks.toFixed(1)}`)
     set('bun', `${bunCount.toFixed(1)},${bunRate.toFixed(1)},${bunCost.toFixed(1)}`)
     set('dad', `${dadCount.toFixed(1)},${dadRate.toFixed(1)},${dadCost.toFixed(1)}`)
     set('grill', `${grillCount.toFixed(1)},${grillRate.toFixed(1)},${grillCost.toFixed(1)}`)
@@ -127,7 +127,7 @@ const load = (): void => {
     }
 
     clickCount = Number(get('hotdogs')) || 0
-    passiveClicks = Number(get('hotdogs/sec')) || 0
+    passiveClicks = Number(get('hotdogs-sec')) || 0
     
     const bunInfo: string[] = get('bun').split(',')
     const dadInfo: string[] = get('dad').split(',')
