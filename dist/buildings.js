@@ -73,6 +73,12 @@ const grillImage = document.getElementById("grillImg");
 const farmImage = document.getElementById("farmImg");
 const facImage = document.getElementById("facImg");
 const bankImage = document.getElementById("bankImg");
+const update = () => {
+    clickCountElement != null ? clickCountElement.innerText = clickCount.toFixed(1) : null;
+    passiveClicksElement != null ? passiveClicksElement.innerText = clickCount.toFixed(1) : null;
+    bunCountElement != null ? bunCountElement.innerText = String(bunCount) : null;
+    bunPriceElement != null ? bunPriceElement.innerText = String(bunCost) : null;
+};
 const save = () => {
     const set = (key, value) => {
         localStorage.setItem(key, value);
@@ -105,6 +111,7 @@ const load = () => {
     dadRate = Number(dadInfo[1]);
     dadCost = Number(dadInfo[2]);
     checkBuyables();
+    update();
 };
 const checkBuyables = () => {
     if (clickCount >= bunCost) {

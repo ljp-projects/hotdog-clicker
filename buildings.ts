@@ -92,6 +92,14 @@ const farmImage: HTMLImageElement | null = document.getElementById("farmImg") as
 const facImage: HTMLImageElement | null = document.getElementById("facImg") as HTMLImageElement
 const bankImage: HTMLImageElement | null = document.getElementById("bankImg") as HTMLImageElement
 
+const update = (): void => {
+    clickCountElement != null ? clickCountElement.innerText = clickCount.toFixed(1) : null
+    passiveClicksElement != null ? passiveClicksElement.innerText = clickCount.toFixed(1) : null
+
+    bunCountElement != null ? bunCountElement.innerText = String(bunCount) : null
+    bunPriceElement != null ? bunPriceElement.innerText = String(bunCost) : null
+}
+
 const save = (): void => {
     const set = (key: string, value: string): void => {
         localStorage.setItem(key, value)
@@ -131,6 +139,7 @@ const load = (): void => {
     dadCost = Number(dadInfo[2])
 
     checkBuyables()
+    update()
 }
 
 const checkBuyables = () => {
