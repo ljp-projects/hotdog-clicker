@@ -94,13 +94,16 @@ const bankImage: HTMLImageElement | null = document.getElementById("bankImg") as
 
 const update = (): void => {
     clickCountElement != null ? clickCountElement.innerText = clickCount.toFixed(1) : null
-    passiveClicksElement != null ? passiveClicksElement.innerText = clickCount.toFixed(1) : null
+    passiveClicksElement != null ? passiveClicksElement.innerText = passiveClicks.toFixed(1) : null
 
     bunCountElement != null ? bunCountElement.innerText = String(bunCount) : null
     bunPriceElement != null ? bunPriceElement.innerText = String(bunCost) : null
 
     dadCountElement != null ? dadCountElement.innerText = String(dadCount) : null
     dadPriceElement != null ? dadPriceElement.innerText = String(dadCost) : null
+
+    grillCountElement != null ? grillCountElement.innerText = String(grillCount) : null
+    grillPriceElement != null ? grillPriceElement.innerText = String(grillCost) : null
 }
 
 const save = (): void => {
@@ -140,6 +143,10 @@ const load = (): void => {
     dadCount = Number(dadInfo[0]) || 0
     dadRate = Number(dadInfo[1]) || 2
     dadCost = Number(dadInfo[2]) || 100
+
+    grillCount = Number(grillInfo[0]) || 0
+    grillRate = Number(grillInfo[1]) || 2
+    grillCost = Number(grillInfo[2]) || 100
 
     checkBuyables()
     update()
