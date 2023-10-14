@@ -145,8 +145,8 @@ const load = (): void => {
     dadCost = Number(dadInfo[2]) || 100
 
     grillCount = Number(grillInfo[0]) || 0
-    grillRate = Number(grillInfo[1]) || 2
-    grillCost = Number(grillInfo[2]) || 100
+    grillRate = Number(grillInfo[1]) || 10
+    grillCost = Number(grillInfo[2]) || 500
 
     checkBuyables()
     update()
