@@ -1,78 +1,92 @@
-var grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3");
-var bun = new Audio("crunch-crispy-breadbun-41340.mp3");
-var dad = new Audio("dad-says-yummy-113126.mp3");
-var farm = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3");
-var factory = new Audio("some-kind-of-machine-103152.mp3");
-var bank = new Audio("cash-register-purchase-87313.mp3");
-var ambience = new Audio("./Hotdog-Clicker-Ambience.m4a");
+"use strict";
+const grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3");
+const bun = new Audio("crunch-crispy-breadbun-41340.mp3");
+const dad = new Audio("dad-says-yummy-113126.mp3");
+const farm = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3");
+const factory = new Audio("some-kind-of-machine-103152.mp3");
+const bank = new Audio("cash-register-purchase-87313.mp3");
+const ambience = new Audio("./Hotdog-Clicker-Ambience.m4a");
 ambience.loop = true;
-var bunBuyable = "./Can-Buy-Bun-Button.svg";
-var bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
-var bunBuying = "./Buying-Bun-Button.svg";
-var dadBuyable = "./Can-Buy-Dad-Button.svg";
-var dadUnBuyable = "./Cant-Buy-Dad-Button.svg";
-var dadBuying = "./Buying-Dad-Button.svg";
-var grillBuyable = "./Can-Buy-Grill-Button.svg";
-var grillUnBuyable = "./Cant-Buy-Grill-Button.svg";
-var grillBuying = "./Buying-Grill-Button.svg";
-var farmBuyable = "./Can-Buy-Farm-Button.svg";
-var farmUnBuyable = "./Cant-Buy-Farm-Button.svg";
-var farmBuying = "./Buying-Farm-Button.svg";
-var facBuyable = "./Can-Buy-Fac-Button.svg";
-var facUnBuyable = "./Cant-Buy-Fac-Button.svg";
-var facBuying = "./Buying-Fac-Button.svg";
-var bankBuyable = "./Can-Buy-Bank-Button.svg";
-var bankUnBuyable = "./Cant-Buy-Bank-Button.svg";
-var bankBuying = "./Buying-Bank-Button.svg";
-var passiveClicks = 0;
-var clickCount = 0;
-var bunCount = 0;
-var dadCount = 0;
-var grillCount = 0;
-var dogFarmCount = 0;
-var facCount = 0;
-var bankCount = 0;
-var bunCost = 10;
-var bunRate = 0.2;
-var dadCost = 100;
-var dadRate = 2;
-var grillCost = 500;
-var grillRate = 10;
-var dogFarmCost = 5000;
-var dogFarmRate = 50;
-var facCost = 50000;
-var facRate = 500;
-var bankCost = 250000;
-var bankRate = 2500;
-var increment = 1.3;
-var passiveClicksElement = document.getElementById("passive");
-var clickCountElement = document.getElementById("clickCount");
-var grillCountElement = document.getElementById("grillCount");
-var bunCountElement = document.getElementById("bunCount");
-var dadCountElement = document.getElementById("dadCount");
-var dogFarmCountElement = document.getElementById("dogFarmCount");
-var facCountElement = document.getElementById("dogFacCount");
-var bankCountElement = document.getElementById("dogBankCount");
-var hotdogButton = document.getElementById("hotdogButton");
-var bunButton = document.getElementById("bunButton");
-var dadButton = document.getElementById("dadButton");
-var grillButton = document.getElementById("grillButton");
-var dogFarmButton = document.getElementById("dogFarmButton");
-var facButton = document.getElementById("dogFacButton");
-var bankButton = document.getElementById("dogBankButton");
-var bunPriceElement = document.getElementById("bunPrice");
-var dadPriceElement = document.getElementById("dadPrice");
-var grillPriceElement = document.getElementById("grillPrice");
-var farmPriceElement = document.getElementById("farmPrice");
-var facPriceElement = document.getElementById("facPrice");
-var bankPriceElement = document.getElementById("bankPrice");
-var bunImage = document.getElementById("bunImg");
-var dadImage = document.getElementById("dadImg");
-var grillImage = document.getElementById("grillImg");
-var farmImage = document.getElementById("farmImg");
-var facImage = document.getElementById("facImg");
-var bankImage = document.getElementById("bankImg");
-var checkBuyables = function () {
+const bunBuyable = "./Can-Buy-Bun-Button.svg";
+const bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
+const bunBuying = "./Buying-Bun-Button.svg";
+const dadBuyable = "./Can-Buy-Dad-Button.svg";
+const dadUnBuyable = "./Cant-Buy-Dad-Button.svg";
+const dadBuying = "./Buying-Dad-Button.svg";
+const grillBuyable = "./Can-Buy-Grill-Button.svg";
+const grillUnBuyable = "./Cant-Buy-Grill-Button.svg";
+const grillBuying = "./Buying-Grill-Button.svg";
+const farmBuyable = "./Can-Buy-Farm-Button.svg";
+const farmUnBuyable = "./Cant-Buy-Farm-Button.svg";
+const farmBuying = "./Buying-Farm-Button.svg";
+const facBuyable = "./Can-Buy-Fac-Button.svg";
+const facUnBuyable = "./Cant-Buy-Fac-Button.svg";
+const facBuying = "./Buying-Fac-Button.svg";
+const bankBuyable = "./Can-Buy-Bank-Button.svg";
+const bankUnBuyable = "./Cant-Buy-Bank-Button.svg";
+const bankBuying = "./Buying-Bank-Button.svg";
+let passiveClicks = 0;
+let clickCount = 0;
+let bunCount = 0;
+let dadCount = 0;
+let grillCount = 0;
+let farmCount = 0;
+let facCount = 0;
+let bankCount = 0;
+let bunCost = 10;
+let bunRate = 0.2;
+let dadCost = 100;
+let dadRate = 2;
+let grillCost = 500;
+let grillRate = 10;
+let farmCost = 5000;
+let farmRate = 50;
+let facCost = 50000;
+let facRate = 500;
+let bankCost = 250000;
+let bankRate = 2500;
+const increment = 1.3;
+const passiveClicksElement = document.getElementById("passive");
+const clickCountElement = document.getElementById("clickCount");
+const grillCountElement = document.getElementById("grillCount");
+const bunCountElement = document.getElementById("bunCount");
+const dadCountElement = document.getElementById("dadCount");
+const farmCountElement = document.getElementById("farmCount");
+const facCountElement = document.getElementById("dogFacCount");
+const bankCountElement = document.getElementById("dogBankCount");
+const hotdogButton = document.getElementById("hotdogButton");
+const bunButton = document.getElementById("bunButton");
+const dadButton = document.getElementById("dadButton");
+const grillButton = document.getElementById("grillButton");
+const farmButton = document.getElementById("farmButton");
+const facButton = document.getElementById("dogFacButton");
+const bankButton = document.getElementById("dogBankButton");
+const bunPriceElement = document.getElementById("bunPrice");
+const dadPriceElement = document.getElementById("dadPrice");
+const grillPriceElement = document.getElementById("grillPrice");
+const farmPriceElement = document.getElementById("farmPrice");
+const facPriceElement = document.getElementById("facPrice");
+const bankPriceElement = document.getElementById("bankPrice");
+const bunImage = document.getElementById("bunImg");
+const dadImage = document.getElementById("dadImg");
+const grillImage = document.getElementById("grillImg");
+const farmImage = document.getElementById("farmImg");
+const facImage = document.getElementById("facImg");
+const bankImage = document.getElementById("bankImg");
+const save = () => {
+    const set = (key, value) => {
+        localStorage.setItem(key, value);
+    };
+    set('hotdogs', `${clickCount}`);
+    set('hotdogs/sec', `${passiveClicks}`);
+    set('bun', `${bunCount},${bunRate},${bunCost}`);
+    set('dad', `${dadCount},${dadRate},${dadCost}`);
+    set('grill', `${grillCount},${grillRate},${grillCost}`);
+    set('farm', `${farmCount},${farmRate},${farmCost}`);
+    set('factory', `${facCount},${facRate},${facCost}`);
+    set('bank', `${bankCount},${bankRate},${bankCost}`);
+};
+const checkBuyables = () => {
     if (clickCount >= bunCost) {
         bunImage.src = bunBuyable;
     }
@@ -109,7 +123,7 @@ var checkBuyables = function () {
         bankImage.src = bankUnBuyable;
         return;
     }
-    if (clickCount >= dogFarmCost) {
+    if (clickCount >= farmCost) {
         farmImage.src = farmBuyable;
     }
     else {
@@ -195,17 +209,17 @@ grillButton === null || grillButton === void 0 ? void 0 : grillButton.addEventLi
         grill === null || grill === void 0 ? void 0 : grill.play();
     }
 });
-dogFarmButton === null || dogFarmButton === void 0 ? void 0 : dogFarmButton.addEventListener("click", function () {
-    if (clickCount >= dogFarmCost && farmPriceElement != null && clickCountElement != null && dogFarmCountElement != null && passiveClicksElement != null) {
-        clickCount -= dogFarmCost;
-        dogFarmCost *= increment;
+farmButton === null || farmButton === void 0 ? void 0 : farmButton.addEventListener("click", function () {
+    if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
+        clickCount -= farmCost;
+        farmCost *= increment;
         checkBuyables();
         farmImage.src = farmBuying;
-        farmPriceElement.textContent = String(dogFarmCost.toFixed(1));
+        farmPriceElement.textContent = String(farmCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
-        dogFarmCount++;
-        dogFarmCountElement.textContent = String(dogFarmCount);
-        passiveClicks += dogFarmRate;
+        farmCount++;
+        farmCountElement.textContent = String(farmCount);
+        passiveClicks += farmRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
         farm === null || farm === void 0 ? void 0 : farm.play();
     }
@@ -241,12 +255,12 @@ bankButton === null || bankButton === void 0 ? void 0 : bankButton.addEventListe
     }
 });
 // Upgrades
-var mustardCost = 5000;
-var tSauceCost = 1000;
-var crispCost = 5000;
-var tSauceButton = document.getElementById("tSauceButton");
-var mustardButton = document.getElementById("mustardButton");
-var crispButton = document.getElementById("crispButton");
+const mustardCost = 5000;
+const tSauceCost = 1000;
+const crispCost = 5000;
+const tSauceButton = document.getElementById("tSauceButton");
+const mustardButton = document.getElementById("mustardButton");
+const crispButton = document.getElementById("crispButton");
 tSauceButton === null || tSauceButton === void 0 ? void 0 : tSauceButton.addEventListener("click", function () {
     if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= tSauceCost;
@@ -281,5 +295,6 @@ setInterval(function () {
         clickCount += passiveClicks;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
+        save();
     }
 }, 1000);

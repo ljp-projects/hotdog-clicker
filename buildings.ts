@@ -1,42 +1,42 @@
-var grill: HTMLAudioElement | null = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
-var bun: HTMLAudioElement | null = new Audio("crunch-crispy-breadbun-41340.mp3")
-var dad: HTMLAudioElement | null = new Audio("dad-says-yummy-113126.mp3")
-var farm: HTMLAudioElement | null = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3")
-var factory: HTMLAudioElement | null = new Audio("some-kind-of-machine-103152.mp3")
-var bank: HTMLAudioElement | null = new Audio("cash-register-purchase-87313.mp3")
-var ambience: HTMLAudioElement | null = new Audio("./Hotdog-Clicker-Ambience.m4a")
+const grill: HTMLAudioElement | null = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
+const bun: HTMLAudioElement | null = new Audio("crunch-crispy-breadbun-41340.mp3")
+const dad: HTMLAudioElement | null = new Audio("dad-says-yummy-113126.mp3")
+const farm: HTMLAudioElement | null = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3")
+const factory: HTMLAudioElement | null = new Audio("some-kind-of-machine-103152.mp3")
+const bank: HTMLAudioElement | null = new Audio("cash-register-purchase-87313.mp3")
+const ambience: HTMLAudioElement | null = new Audio("./Hotdog-Clicker-Ambience.m4a")
 ambience.loop = true;
 
-var bunBuyable: string = "./Can-Buy-Bun-Button.svg"
-var bunUnBuyable: string = "./Cant-Buy-Bun-Button.svg"
-var bunBuying: string = "./Buying-Bun-Button.svg"
+const bunBuyable: string = "./Can-Buy-Bun-Button.svg"
+const bunUnBuyable: string = "./Cant-Buy-Bun-Button.svg"
+const bunBuying: string = "./Buying-Bun-Button.svg"
 
-var dadBuyable: string = "./Can-Buy-Dad-Button.svg"
-var dadUnBuyable: string = "./Cant-Buy-Dad-Button.svg"
-var dadBuying: string = "./Buying-Dad-Button.svg"
+const dadBuyable: string = "./Can-Buy-Dad-Button.svg"
+const dadUnBuyable: string = "./Cant-Buy-Dad-Button.svg"
+const dadBuying: string = "./Buying-Dad-Button.svg"
 
-var grillBuyable: string = "./Can-Buy-Grill-Button.svg"
-var grillUnBuyable: string = "./Cant-Buy-Grill-Button.svg"
-var grillBuying: string = "./Buying-Grill-Button.svg"
+const grillBuyable: string = "./Can-Buy-Grill-Button.svg"
+const grillUnBuyable: string = "./Cant-Buy-Grill-Button.svg"
+const grillBuying: string = "./Buying-Grill-Button.svg"
 
-var farmBuyable: string = "./Can-Buy-Farm-Button.svg"
-var farmUnBuyable: string = "./Cant-Buy-Farm-Button.svg"
-var farmBuying: string = "./Buying-Farm-Button.svg"
+const farmBuyable: string = "./Can-Buy-Farm-Button.svg"
+const farmUnBuyable: string = "./Cant-Buy-Farm-Button.svg"
+const farmBuying: string = "./Buying-Farm-Button.svg"
 
-var facBuyable: string = "./Can-Buy-Fac-Button.svg"
-var facUnBuyable: string = "./Cant-Buy-Fac-Button.svg"
-var facBuying: string = "./Buying-Fac-Button.svg"
+const facBuyable: string = "./Can-Buy-Fac-Button.svg"
+const facUnBuyable: string = "./Cant-Buy-Fac-Button.svg"
+const facBuying: string = "./Buying-Fac-Button.svg"
 
-var bankBuyable: string = "./Can-Buy-Bank-Button.svg"
-var bankUnBuyable: string = "./Cant-Buy-Bank-Button.svg"
-var bankBuying: string = "./Buying-Bank-Button.svg"
+const bankBuyable: string = "./Can-Buy-Bank-Button.svg"
+const bankUnBuyable: string = "./Cant-Buy-Bank-Button.svg"
+const bankBuying: string = "./Buying-Bank-Button.svg"
 
 let passiveClicks: number = 0;
 let clickCount: number = 0;
 let bunCount: number = 0;
 let dadCount: number = 0;
 let grillCount: number = 0;
-let dogFarmCount: number = 0;
+let farmCount: number = 0;
 let facCount: number = 0;
 let bankCount: number = 0;
 
@@ -49,8 +49,8 @@ let dadRate: number = 2;
 let grillCost: number = 500;
 let grillRate: number = 10;
 
-let dogFarmCost: number = 5000;
-let dogFarmRate: number = 50;
+let farmCost: number = 5000;
+let farmRate: number = 50;
 
 let facCost: number = 50000;
 let facRate: number = 500;
@@ -66,7 +66,7 @@ const clickCountElement: HTMLElement | null = document.getElementById("clickCoun
 const grillCountElement: HTMLElement | null = document.getElementById("grillCount");
 const bunCountElement: HTMLElement | null = document.getElementById("bunCount");
 const dadCountElement: HTMLElement | null = document.getElementById("dadCount");
-const dogFarmCountElement: HTMLElement | null = document.getElementById("dogFarmCount");
+const farmCountElement: HTMLElement | null = document.getElementById("farmCount");
 const facCountElement: HTMLElement | null = document.getElementById("dogFacCount");
 const bankCountElement: HTMLElement | null = document.getElementById("dogBankCount");
 
@@ -74,7 +74,7 @@ const hotdogButton: HTMLElement | null = document.getElementById("hotdogButton")
 const bunButton: HTMLElement | null = document.getElementById("bunButton");
 const dadButton: HTMLElement | null = document.getElementById("dadButton");
 const grillButton: HTMLElement | null = document.getElementById("grillButton");
-const dogFarmButton: HTMLElement | null = document.getElementById("dogFarmButton");
+const farmButton: HTMLElement | null = document.getElementById("farmButton");
 const facButton: HTMLElement | null = document.getElementById("dogFacButton");
 const bankButton: HTMLElement | null = document.getElementById("dogBankButton")
 
@@ -91,6 +91,21 @@ const grillImage: HTMLImageElement | null = document.getElementById("grillImg") 
 const farmImage: HTMLImageElement | null = document.getElementById("farmImg") as HTMLImageElement
 const facImage: HTMLImageElement | null = document.getElementById("facImg") as HTMLImageElement
 const bankImage: HTMLImageElement | null = document.getElementById("bankImg") as HTMLImageElement
+
+const save = (): void => {
+    const set = (key: string, value: string): void => {
+        localStorage.setItem(key, value)
+    }
+
+    set('hotdogs', `${clickCount}`)
+    set('hotdogs/sec', `${passiveClicks}`)
+    set('bun', `${bunCount},${bunRate},${bunCost}`)
+    set('dad', `${dadCount},${dadRate},${dadCost}`)
+    set('grill', `${grillCount},${grillRate},${grillCost}`)
+    set('farm', `${farmCount},${farmRate},${farmCost}`)
+    set('factory', `${facCount},${facRate},${facCost}`)
+    set('bank', `${bankCount},${bankRate},${bankCost}`)
+}
 
 const checkBuyables = () => {
     if (clickCount >= bunCost) {
@@ -126,7 +141,7 @@ const checkBuyables = () => {
         bankImage.src = bankUnBuyable
         return
     }
-    if (clickCount >= dogFarmCost) {
+    if (clickCount >= farmCost) {
         farmImage.src = farmBuyable
     } else {
         console.log("Cant buy farm; therefore, cant buy anything more expensive than grill.")
@@ -210,17 +225,17 @@ grillButton?.addEventListener("click", function() {
         grill?.play();
     }
 });
-dogFarmButton?.addEventListener("click", function() {
-    if (clickCount >= dogFarmCost && farmPriceElement != null && clickCountElement != null && dogFarmCountElement != null && passiveClicksElement != null) {
-        clickCount -= dogFarmCost;
-        dogFarmCost *= increment;
+farmButton?.addEventListener("click", function() {
+    if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
+        clickCount -= farmCost;
+        farmCost *= increment;
         checkBuyables();
         farmImage.src = farmBuying
-        farmPriceElement.textContent = String(dogFarmCost.toFixed(1));
+        farmPriceElement.textContent = String(farmCost.toFixed(1));
         clickCountElement.textContent = String(clickCount.toFixed(1));
-        dogFarmCount++;
-        dogFarmCountElement.textContent = String(dogFarmCount);
-        passiveClicks += dogFarmRate;
+        farmCount++;
+        farmCountElement.textContent = String(farmCount);
+        passiveClicks += farmRate;
         passiveClicksElement.textContent = passiveClicks.toFixed(1);
         farm?.play();
     }
@@ -303,5 +318,6 @@ setInterval(function() {
         clickCount += passiveClicks;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
+        save()
     }
 }, 1000);
