@@ -308,3 +308,4 @@ setInterval(function () {
 setInterval(() => {
     save();
 }, 10000);
+load();
