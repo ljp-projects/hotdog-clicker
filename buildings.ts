@@ -357,11 +357,8 @@ setInterval(function() {
         clickCount += passiveClicks / 10;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
+        save()
     }
 }, 100);
-
-setInterval(() => {
-    save()
-}, 10000)
 
 load()
