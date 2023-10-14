@@ -354,11 +354,11 @@ crispButton?.addEventListener("click", function() {
 
 setInterval(function() {
     if (clickCountElement != null) {
-        clickCount += passiveClicks;
+        clickCount += passiveClicks / 10;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
     }
-}, 1000);
+}, 100);
 
 setInterval(() => {
     save()

@@ -320,11 +320,11 @@ crispButton === null || crispButton === void 0 ? void 0 : crispButton.addEventLi
 });
 setInterval(function () {
     if (clickCountElement != null) {
-        clickCount += passiveClicks;
+        clickCount += passiveClicks / 10;
         clickCountElement.textContent = clickCount.toFixed(1);
         checkBuyables();
     }
-}, 1000);
+}, 100);
 setInterval(() => {
     save();
 }, 10000);
