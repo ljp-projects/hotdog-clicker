@@ -82,6 +82,12 @@ const update = () => {
     dadPriceElement != null ? dadPriceElement.innerText = String(dadCost) : null;
     grillCountElement != null ? grillCountElement.innerText = String(grillCount) : null;
     grillPriceElement != null ? grillPriceElement.innerText = String(grillCost) : null;
+    farmCountElement != null ? farmCountElement.innerText = String(farmCount) : null;
+    farmPriceElement != null ? farmPriceElement.innerText = String(farmCost) : null;
+    facCountElement != null ? facCountElement.innerText = String(facCount) : null;
+    facPriceElement != null ? facPriceElement.innerText = String(facCost) : null;
+    bankCountElement != null ? bankCountElement.innerText = String(grillCount) : null;
+    bankPriceElement != null ? bankPriceElement.innerText = String(grillCost) : null;
 };
 const save = () => {
     const set = (key, value) => {
@@ -117,6 +123,15 @@ const load = () => {
     grillCount = Number(grillInfo[0]) || 0;
     grillRate = Number(grillInfo[1]) || 10;
     grillCost = Number(grillInfo[2]) || 500;
+    farmCount = Number(farmInfo[0]) || 0;
+    farmRate = Number(farmInfo[1]) || 50;
+    farmCost = Number(farmInfo[2]) || 5000;
+    facCount = Number(facInfo[0]) || 0;
+    facRate = Number(facInfo[1]) || 500;
+    facCost = Number(facInfo[2]) || 50000;
+    bankCount = Number(bankInfo[0]) || 0;
+    bankRate = Number(bankInfo[1]) || 2500;
+    bankCost = Number(bankInfo[2]) || 250000;
     checkBuyables();
     update();
 };
