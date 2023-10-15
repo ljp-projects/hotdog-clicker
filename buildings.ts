@@ -111,8 +111,8 @@ const update = (): void => {
     facCountElement != null ? facCountElement.innerText = String(facCount) : null
     facPriceElement != null ? facPriceElement.innerText = String(facCost) : null
 
-    bankCountElement != null ? bankCountElement.innerText = String(grillCount) : null
-    bankPriceElement != null ? bankPriceElement.innerText = String(grillCost) : null
+    bankCountElement != null ? bankCountElement.innerText = String(bankCount) : null
+    bankPriceElement != null ? bankPriceElement.innerText = String(bankCost) : null
 }
 
 const save = (): void => {
