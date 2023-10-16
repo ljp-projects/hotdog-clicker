@@ -1,4 +1,5 @@
 "use strict";
+const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
 const grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3");
 const bun = new Audio("crunch-crispy-breadbun-41340.mp3");
 const dad = new Audio("dad-says-yummy-113126.mp3");
@@ -25,6 +26,9 @@ const facBuying = "./Buying-Fac-Button.svg";
 const bankBuyable = "./Can-Buy-Bank-Button.svg";
 const bankUnBuyable = "./Cant-Buy-Bank-Button.svg";
 const bankBuying = "./Buying-Bank-Button.svg";
+const freezerBuyable = './Can-Buy-Freezer-Button.svg';
+const freezerUnBuyable = './Cant-Buy-Freezer-Button.svg';
+const freezerBuying = './Buying-Freezer-Button.svg';
 let passiveClicks = 0;
 let clickCount = 0;
 let bunCount = 0;
@@ -33,6 +37,7 @@ let grillCount = 0;
 let farmCount = 0;
 let facCount = 0;
 let bankCount = 0;
+let freezerCount = 0;
 let bunCost = 10;
 let bunRate = 0.2;
 let dadCost = 100;
@@ -45,6 +50,8 @@ let facCost = 50000;
 let facRate = 500;
 let bankCost = 250000;
 let bankRate = 2500;
+let freezerCost = 1000000;
+let freezerRate = 15000;
 const increment = 1.3;
 const passiveClicksElement = document.getElementById("passive");
 const clickCountElement = document.getElementById("clickCount");
@@ -54,6 +61,7 @@ const dadCountElement = document.getElementById("dadCount");
 const farmCountElement = document.getElementById("farmCount");
 const facCountElement = document.getElementById("dogFacCount");
 const bankCountElement = document.getElementById("dogBankCount");
+const freezerCountElement = document.getElementById("freezerCount");
 const hotdogButton = document.getElementById("hotdogButton");
 const bunButton = document.getElementById("bunButton");
 const dadButton = document.getElementById("dadButton");
@@ -61,33 +69,39 @@ const grillButton = document.getElementById("grillButton");
 const farmButton = document.getElementById("farmButton");
 const facButton = document.getElementById("dogFacButton");
 const bankButton = document.getElementById("dogBankButton");
+const freezerButton = document.getElementById("freezerButton");
 const bunPriceElement = document.getElementById("bunPrice");
 const dadPriceElement = document.getElementById("dadPrice");
 const grillPriceElement = document.getElementById("grillPrice");
 const farmPriceElement = document.getElementById("farmPrice");
 const facPriceElement = document.getElementById("facPrice");
 const bankPriceElement = document.getElementById("bankPrice");
+const freezerPriceElement = document.getElementById("freezerPrice");
 const bunImage = document.getElementById("bunImg");
 const dadImage = document.getElementById("dadImg");
 const grillImage = document.getElementById("grillImg");
 const farmImage = document.getElementById("farmImg");
 const facImage = document.getElementById("facImg");
 const bankImage = document.getElementById("bankImg");
+const freezerImage = document.getElementById("freezerImg");
 const update = () => {
-    clickCountElement != null ? clickCountElement.innerText = clickCount.toFixed(1) : null;
-    passiveClicksElement != null ? passiveClicksElement.innerText = passiveClicks.toFixed(1) : null;
-    bunCountElement != null ? bunCountElement.innerText = String(bunCount) : null;
-    bunPriceElement != null ? bunPriceElement.innerText = String(bunCost) : null;
-    dadCountElement != null ? dadCountElement.innerText = String(dadCount) : null;
-    dadPriceElement != null ? dadPriceElement.innerText = String(dadCost) : null;
-    grillCountElement != null ? grillCountElement.innerText = String(grillCount) : null;
-    grillPriceElement != null ? grillPriceElement.innerText = String(grillCost) : null;
-    farmCountElement != null ? farmCountElement.innerText = String(farmCount) : null;
-    farmPriceElement != null ? farmPriceElement.innerText = String(farmCost) : null;
-    facCountElement != null ? facCountElement.innerText = String(facCount) : null;
-    facPriceElement != null ? facPriceElement.innerText = String(facCost) : null;
-    bankCountElement != null ? bankCountElement.innerText = String(bankCount) : null;
-    bankPriceElement != null ? bankPriceElement.innerText = String(bankCost) : null;
+    checkBuyables();
+    clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(1))) : null;
+    passiveClicksElement != null ? passiveClicksElement.innerText = formatter.format(Number(passiveClicks.toFixed(1))) : null;
+    bunCountElement != null ? bunCountElement.innerText = formatter.format(bunCount) : null;
+    bunPriceElement != null ? bunPriceElement.innerText = formatter.format(bunCost) : null;
+    dadCountElement != null ? dadCountElement.innerText = formatter.format(dadCount) : null;
+    dadPriceElement != null ? dadPriceElement.innerText = formatter.format(dadCost) : null;
+    grillCountElement != null ? grillCountElement.innerText = formatter.format(grillCount) : null;
+    grillPriceElement != null ? grillPriceElement.innerText = formatter.format(grillCost) : null;
+    farmCountElement != null ? farmCountElement.innerText = formatter.format(farmCount) : null;
+    farmPriceElement != null ? farmPriceElement.innerText = formatter.format(farmCost) : null;
+    facCountElement != null ? facCountElement.innerText = formatter.format(facCount) : null;
+    facPriceElement != null ? facPriceElement.innerText = formatter.format(facCost) : null;
+    bankCountElement != null ? bankCountElement.innerText = formatter.format(bankCount) : null;
+    bankPriceElement != null ? bankPriceElement.innerText = formatter.format(bankCost) : null;
+    freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null;
+    freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
 };
 const save = () => {
     const set = (key, value) => {
@@ -101,6 +115,7 @@ const save = () => {
     set('farm', `${farmCount.toFixed(1)},${farmRate.toFixed(1)},${farmCost.toFixed(1)}`);
     set('factory', `${facCount.toFixed(1)},${facRate.toFixed(1)},${facCost.toFixed(1)}`);
     set('bank', `${bankCount.toFixed(1)},${bankRate.toFixed(1)},${bankCost.toFixed(1)}`);
+    set('freezer', `${freezerCount.toFixed(1)},${freezerRate.toFixed(1)},${freezerCost.toFixed(1)}`);
 };
 const load = () => {
     const get = (key) => {
@@ -114,6 +129,7 @@ const load = () => {
     const farmInfo = get('farm').split(',');
     const facInfo = get('factory').split(',');
     const bankInfo = get('bank').split(',');
+    const freezerInfo = get('freezer').split(',');
     bunCount = Number(bunInfo[0]) || 0;
     bunRate = Number(bunInfo[1]) || 0.2;
     bunCost = Number(bunInfo[2]) || 10;
@@ -132,7 +148,9 @@ const load = () => {
     bankCount = Number(bankInfo[0]) || 0;
     bankRate = Number(bankInfo[1]) || 2500;
     bankCost = Number(bankInfo[2]) || 250000;
-    checkBuyables();
+    freezerCount = Number(freezerInfo[0]) || 0;
+    freezerRate = Number(freezerInfo[1]) || 15000;
+    freezerCost = Number(freezerInfo[2]) || 1000000;
     update();
 };
 const checkBuyables = () => {
@@ -146,6 +164,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable;
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
+        freezerImage.src = freezerUnBuyable;
         return;
     }
     if (clickCount >= dadCost) {
@@ -157,6 +176,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable;
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
+        freezerImage.src = freezerUnBuyable;
         return;
     }
     if (clickCount >= grillCost) {
@@ -167,6 +187,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable;
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
+        freezerImage.src = freezerUnBuyable;
         return;
     }
     if (clickCount >= farmCost) {
@@ -176,6 +197,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable;
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
+        freezerImage.src = freezerUnBuyable;
         return;
     }
     if (clickCount >= facCost) {
@@ -184,6 +206,7 @@ const checkBuyables = () => {
     else {
         facImage.src = facUnBuyable;
         bankImage.src = bankUnBuyable;
+        freezerImage.src = freezerUnBuyable;
         return;
     }
     if (clickCount >= bankCost) {
@@ -191,7 +214,14 @@ const checkBuyables = () => {
     }
     else {
         bankImage.src = bankUnBuyable;
+        freezerImage.src = freezerUnBuyable;
         return;
+    }
+    if (clickCount >= freezerCost) {
+        freezerImage.src = freezerBuyable;
+    }
+    else {
+        freezerImage.src = freezerUnBuyable;
     }
 };
 hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEventListener("click", function () {
@@ -200,8 +230,7 @@ hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEven
     }
     if (clickCountElement != null) {
         clickCount++;
-        clickCountElement.textContent = clickCount.toFixed(1);
-        checkBuyables();
+        update();
     }
     else {
         alert('Hotdog Clicker has encountered a fatal error.');
@@ -211,14 +240,10 @@ bunButton === null || bunButton === void 0 ? void 0 : bunButton.addEventListener
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
         clickCount -= bunCost;
         bunCost *= increment;
-        checkBuyables();
         bunImage.src = bunBuying;
-        bunPriceElement.textContent = String(bunCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         bunCount++;
-        bunCountElement.textContent = String(bunCount);
         passiveClicks += bunRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
         bun === null || bun === void 0 ? void 0 : bun.play();
     }
 });
@@ -226,14 +251,10 @@ dadButton === null || dadButton === void 0 ? void 0 : dadButton.addEventListener
     if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
         clickCount -= dadCost;
         dadCost *= increment;
-        checkBuyables();
         dadImage.src = dadBuying;
-        dadPriceElement.textContent = String(dadCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         dadCount++;
-        dadCountElement.textContent = String(dadCount);
         passiveClicks += dadRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
         dad === null || dad === void 0 ? void 0 : dad.play();
     }
 });
@@ -241,14 +262,10 @@ grillButton === null || grillButton === void 0 ? void 0 : grillButton.addEventLi
     if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
         clickCount -= grillCost;
         grillCost *= increment;
-        checkBuyables();
         grillImage.src = grillBuying;
-        grillPriceElement.textContent = String(grillCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         grillCount++;
-        grillCountElement.textContent = String(grillCount);
         passiveClicks += grillRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
         grill === null || grill === void 0 ? void 0 : grill.play();
     }
 });
@@ -256,14 +273,10 @@ farmButton === null || farmButton === void 0 ? void 0 : farmButton.addEventListe
     if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
         clickCount -= farmCost;
         farmCost *= increment;
-        checkBuyables();
         farmImage.src = farmBuying;
-        farmPriceElement.textContent = String(farmCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         farmCount++;
-        farmCountElement.textContent = String(farmCount);
         passiveClicks += farmRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
         farm === null || farm === void 0 ? void 0 : farm.play();
     }
 });
@@ -271,14 +284,10 @@ facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener
     if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
         clickCount -= facCost;
         facCost *= increment;
-        checkBuyables();
         facImage.src = facBuying;
-        facPriceElement.textContent = String(facCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         facCount++;
-        facCountElement.textContent = String(facCount.toFixed(1));
         passiveClicks += facRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
         factory === null || factory === void 0 ? void 0 : factory.play();
     }
 });
@@ -286,14 +295,21 @@ bankButton === null || bankButton === void 0 ? void 0 : bankButton.addEventListe
     if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
         clickCount -= bankCost;
         bankCost *= increment;
-        checkBuyables();
         bankImage.src = bankBuying;
-        bankPriceElement.textContent = String(bankCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         bankCount++;
-        bankCountElement.textContent = String(bankCount.toFixed(1));
         passiveClicks += bankRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
+        bank === null || bank === void 0 ? void 0 : bank.play();
+    }
+});
+freezerButton === null || freezerButton === void 0 ? void 0 : freezerButton.addEventListener("click", function () {
+    if (clickCount >= freezerCost && freezerPriceElement != null && freezerCountElement != null && clickCountElement != null && passiveClicksElement != null) {
+        clickCount -= freezerCost;
+        freezerCost *= increment;
+        freezerImage.src = freezerBuying;
+        freezerCount++;
+        passiveClicks += freezerRate;
+        update();
         bank === null || bank === void 0 ? void 0 : bank.play();
     }
 });
@@ -307,37 +323,32 @@ const crispButton = document.getElementById("crispButton");
 tSauceButton === null || tSauceButton === void 0 ? void 0 : tSauceButton.addEventListener("click", function () {
     if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= tSauceCost;
-        checkBuyables();
-        clickCountElement.textContent = clickCount.toFixed(1);
         tSauceButton.style.display = "none";
         passiveClicks += 25;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
     }
 });
 mustardButton === null || mustardButton === void 0 ? void 0 : mustardButton.addEventListener("click", function () {
     if (clickCount >= mustardCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= mustardCost;
-        checkBuyables();
         clickCountElement.textContent = clickCount.toFixed(1);
         mustardButton.style.display = "none";
         passiveClicks += 50;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update();
     }
 });
 crispButton === null || crispButton === void 0 ? void 0 : crispButton.addEventListener("click", function () {
     if (clickCount >= crispCost && clickCountElement != null) {
         clickCount -= crispCost;
-        checkBuyables();
-        clickCountElement.textContent = clickCount.toFixed(1);
         crispButton.style.display = "none";
         bunRate *= 2;
+        update();
     }
 });
 setInterval(function () {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
-        clickCountElement.textContent = clickCount.toFixed(1);
-        checkBuyables();
+        update();
         save();
     }
 }, 100);

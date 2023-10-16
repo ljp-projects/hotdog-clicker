@@ -1,3 +1,5 @@
+const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
+
 const grill: HTMLAudioElement | null = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
 const bun: HTMLAudioElement | null = new Audio("crunch-crispy-breadbun-41340.mp3")
 const dad: HTMLAudioElement | null = new Audio("dad-says-yummy-113126.mp3")
@@ -31,6 +33,10 @@ const bankBuyable: string = "./Can-Buy-Bank-Button.svg"
 const bankUnBuyable: string = "./Cant-Buy-Bank-Button.svg"
 const bankBuying: string = "./Buying-Bank-Button.svg"
 
+const freezerBuyable: string = './Can-Buy-Freezer-Button.svg'
+const freezerUnBuyable: string = './Cant-Buy-Freezer-Button.svg'
+const freezerBuying: string = './Buying-Freezer-Button.svg'
+
 let passiveClicks: number = 0;
 let clickCount: number = 0;
 let bunCount: number = 0;
@@ -39,6 +45,7 @@ let grillCount: number = 0;
 let farmCount: number = 0;
 let facCount: number = 0;
 let bankCount: number = 0;
+let freezerCount: number = 0;
 
 let bunCost: number = 10;
 let bunRate: number = 0.2;
@@ -58,6 +65,9 @@ let facRate: number = 500;
 let bankCost: number = 250000;
 let bankRate: number = 2500;
 
+let freezerCost: number = 1000000
+let freezerRate: number = 15000
+
 const increment: number = 1.3;
 
 const passiveClicksElement: HTMLElement | null = document.getElementById("passive");
@@ -69,6 +79,7 @@ const dadCountElement: HTMLElement | null = document.getElementById("dadCount");
 const farmCountElement: HTMLElement | null = document.getElementById("farmCount");
 const facCountElement: HTMLElement | null = document.getElementById("dogFacCount");
 const bankCountElement: HTMLElement | null = document.getElementById("dogBankCount");
+const freezerCountElement: HTMLElement | null = document.getElementById("freezerCount");
 
 const hotdogButton: HTMLElement | null = document.getElementById("hotdogButton");
 const bunButton: HTMLElement | null = document.getElementById("bunButton");
@@ -76,7 +87,8 @@ const dadButton: HTMLElement | null = document.getElementById("dadButton");
 const grillButton: HTMLElement | null = document.getElementById("grillButton");
 const farmButton: HTMLElement | null = document.getElementById("farmButton");
 const facButton: HTMLElement | null = document.getElementById("dogFacButton");
-const bankButton: HTMLElement | null = document.getElementById("dogBankButton")
+const bankButton: HTMLElement | null = document.getElementById("dogBankButton");
+const freezerButton: HTMLElement | null = document.getElementById("freezerButton");
 
 const bunPriceElement: HTMLElement | null = document.getElementById("bunPrice")
 const dadPriceElement: HTMLElement | null = document.getElementById("dadPrice")
@@ -84,6 +96,7 @@ const grillPriceElement: HTMLElement | null = document.getElementById("grillPric
 const farmPriceElement: HTMLElement | null = document.getElementById("farmPrice")
 const facPriceElement: HTMLElement | null = document.getElementById("facPrice")
 const bankPriceElement: HTMLElement | null = document.getElementById("bankPrice")
+const freezerPriceElement: HTMLElement | null = document.getElementById("freezerPrice")
 
 const bunImage: HTMLImageElement | null = document.getElementById("bunImg") as HTMLImageElement
 const dadImage: HTMLImageElement | null = document.getElementById("dadImg") as HTMLImageElement
@@ -91,28 +104,34 @@ const grillImage: HTMLImageElement | null = document.getElementById("grillImg") 
 const farmImage: HTMLImageElement | null = document.getElementById("farmImg") as HTMLImageElement
 const facImage: HTMLImageElement | null = document.getElementById("facImg") as HTMLImageElement
 const bankImage: HTMLImageElement | null = document.getElementById("bankImg") as HTMLImageElement
+const freezerImage: HTMLImageElement | null = document.getElementById("freezerImg") as HTMLImageElement
 
 const update = (): void => {
-    clickCountElement != null ? clickCountElement.innerText = clickCount.toFixed(1) : null
-    passiveClicksElement != null ? passiveClicksElement.innerText = passiveClicks.toFixed(1) : null
+    checkBuyables()
 
-    bunCountElement != null ? bunCountElement.innerText = String(bunCount) : null
-    bunPriceElement != null ? bunPriceElement.innerText = String(bunCost) : null
+    clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(1))) : null
+    passiveClicksElement != null ? passiveClicksElement.innerText = formatter.format(Number(passiveClicks.toFixed(1))) : null
 
-    dadCountElement != null ? dadCountElement.innerText = String(dadCount) : null
-    dadPriceElement != null ? dadPriceElement.innerText = String(dadCost) : null
+    bunCountElement != null ? bunCountElement.innerText = formatter.format(bunCount) : null
+    bunPriceElement != null ? bunPriceElement.innerText = formatter.format(bunCost) : null
 
-    grillCountElement != null ? grillCountElement.innerText = String(grillCount) : null
-    grillPriceElement != null ? grillPriceElement.innerText = String(grillCost) : null
+    dadCountElement != null ? dadCountElement.innerText =formatter.format(dadCount) : null
+    dadPriceElement != null ? dadPriceElement.innerText = formatter.format(dadCost) : null
 
-    farmCountElement != null ? farmCountElement.innerText = String(farmCount) : null
-    farmPriceElement != null ? farmPriceElement.innerText = String(farmCost) : null
+    grillCountElement != null ? grillCountElement.innerText = formatter.format(grillCount) : null
+    grillPriceElement != null ? grillPriceElement.innerText = formatter.format(grillCost) : null
 
-    facCountElement != null ? facCountElement.innerText = String(facCount) : null
-    facPriceElement != null ? facPriceElement.innerText = String(facCost) : null
+    farmCountElement != null ? farmCountElement.innerText = formatter.format(farmCount) : null
+    farmPriceElement != null ? farmPriceElement.innerText = formatter.format(farmCost) : null
 
-    bankCountElement != null ? bankCountElement.innerText = String(bankCount) : null
-    bankPriceElement != null ? bankPriceElement.innerText = String(bankCost) : null
+    facCountElement != null ? facCountElement.innerText = formatter.format(facCount) : null
+    facPriceElement != null ? facPriceElement.innerText = formatter.format(facCost) : null
+
+    bankCountElement != null ? bankCountElement.innerText = formatter.format(bankCount) : null
+    bankPriceElement != null ? bankPriceElement.innerText = formatter.format(bankCost) : null
+
+    freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null
+    freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null
 }
 
 const save = (): void => {
@@ -128,6 +147,7 @@ const save = (): void => {
     set('farm', `${farmCount.toFixed(1)},${farmRate.toFixed(1)},${farmCost.toFixed(1)}`)
     set('factory', `${facCount.toFixed(1)},${facRate.toFixed(1)},${facCost.toFixed(1)}`)
     set('bank', `${bankCount.toFixed(1)},${bankRate.toFixed(1)},${bankCost.toFixed(1)}`)
+    set('freezer', `${freezerCount.toFixed(1)},${freezerRate.toFixed(1)},${freezerCost.toFixed(1)}`)
 }
 
 const load = (): void => {
@@ -144,6 +164,7 @@ const load = (): void => {
     const farmInfo: string[] = get('farm').split(',')
     const facInfo: string[] = get('factory').split(',')
     const bankInfo: string[] = get('bank').split(',')
+    const freezerInfo: string[] = get('freezer').split(',')
 
     bunCount = Number(bunInfo[0]) || 0
     bunRate = Number(bunInfo[1]) || 0.2
@@ -169,7 +190,10 @@ const load = (): void => {
     bankRate = Number(bankInfo[1]) || 2500
     bankCost = Number(bankInfo[2]) || 250000
 
-    checkBuyables()
+    freezerCount = Number(freezerInfo[0]) || 0
+    freezerRate = Number(freezerInfo[1]) || 15000
+    freezerCost = Number(freezerInfo[2]) || 1000000
+
     update()
 }
 
@@ -183,6 +207,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
+        freezerImage.src = freezerUnBuyable
         return
     }
     if (clickCount >= dadCost) {
@@ -193,6 +218,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
+        freezerImage.src = freezerUnBuyable
         return
     }
     if (clickCount >= grillCost) {
@@ -202,6 +228,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
+        freezerImage.src = freezerUnBuyable
         return
     }
     if (clickCount >= farmCost) {
@@ -210,6 +237,7 @@ const checkBuyables = () => {
         farmImage.src = farmUnBuyable
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
+        freezerImage.src = freezerUnBuyable
         return
     }
     if (clickCount >= facCost) {
@@ -217,13 +245,20 @@ const checkBuyables = () => {
     } else {
         facImage.src = facUnBuyable
         bankImage.src = bankUnBuyable
+        freezerImage.src = freezerUnBuyable
         return
     }
     if (clickCount >= bankCost) {
         bankImage.src = bankBuyable
     } else {
         bankImage.src = bankUnBuyable
+        freezerImage.src = freezerUnBuyable
         return
+    }
+    if (clickCount >= freezerCost) {
+        freezerImage.src = freezerBuyable
+    } else {
+        freezerImage.src = freezerUnBuyable
     }
 }
 
@@ -232,9 +267,8 @@ hotdogButton?.addEventListener("click", function() {
         ambience?.play()
     }
     if (clickCountElement != null) {
-        clickCount++;
-        clickCountElement.textContent = clickCount.toFixed(1);
-        checkBuyables();
+        clickCount++
+        update()
     } else {
         alert('Hotdog Clicker has encountered a fatal error.')
     }
@@ -244,14 +278,10 @@ bunButton?.addEventListener("click", function() {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
         clickCount -= bunCost;
         bunCost *= increment;
-        checkBuyables();
         bunImage.src = bunBuying
-        bunPriceElement.textContent = String(bunCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         bunCount++;
-        bunCountElement.textContent = String(bunCount);
         passiveClicks += bunRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
         bun?.play();
     }
 });
@@ -259,14 +289,10 @@ dadButton?.addEventListener("click", function() {
     if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
         clickCount -= dadCost;
         dadCost *= increment;
-        checkBuyables();
         dadImage.src = dadBuying
-        dadPriceElement.textContent = String(dadCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         dadCount++;
-        dadCountElement.textContent = String(dadCount);
         passiveClicks += dadRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
         dad?.play();
     }
 });
@@ -274,14 +300,10 @@ grillButton?.addEventListener("click", function() {
     if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
         clickCount -= grillCost;
         grillCost *= increment;
-        checkBuyables();
         grillImage.src = grillBuying
-        grillPriceElement.textContent = String(grillCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         grillCount++;
-        grillCountElement.textContent = String(grillCount);
         passiveClicks += grillRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
         grill?.play();
     }
 });
@@ -289,14 +311,10 @@ farmButton?.addEventListener("click", function() {
     if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
         clickCount -= farmCost;
         farmCost *= increment;
-        checkBuyables();
         farmImage.src = farmBuying
-        farmPriceElement.textContent = String(farmCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         farmCount++;
-        farmCountElement.textContent = String(farmCount);
         passiveClicks += farmRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
         farm?.play();
     }
 });
@@ -304,14 +322,10 @@ facButton?.addEventListener("click", function() {
     if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
         clickCount -= facCost;
         facCost *= increment;
-        checkBuyables();
         facImage.src = facBuying
-        facPriceElement.textContent = String(facCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         facCount++;
-        facCountElement.textContent = String(facCount.toFixed(1));
         passiveClicks += facRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
         factory?.play();
     }
 });
@@ -319,14 +333,22 @@ bankButton?.addEventListener("click", function() {
     if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
         clickCount -= bankCost;
         bankCost *= increment;
-        checkBuyables();
         bankImage.src = bankBuying
-        bankPriceElement.textContent = String(bankCost.toFixed(1));
-        clickCountElement.textContent = String(clickCount.toFixed(1));
         bankCount++;
-        bankCountElement.textContent = String(bankCount.toFixed(1));
         passiveClicks += bankRate;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
+        bank?.play();
+    }
+});
+
+freezerButton?.addEventListener("click", function() {
+    if (clickCount >= freezerCost && freezerPriceElement != null && freezerCountElement != null && clickCountElement != null && passiveClicksElement != null) {
+        clickCount -= freezerCost;
+        freezerCost *= increment;
+        freezerImage.src = freezerBuying
+        freezerCount++;
+        passiveClicks += freezerRate;
+        update();
         bank?.play();
     }
 });
@@ -344,41 +366,36 @@ const crispButton = document.getElementById("crispButton");
 tSauceButton?.addEventListener("click", function() {
     if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= tSauceCost;
-        checkBuyables();
-        clickCountElement.textContent = clickCount.toFixed(1);
         tSauceButton.style.display = "none";
         passiveClicks += 25;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
     }
 });
 
 mustardButton?.addEventListener("click", function() {
     if (clickCount >= mustardCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= mustardCost;
-        checkBuyables();
         clickCountElement.textContent = clickCount.toFixed(1);
         mustardButton.style.display = "none";
         passiveClicks += 50;
-        passiveClicksElement.textContent = passiveClicks.toFixed(1);
+        update()
     }
 });
 
 crispButton?.addEventListener("click", function() {
     if (clickCount >= crispCost && clickCountElement != null) {
         clickCount -= crispCost;
-        checkBuyables();
-        clickCountElement.textContent = clickCount.toFixed(1);
         crispButton.style.display = "none";
         bunRate *= 2;
+        update()
     }
 });
 
 setInterval(function() {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
-        clickCountElement.textContent = clickCount.toFixed(1);
-        checkBuyables();
-        save()
+        update();
+        save();
     }
 }, 100);
 
