@@ -109,8 +109,8 @@ const freezerImage: HTMLImageElement | null = document.getElementById("freezerIm
 const update = (): void => {
     checkBuyables()
 
-    clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(1))) : null
-    passiveClicksElement != null ? passiveClicksElement.innerText = formatter.format(Number(passiveClicks.toFixed(1))) : null
+    clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(2))) : null
+    passiveClicksElement != null ? passiveClicksElement.innerText = formatter.format(Number(passiveClicks.toFixed(2))) : null
 
     bunCountElement != null ? bunCountElement.innerText = formatter.format(bunCount) : null
     bunPriceElement != null ? bunPriceElement.innerText = formatter.format(bunCost) : null
@@ -139,15 +139,15 @@ const save = (): void => {
         localStorage.setItem(key, value)
     }
 
-    set('hotdogs', `${clickCount.toFixed(1)}`)
-    set('hotdogs-sec', `${passiveClicks.toFixed(1)}`)
-    set('bun', `${bunCount.toFixed(1)},${bunRate.toFixed(1)},${bunCost.toFixed(1)}`)
-    set('dad', `${dadCount.toFixed(1)},${dadRate.toFixed(1)},${dadCost.toFixed(1)}`)
-    set('grill', `${grillCount.toFixed(1)},${grillRate.toFixed(1)},${grillCost.toFixed(1)}`)
-    set('farm', `${farmCount.toFixed(1)},${farmRate.toFixed(1)},${farmCost.toFixed(1)}`)
-    set('factory', `${facCount.toFixed(1)},${facRate.toFixed(1)},${facCost.toFixed(1)}`)
-    set('bank', `${bankCount.toFixed(1)},${bankRate.toFixed(1)},${bankCost.toFixed(1)}`)
-    set('freezer', `${freezerCount.toFixed(1)},${freezerRate.toFixed(1)},${freezerCost.toFixed(1)}`)
+    set('hotdogs', `${clickCount.toFixed(2)}`)
+    set('hotdogs-sec', `${passiveClicks.toFixed(2)}`)
+    set('bun', `${bunCount.toFixed(2)},${bunRate.toFixed(2)},${bunCost.toFixed(2)}`)
+    set('dad', `${dadCount.toFixed(2)},${dadRate.toFixed(2)},${dadCost.toFixed(2)}`)
+    set('grill', `${grillCount.toFixed(2)},${grillRate.toFixed(2)},${grillCost.toFixed(2)}`)
+    set('farm', `${farmCount.toFixed(2)},${farmRate.toFixed(2)},${farmCost.toFixed(2)}`)
+    set('factory', `${facCount.toFixed(2)},${facRate.toFixed(2)},${facCost.toFixed(2)}`)
+    set('bank', `${bankCount.toFixed(2)},${bankRate.toFixed(2)},${bankCost.toFixed(2)}`)
+    set('freezer', `${freezerCount.toFixed(2)},${freezerRate.toFixed(2)},${freezerCost.toFixed(2)}`)
 }
 
 const load = (): void => {
@@ -375,7 +375,7 @@ tSauceButton?.addEventListener("click", function() {
 mustardButton?.addEventListener("click", function() {
     if (clickCount >= mustardCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= mustardCost;
-        clickCountElement.textContent = clickCount.toFixed(1);
+        clickCountElement.textContent = clickCount.toFixed(2);
         mustardButton.style.display = "none";
         passiveClicks += 50;
         update()
