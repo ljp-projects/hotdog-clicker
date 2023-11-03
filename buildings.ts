@@ -367,6 +367,10 @@ document.oncontextmenu = () => {
 }
 
 if (wipe) wipe.onclick = () => {
-    clearInterval(ID)
-    localStorage.clear();
+    const willing = prompt("This action cannot be undone. You will lose all of your progress. Type 'wipe' to continue.")
+    if (willing === "wipe") {
+        clearInterval(ID)
+        localStorage.clear();
+        load()
+    }
 }
