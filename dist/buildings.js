@@ -11,7 +11,7 @@ MIT LICENSE
 // M is the increment constant.
 const increment = 1.3;
 const increase = (price, count) => {
-    return price + Math.cosh(increment + count);
+    return price + Math.cosh(increment + count) / 3;
 };
 const wipe = document.getElementById("wipe");
 const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
