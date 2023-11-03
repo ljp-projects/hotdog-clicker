@@ -13,7 +13,7 @@ MIT LICENSE
 const increment: number = 1.3;
 
 const increase: Function = (price: number, count: number): number => {
-    return price + (count * (increment + count))
+    return price + Math.cosh(increment + count)
 }
 
 const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
