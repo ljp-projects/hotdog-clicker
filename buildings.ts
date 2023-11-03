@@ -1,3 +1,15 @@
+/*
+kotlinc
+MIT LICENSE
+2023
+*/
+
+// The formula for calculating the new price of an item:
+// P + (C * (M - (C / P)))
+// where P is the item's price previously
+// C is the amount of the item owned
+// M is 1.15.
+
 const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
 
 const bunBuyable: string = "./Can-Buy-Bun-Button.svg"
@@ -231,7 +243,7 @@ hotdogButton?.addEventListener("click", function() {
 bunButton?.addEventListener("click", function() {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
         clickCount -= bunCost;
-        bunCost *= increment;
+        bunCost = bunCost + (bunCount * (increment - (bunCount / bunCost)))
         bunCount++;
         passiveClicks += bunRate;
         update()
@@ -240,7 +252,7 @@ bunButton?.addEventListener("click", function() {
 dadButton?.addEventListener("click", function() {
     if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
         clickCount -= dadCost;
-        dadCost *= increment;
+        dadCost = dadCost + (dadCount * (increment - (dadCount / dadCost)))
         dadCount++;
         passiveClicks += dadRate;
         update()
@@ -249,7 +261,7 @@ dadButton?.addEventListener("click", function() {
 grillButton?.addEventListener("click", function() {
     if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
         clickCount -= grillCost;
-        grillCost *= increment;
+        grillCost = grillCost + (grillCount * (increment - (grillCount / grillCost)));
         grillCount++;
         passiveClicks += grillRate;
         update()
@@ -258,7 +270,7 @@ grillButton?.addEventListener("click", function() {
 farmButton?.addEventListener("click", function() {
     if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
         clickCount -= farmCost;
-        farmCost *= increment;
+        farmCost = farmCost + (farmCount * (increment - (farmCount / farmCost)))
         farmCount++;
         passiveClicks += farmRate;
         update()
@@ -267,7 +279,7 @@ farmButton?.addEventListener("click", function() {
 facButton?.addEventListener("click", function() {
     if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
         clickCount -= facCost;
-        facCost *= increment;
+        facCost = facCost + (facCount * (increment - (facCount / facCost)))
         facCount++;
         passiveClicks += facRate;
         update()
@@ -276,7 +288,7 @@ facButton?.addEventListener("click", function() {
 bankButton?.addEventListener("click", function() {
     if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
         clickCount -= bankCost;
-        bankCost *= increment;
+        bankCost = bankCost + (bankCount * (increment - (bankCount / bankCost)))
         bankCount++;
         passiveClicks += bankRate;
         update()
@@ -286,7 +298,7 @@ bankButton?.addEventListener("click", function() {
 freezerButton?.addEventListener("click", function() {
     if (clickCount >= freezerCost && freezerPriceElement != null && freezerCountElement != null && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= freezerCost;
-        freezerCost *= increment;
+        freezerCost = freezerCost + (freezerCount * (increment - (freezerCount / freezerCost)))
         freezerCount++;
         passiveClicks += freezerRate;
         update();
