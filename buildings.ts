@@ -340,3 +340,7 @@ setInterval(() => {
 }, 100)
 
 load()
+
+window.oncontextmenu = () => {
+    return false;
+}

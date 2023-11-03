@@ -294,3 +294,6 @@ setInterval(function () {
     }
 }, 100);
 load();
+window.oncontextmenu = function () {
+    return false;
+};
