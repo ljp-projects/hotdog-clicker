@@ -13,6 +13,7 @@ const increment = 1.3;
 const increase = (price, count) => {
     return price + Math.cosh(increment + count);
 };
+const wipe = document.getElementById("wipe");
 const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
 const bunBuyable = "./Can-Buy-Bun-Button.svg";
 const bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
@@ -302,7 +303,7 @@ crispButton === null || crispButton === void 0 ? void 0 : crispButton.addEventLi
         update();
     }
 });
-setInterval(() => {
+const ID = setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
@@ -313,3 +314,8 @@ load();
 document.oncontextmenu = () => {
     return false;
 };
+if (wipe)
+    wipe.onclick = () => {
+        clearInterval(ID);
+        localStorage.clear();
+    };

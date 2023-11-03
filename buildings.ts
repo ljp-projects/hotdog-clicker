@@ -16,6 +16,8 @@ const increase: Function = (price: number, count: number): number => {
     return price + Math.cosh(increment + count)
 }
 
+const wipe = document.getElementById("wipe")
+
 const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
 
 const bunBuyable: string = "./Can-Buy-Bun-Button.svg"
@@ -350,7 +352,7 @@ crispButton?.addEventListener("click", function() {
     }
 });
 
-setInterval(() => {
+const ID = setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
@@ -362,4 +364,9 @@ load()
 
 document.oncontextmenu = () => {
     return false;
+}
+
+if (wipe) wipe.onclick = () => {
+    clearInterval(ID)
+    localStorage.clear();
 }
