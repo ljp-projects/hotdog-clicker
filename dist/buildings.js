@@ -303,7 +303,7 @@ crispButton === null || crispButton === void 0 ? void 0 : crispButton.addEventLi
         update();
     }
 });
-const ID = setInterval(() => {
+let ID = setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
@@ -321,5 +321,12 @@ if (wipe)
             clearInterval(ID);
             localStorage.clear();
             load();
+            ID = setInterval(() => {
+                if (clickCountElement != null) {
+                    clickCount += passiveClicks / 10;
+                    update();
+                    save();
+                }
+            }, 100);
         }
     };

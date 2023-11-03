@@ -352,7 +352,7 @@ crispButton?.addEventListener("click", function() {
     }
 });
 
-const ID = setInterval(() => {
+let ID = setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
@@ -372,5 +372,12 @@ if (wipe) wipe.onclick = () => {
         clearInterval(ID)
         localStorage.clear();
         load()
+        ID = setInterval(() => {
+            if (clickCountElement != null) {
+                clickCount += passiveClicks / 10;
+                update();
+                save();
+            }
+        }, 100)
     }
 }
