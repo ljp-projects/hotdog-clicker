@@ -1,90 +1,75 @@
 "use strict";
-const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
-const grill = new Audio("designed-fire-winds-swoosh-04-116788.mp3");
-const bun = new Audio("crunch-crispy-breadbun-41340.mp3");
-const dad = new Audio("dad-says-yummy-113126.mp3");
-const farm = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3");
-const factory = new Audio("some-kind-of-machine-103152.mp3");
-const bank = new Audio("cash-register-purchase-87313.mp3");
-const ambience = new Audio("./Hotdog-Clicker-Ambience.m4a");
-ambience.loop = true;
-const bunBuyable = "./Can-Buy-Bun-Button.svg";
-const bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
-const bunBuying = "./Buying-Bun-Button.svg";
-const dadBuyable = "./Can-Buy-Dad-Button.svg";
-const dadUnBuyable = "./Cant-Buy-Dad-Button.svg";
-const dadBuying = "./Buying-Dad-Button.svg";
-const grillBuyable = "./Can-Buy-Grill-Button.svg";
-const grillUnBuyable = "./Cant-Buy-Grill-Button.svg";
-const grillBuying = "./Buying-Grill-Button.svg";
-const farmBuyable = "./Can-Buy-Farm-Button.svg";
-const farmUnBuyable = "./Cant-Buy-Farm-Button.svg";
-const farmBuying = "./Buying-Farm-Button.svg";
-const facBuyable = "./Can-Buy-Fac-Button.svg";
-const facUnBuyable = "./Cant-Buy-Fac-Button.svg";
-const facBuying = "./Buying-Fac-Button.svg";
-const bankBuyable = "./Can-Buy-Bank-Button.svg";
-const bankUnBuyable = "./Cant-Buy-Bank-Button.svg";
-const bankBuying = "./Buying-Bank-Button.svg";
-const freezerBuyable = './Can-Buy-Freezer-Button.svg';
-const freezerUnBuyable = './Cant-Buy-Freezer-Button.svg';
-const freezerBuying = './Buying-Freezer-Button.svg';
-let passiveClicks = 0;
-let clickCount = 0;
-let bunCount = 0;
-let dadCount = 0;
-let grillCount = 0;
-let farmCount = 0;
-let facCount = 0;
-let bankCount = 0;
-let freezerCount = 0;
-let bunCost = 10;
-let bunRate = 0.2;
-let dadCost = 100;
-let dadRate = 2;
-let grillCost = 500;
-let grillRate = 10;
-let farmCost = 5000;
-let farmRate = 50;
-let facCost = 50000;
-let facRate = 500;
-let bankCost = 250000;
-let bankRate = 2500;
-let freezerCost = 1000000;
-let freezerRate = 15000;
-const increment = 1.3;
-const passiveClicksElement = document.getElementById("passive");
-const clickCountElement = document.getElementById("clickCount");
-const grillCountElement = document.getElementById("grillCount");
-const bunCountElement = document.getElementById("bunCount");
-const dadCountElement = document.getElementById("dadCount");
-const farmCountElement = document.getElementById("farmCount");
-const facCountElement = document.getElementById("dogFacCount");
-const bankCountElement = document.getElementById("dogBankCount");
-const freezerCountElement = document.getElementById("freezerCount");
-const hotdogButton = document.getElementById("hotdogButton");
-const bunButton = document.getElementById("bunButton");
-const dadButton = document.getElementById("dadButton");
-const grillButton = document.getElementById("grillButton");
-const farmButton = document.getElementById("farmButton");
-const facButton = document.getElementById("dogFacButton");
-const bankButton = document.getElementById("dogBankButton");
-const freezerButton = document.getElementById("freezerButton");
-const bunPriceElement = document.getElementById("bunPrice");
-const dadPriceElement = document.getElementById("dadPrice");
-const grillPriceElement = document.getElementById("grillPrice");
-const farmPriceElement = document.getElementById("farmPrice");
-const facPriceElement = document.getElementById("facPrice");
-const bankPriceElement = document.getElementById("bankPrice");
-const freezerPriceElement = document.getElementById("freezerPrice");
-const bunImage = document.getElementById("bunImg");
-const dadImage = document.getElementById("dadImg");
-const grillImage = document.getElementById("grillImg");
-const farmImage = document.getElementById("farmImg");
-const facImage = document.getElementById("facImg");
-const bankImage = document.getElementById("bankImg");
-const freezerImage = document.getElementById("freezerImg");
-const update = () => {
+var formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
+var bunBuyable = "./Can-Buy-Bun-Button.svg";
+var bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
+var dadBuyable = "./Can-Buy-Dad-Button.svg";
+var dadUnBuyable = "./Cant-Buy-Dad-Button.svg";
+var grillBuyable = "./Can-Buy-Grill-Button.svg";
+var grillUnBuyable = "./Cant-Buy-Grill-Button.svg";
+var farmBuyable = "./Can-Buy-Farm-Button.svg";
+var farmUnBuyable = "./Cant-Buy-Farm-Button.svg";
+var facBuyable = "./Can-Buy-Fac-Button.svg";
+var facUnBuyable = "./Cant-Buy-Fac-Button.svg";
+var bankBuyable = "./Can-Buy-Bank-Button.svg";
+var bankUnBuyable = "./Cant-Buy-Bank-Button.svg";
+var freezerBuyable = './Can-Buy-Freezer-Button.svg';
+var freezerUnBuyable = './Cant-Buy-Freezer-Button.svg';
+var passiveClicks = 0;
+var clickCount = 0;
+var bunCount = 0;
+var dadCount = 0;
+var grillCount = 0;
+var farmCount = 0;
+var facCount = 0;
+var bankCount = 0;
+var freezerCount = 0;
+var bunCost = 10;
+var bunRate = 0.2;
+var dadCost = 100;
+var dadRate = 2;
+var grillCost = 500;
+var grillRate = 10;
+var farmCost = 5000;
+var farmRate = 50;
+var facCost = 50000;
+var facRate = 500;
+var bankCost = 250000;
+var bankRate = 2500;
+var freezerCost = 1000000;
+var freezerRate = 15000;
+var increment = 1.3;
+var passiveClicksElement = document.getElementById("passive");
+var clickCountElement = document.getElementById("clickCount");
+var grillCountElement = document.getElementById("grillCount");
+var bunCountElement = document.getElementById("bunCount");
+var dadCountElement = document.getElementById("dadCount");
+var farmCountElement = document.getElementById("farmCount");
+var facCountElement = document.getElementById("dogFacCount");
+var bankCountElement = document.getElementById("dogBankCount");
+var freezerCountElement = document.getElementById("freezerCount");
+var hotdogButton = document.getElementById("hotdogButton");
+var bunButton = document.getElementById("bunButton");
+var dadButton = document.getElementById("dadButton");
+var grillButton = document.getElementById("grillButton");
+var farmButton = document.getElementById("farmButton");
+var facButton = document.getElementById("dogFacButton");
+var bankButton = document.getElementById("dogBankButton");
+var freezerButton = document.getElementById("freezerButton");
+var bunPriceElement = document.getElementById("bunPrice");
+var dadPriceElement = document.getElementById("dadPrice");
+var grillPriceElement = document.getElementById("grillPrice");
+var farmPriceElement = document.getElementById("farmPrice");
+var facPriceElement = document.getElementById("facPrice");
+var bankPriceElement = document.getElementById("bankPrice");
+var freezerPriceElement = document.getElementById("freezerPrice");
+var bunImage = document.getElementById("bunImg");
+var dadImage = document.getElementById("dadImg");
+var grillImage = document.getElementById("grillImg");
+var farmImage = document.getElementById("farmImg");
+var facImage = document.getElementById("facImg");
+var bankImage = document.getElementById("bankImg");
+var freezerImage = document.getElementById("freezerImg");
+var update = function () {
     checkBuyables();
     clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(2))) : null;
     passiveClicksElement != null ? passiveClicksElement.innerText = formatter.format(Number(passiveClicks.toFixed(2))) : null;
@@ -103,33 +88,33 @@ const update = () => {
     freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null;
     freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
 };
-const save = () => {
-    const set = (key, value) => {
+var save = function () {
+    var set = function (key, value) {
         localStorage.setItem(key, value);
     };
-    set('hotdogs', `${clickCount.toFixed(2)}`);
-    set('hotdogs-sec', `${passiveClicks.toFixed(2)}`);
-    set('bun', `${bunCount.toFixed(2)},${bunRate.toFixed(2)},${bunCost.toFixed(2)}`);
-    set('dad', `${dadCount.toFixed(2)},${dadRate.toFixed(2)},${dadCost.toFixed(2)}`);
-    set('grill', `${grillCount.toFixed(2)},${grillRate.toFixed(2)},${grillCost.toFixed(2)}`);
-    set('farm', `${farmCount.toFixed(2)},${farmRate.toFixed(2)},${farmCost.toFixed(2)}`);
-    set('factory', `${facCount.toFixed(2)},${facRate.toFixed(2)},${facCost.toFixed(2)}`);
-    set('bank', `${bankCount.toFixed(2)},${bankRate.toFixed(2)},${bankCost.toFixed(2)}`);
-    set('freezer', `${freezerCount.toFixed(2)},${freezerRate.toFixed(2)},${freezerCost.toFixed(2)}`);
+    set('hotdogs', "".concat(clickCount.toFixed(2)));
+    set('hotdogs-sec', "".concat(passiveClicks.toFixed(2)));
+    set('bun', "".concat(bunCount.toFixed(2), ",").concat(bunRate.toFixed(2), ",").concat(bunCost.toFixed(2)));
+    set('dad', "".concat(dadCount.toFixed(2), ",").concat(dadRate.toFixed(2), ",").concat(dadCost.toFixed(2)));
+    set('grill', "".concat(grillCount.toFixed(2), ",").concat(grillRate.toFixed(2), ",").concat(grillCost.toFixed(2)));
+    set('farm', "".concat(farmCount.toFixed(2), ",").concat(farmRate.toFixed(2), ",").concat(farmCost.toFixed(2)));
+    set('factory', "".concat(facCount.toFixed(2), ",").concat(facRate.toFixed(2), ",").concat(facCost.toFixed(2)));
+    set('bank', "".concat(bankCount.toFixed(2), ",").concat(bankRate.toFixed(2), ",").concat(bankCost.toFixed(2)));
+    set('freezer', "".concat(freezerCount.toFixed(2), ",").concat(freezerRate.toFixed(2), ",").concat(freezerCost.toFixed(2)));
 };
-const load = () => {
-    const get = (key) => {
+var load = function () {
+    var get = function (key) {
         return localStorage.getItem(key) || "";
     };
     clickCount = Number(get('hotdogs')) || 0;
     passiveClicks = Number(get('hotdogs-sec')) || 0;
-    const bunInfo = get('bun').split(',');
-    const dadInfo = get('dad').split(',');
-    const grillInfo = get('grill').split(',');
-    const farmInfo = get('farm').split(',');
-    const facInfo = get('factory').split(',');
-    const bankInfo = get('bank').split(',');
-    const freezerInfo = get('freezer').split(',');
+    var bunInfo = get('bun').split(',');
+    var dadInfo = get('dad').split(',');
+    var grillInfo = get('grill').split(',');
+    var farmInfo = get('farm').split(',');
+    var facInfo = get('factory').split(',');
+    var bankInfo = get('bank').split(',');
+    var freezerInfo = get('freezer').split(',');
     bunCount = Number(bunInfo[0]) || 0;
     bunRate = Number(bunInfo[1]) || 0.2;
     bunCost = Number(bunInfo[2]) || 10;
@@ -153,69 +138,42 @@ const load = () => {
     freezerCost = Number(freezerInfo[2]) || 1000000;
     update();
 };
-const checkBuyables = () => {
+var checkBuyables = function () {
     if (clickCount >= bunCost) {
         bunImage.src = bunBuyable;
     }
     else {
         bunImage.src = bunUnBuyable;
-        dadImage.src = dadUnBuyable;
-        grillImage.src = grillUnBuyable;
-        farmImage.src = farmUnBuyable;
-        facImage.src = facUnBuyable;
-        bankImage.src = bankUnBuyable;
-        freezerImage.src = freezerUnBuyable;
-        return;
     }
     if (clickCount >= dadCost) {
         dadImage.src = dadBuyable;
     }
     else {
         dadImage.src = dadUnBuyable;
-        grillImage.src = grillUnBuyable;
-        farmImage.src = farmUnBuyable;
-        facImage.src = facUnBuyable;
-        bankImage.src = bankUnBuyable;
-        freezerImage.src = freezerUnBuyable;
-        return;
     }
     if (clickCount >= grillCost) {
         grillImage.src = grillBuyable;
     }
     else {
         grillImage.src = grillUnBuyable;
-        farmImage.src = farmUnBuyable;
-        facImage.src = facUnBuyable;
-        bankImage.src = bankUnBuyable;
-        freezerImage.src = freezerUnBuyable;
-        return;
     }
     if (clickCount >= farmCost) {
         farmImage.src = farmBuyable;
     }
     else {
         farmImage.src = farmUnBuyable;
-        facImage.src = facUnBuyable;
-        bankImage.src = bankUnBuyable;
-        freezerImage.src = freezerUnBuyable;
-        return;
     }
     if (clickCount >= facCost) {
         facImage.src = facBuyable;
     }
     else {
         facImage.src = facUnBuyable;
-        bankImage.src = bankUnBuyable;
-        freezerImage.src = freezerUnBuyable;
-        return;
     }
     if (clickCount >= bankCost) {
         bankImage.src = bankBuyable;
     }
     else {
         bankImage.src = bankUnBuyable;
-        freezerImage.src = freezerUnBuyable;
-        return;
     }
     if (clickCount >= freezerCost) {
         freezerImage.src = freezerBuyable;
@@ -225,9 +183,6 @@ const checkBuyables = () => {
     }
 };
 hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEventListener("click", function () {
-    if (clickCount == 0.0) {
-        ambience === null || ambience === void 0 ? void 0 : ambience.play();
-    }
     if (clickCountElement != null) {
         clickCount++;
         update();
@@ -240,86 +195,72 @@ bunButton === null || bunButton === void 0 ? void 0 : bunButton.addEventListener
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
         clickCount -= bunCost;
         bunCost *= increment;
-        bunImage.src = bunBuying;
         bunCount++;
         passiveClicks += bunRate;
         update();
-        bun === null || bun === void 0 ? void 0 : bun.play();
     }
 });
 dadButton === null || dadButton === void 0 ? void 0 : dadButton.addEventListener("click", function () {
     if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
         clickCount -= dadCost;
         dadCost *= increment;
-        dadImage.src = dadBuying;
         dadCount++;
         passiveClicks += dadRate;
         update();
-        dad === null || dad === void 0 ? void 0 : dad.play();
     }
 });
 grillButton === null || grillButton === void 0 ? void 0 : grillButton.addEventListener("click", function () {
     if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
         clickCount -= grillCost;
         grillCost *= increment;
-        grillImage.src = grillBuying;
         grillCount++;
         passiveClicks += grillRate;
         update();
-        grill === null || grill === void 0 ? void 0 : grill.play();
     }
 });
 farmButton === null || farmButton === void 0 ? void 0 : farmButton.addEventListener("click", function () {
     if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
         clickCount -= farmCost;
         farmCost *= increment;
-        farmImage.src = farmBuying;
         farmCount++;
         passiveClicks += farmRate;
         update();
-        farm === null || farm === void 0 ? void 0 : farm.play();
     }
 });
 facButton === null || facButton === void 0 ? void 0 : facButton.addEventListener("click", function () {
     if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
         clickCount -= facCost;
         facCost *= increment;
-        facImage.src = facBuying;
         facCount++;
         passiveClicks += facRate;
         update();
-        factory === null || factory === void 0 ? void 0 : factory.play();
     }
 });
 bankButton === null || bankButton === void 0 ? void 0 : bankButton.addEventListener("click", function () {
     if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
         clickCount -= bankCost;
         bankCost *= increment;
-        bankImage.src = bankBuying;
         bankCount++;
         passiveClicks += bankRate;
         update();
-        bank === null || bank === void 0 ? void 0 : bank.play();
     }
 });
 freezerButton === null || freezerButton === void 0 ? void 0 : freezerButton.addEventListener("click", function () {
     if (clickCount >= freezerCost && freezerPriceElement != null && freezerCountElement != null && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= freezerCost;
         freezerCost *= increment;
-        freezerImage.src = freezerBuying;
         freezerCount++;
         passiveClicks += freezerRate;
         update();
-        bank === null || bank === void 0 ? void 0 : bank.play();
     }
 });
 // Upgrades
-const mustardCost = 5000;
-const tSauceCost = 1000;
-const crispCost = 5000;
-const tSauceButton = document.getElementById("tSauceButton");
-const mustardButton = document.getElementById("mustardButton");
-const crispButton = document.getElementById("crispButton");
+var mustardCost = 5000;
+var tSauceCost = 1000;
+var crispCost = 5000;
+var tSauceButton = document.getElementById("tSauceButton");
+var mustardButton = document.getElementById("mustardButton");
+var crispButton = document.getElementById("crispButton");
 tSauceButton === null || tSauceButton === void 0 ? void 0 : tSauceButton.addEventListener("click", function () {
     if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= tSauceCost;

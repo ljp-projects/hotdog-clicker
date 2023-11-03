@@ -1,41 +1,25 @@
 const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
 
-const grill: HTMLAudioElement | null = new Audio("designed-fire-winds-swoosh-04-116788.mp3")
-const bun: HTMLAudioElement | null = new Audio("crunch-crispy-breadbun-41340.mp3")
-const dad: HTMLAudioElement | null = new Audio("dad-says-yummy-113126.mp3")
-const farm: HTMLAudioElement | null = new Audio("zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_013_102682.mp3")
-const factory: HTMLAudioElement | null = new Audio("some-kind-of-machine-103152.mp3")
-const bank: HTMLAudioElement | null = new Audio("cash-register-purchase-87313.mp3")
-const ambience: HTMLAudioElement | null = new Audio("./Hotdog-Clicker-Ambience.m4a")
-ambience.loop = true;
-
 const bunBuyable: string = "./Can-Buy-Bun-Button.svg"
 const bunUnBuyable: string = "./Cant-Buy-Bun-Button.svg"
-const bunBuying: string = "./Buying-Bun-Button.svg"
 
 const dadBuyable: string = "./Can-Buy-Dad-Button.svg"
 const dadUnBuyable: string = "./Cant-Buy-Dad-Button.svg"
-const dadBuying: string = "./Buying-Dad-Button.svg"
 
 const grillBuyable: string = "./Can-Buy-Grill-Button.svg"
 const grillUnBuyable: string = "./Cant-Buy-Grill-Button.svg"
-const grillBuying: string = "./Buying-Grill-Button.svg"
 
 const farmBuyable: string = "./Can-Buy-Farm-Button.svg"
 const farmUnBuyable: string = "./Cant-Buy-Farm-Button.svg"
-const farmBuying: string = "./Buying-Farm-Button.svg"
 
 const facBuyable: string = "./Can-Buy-Fac-Button.svg"
 const facUnBuyable: string = "./Cant-Buy-Fac-Button.svg"
-const facBuying: string = "./Buying-Fac-Button.svg"
 
 const bankBuyable: string = "./Can-Buy-Bank-Button.svg"
 const bankUnBuyable: string = "./Cant-Buy-Bank-Button.svg"
-const bankBuying: string = "./Buying-Bank-Button.svg"
 
 const freezerBuyable: string = './Can-Buy-Freezer-Button.svg'
 const freezerUnBuyable: string = './Cant-Buy-Freezer-Button.svg'
-const freezerBuying: string = './Buying-Freezer-Button.svg'
 
 let passiveClicks: number = 0;
 let clickCount: number = 0;
@@ -150,7 +134,7 @@ const save = (): void => {
     set('freezer', `${freezerCount.toFixed(2)},${freezerRate.toFixed(2)},${freezerCost.toFixed(2)}`)
 }
 
-const load = (): void => {
+const load: Function = (): void => {
     const get = (key: string): string => {
         return localStorage.getItem(key) || ""
     }
@@ -202,58 +186,31 @@ const checkBuyables = () => {
         bunImage.src = bunBuyable
     } else {
         bunImage.src = bunUnBuyable
-        dadImage.src = dadUnBuyable
-        grillImage.src = grillUnBuyable
-        farmImage.src = farmUnBuyable
-        facImage.src = facUnBuyable
-        bankImage.src = bankUnBuyable
-        freezerImage.src = freezerUnBuyable
-        return
     }
     if (clickCount >= dadCost) {
         dadImage.src = dadBuyable
     } else {
         dadImage.src = dadUnBuyable
-        grillImage.src = grillUnBuyable
-        farmImage.src = farmUnBuyable
-        facImage.src = facUnBuyable
-        bankImage.src = bankUnBuyable
-        freezerImage.src = freezerUnBuyable
-        return
     }
     if (clickCount >= grillCost) {
         grillImage.src = grillBuyable
     } else {
         grillImage.src = grillUnBuyable
-        farmImage.src = farmUnBuyable
-        facImage.src = facUnBuyable
-        bankImage.src = bankUnBuyable
-        freezerImage.src = freezerUnBuyable
-        return
     }
     if (clickCount >= farmCost) {
         farmImage.src = farmBuyable
     } else {
         farmImage.src = farmUnBuyable
-        facImage.src = facUnBuyable
-        bankImage.src = bankUnBuyable
-        freezerImage.src = freezerUnBuyable
-        return
     }
     if (clickCount >= facCost) {
         facImage.src = facBuyable
     } else {
         facImage.src = facUnBuyable
-        bankImage.src = bankUnBuyable
-        freezerImage.src = freezerUnBuyable
-        return
     }
     if (clickCount >= bankCost) {
         bankImage.src = bankBuyable
     } else {
         bankImage.src = bankUnBuyable
-        freezerImage.src = freezerUnBuyable
-        return
     }
     if (clickCount >= freezerCost) {
         freezerImage.src = freezerBuyable
@@ -263,9 +220,6 @@ const checkBuyables = () => {
 }
 
 hotdogButton?.addEventListener("click", function() {
-    if (clickCount == 0.0) {
-        ambience?.play()
-    }
     if (clickCountElement != null) {
         clickCount++
         update()
@@ -278,66 +232,54 @@ bunButton?.addEventListener("click", function() {
     if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
         clickCount -= bunCost;
         bunCost *= increment;
-        bunImage.src = bunBuying
         bunCount++;
         passiveClicks += bunRate;
         update()
-        bun?.play();
     }
 });
 dadButton?.addEventListener("click", function() {
     if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
         clickCount -= dadCost;
         dadCost *= increment;
-        dadImage.src = dadBuying
         dadCount++;
         passiveClicks += dadRate;
         update()
-        dad?.play();
     }
 });
 grillButton?.addEventListener("click", function() {
     if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
         clickCount -= grillCost;
         grillCost *= increment;
-        grillImage.src = grillBuying
         grillCount++;
         passiveClicks += grillRate;
         update()
-        grill?.play();
     }
 });
 farmButton?.addEventListener("click", function() {
     if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
         clickCount -= farmCost;
         farmCost *= increment;
-        farmImage.src = farmBuying
         farmCount++;
         passiveClicks += farmRate;
         update()
-        farm?.play();
     }
 });
 facButton?.addEventListener("click", function() {
     if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
         clickCount -= facCost;
         facCost *= increment;
-        facImage.src = facBuying
         facCount++;
         passiveClicks += facRate;
         update()
-        factory?.play();
     }
 });
 bankButton?.addEventListener("click", function() {
     if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
         clickCount -= bankCost;
         bankCost *= increment;
-        bankImage.src = bankBuying
         bankCount++;
         passiveClicks += bankRate;
         update()
-        bank?.play();
     }
 });
 
@@ -345,11 +287,9 @@ freezerButton?.addEventListener("click", function() {
     if (clickCount >= freezerCost && freezerPriceElement != null && freezerCountElement != null && clickCountElement != null && passiveClicksElement != null) {
         clickCount -= freezerCost;
         freezerCost *= increment;
-        freezerImage.src = freezerBuying
         freezerCount++;
         passiveClicks += freezerRate;
         update();
-        bank?.play();
     }
 });
 
@@ -391,12 +331,12 @@ crispButton?.addEventListener("click", function() {
     }
 });
 
-setInterval(function() {
+setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
         save();
     }
-}, 100);
+}, 100)
 
 load()
