@@ -341,6 +341,6 @@ setInterval(() => {
 
 load()
 
-window.oncontextmenu = () => {
+document.oncontextmenu = () => {
     return false;
 }
