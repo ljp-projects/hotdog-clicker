@@ -52,7 +52,7 @@ let bankRate: number = 2500;
 let freezerCost: number = 1000000
 let freezerRate: number = 15000
 
-const increment: number = 1.3;
+const increment: number = 1.15;
 
 const passiveClicksElement: HTMLElement | null = document.getElementById("passive");
 const clickCountElement: HTMLElement | null = document.getElementById("clickCount");
