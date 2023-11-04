@@ -12,7 +12,7 @@ MIT LICENSE
 // And rounded to 2 decimals
 const increment = 1.3;
 const increase = (price, count) => {
-    return price + Math.cosh(increment + count) / 3;
+    return price * increment + count / increment;
 };
 const wipe = document.getElementById("wipe");
 const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });

@@ -14,7 +14,7 @@ MIT LICENSE
 const increment: number = 1.3;
 
 const increase: Function = (price: number, count: number): number => {
-    return price + Math.cosh(increment + count) / 3
+    return price * increment + count / increment
 }
 
 const wipe = document.getElementById("wipe")
