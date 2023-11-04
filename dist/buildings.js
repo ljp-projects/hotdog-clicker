@@ -1,15 +1,4 @@
 "use strict";
-/*
-kotlinc
-MIT LICENSE
-2023
-*/
-// The formula for calculating the new price of an item:
-// P + cosh(M + C) / 3
-// where P is the item's price previously
-// C is the amount of the item owned
-// M is the increment constant.
-// And rounded to 2 decimals
 const increment = 1.3;
 const increase = (price, count) => {
     return price * increment + count / increment;
