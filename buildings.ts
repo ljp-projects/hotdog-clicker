@@ -18,6 +18,8 @@ const increase: Function = (price: number, count: number): number => {
 }
 
 const wipe = document.getElementById("wipe")
+const saveBtn = document.getElementById("save")
+const loadBtn = document.getElementById("load")
 
 const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
 
@@ -357,7 +359,7 @@ let ID = setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
-        save();
+        setTimeout(save, 1000)
     }
 }, 100)
 
@@ -377,8 +379,31 @@ if (wipe) wipe.onclick = () => {
             if (clickCountElement != null) {
                 clickCount += passiveClicks / 10;
                 update();
-                save();
+                setTimeout(save, 1000)
             }
         }, 100)
     }
+}
+
+if (saveBtn) saveBtn.onclick = () => {
+    clearInterval(ID)
+    save()
+    ID = setInterval(() => {
+        if (clickCountElement != null) {
+            clickCount += passiveClicks / 10;
+            update();
+            setTimeout(save, 1000)
+        }
+    }, 100)
+}
+if (loadBtn) loadBtn.onclick = () => {
+    clearInterval(ID)
+    load()
+    ID = setInterval(() => {
+        if (clickCountElement != null) {
+            clickCount += passiveClicks / 10;
+            update();
+            setTimeout(save, 1000)
+        }
+    }, 100)
 }
