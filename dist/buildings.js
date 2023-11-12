@@ -110,9 +110,10 @@ const save = () => {
 * First param is price, next is count
 */
 const load = (file) => {
-    const content = file.text().then(res => JSON.parse(res));
-    // @ts-ignore
-    console.log(content.Hotdogs);
+    const content = file.text().then(res => {
+        const json = JSON.parse(res);
+        console.log(json.Hotdogs);
+    });
     update();
 };
 const checkBuyables = () => {

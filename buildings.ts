@@ -143,10 +143,10 @@ const save = (): void => {
 * First param is price, next is count
 */
 const load: Function = (file: File): void => {
-	const content = file.text().then(res => JSON.parse(res))
-
-	// @ts-ignore
-	console.log(content.Hotdogs)
+	const content = file.text().then(res => {
+		const json = JSON.parse(res)
+		console.log(json.Hotdogs)
+	})
 	update()
 }
 
