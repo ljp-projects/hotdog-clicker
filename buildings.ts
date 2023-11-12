@@ -132,16 +132,13 @@ const save = (): void => {
 	const file = new File([`${save}`], "hotdog-clicker-save.json", {type: "application/json"})
 	const url = window.URL.createObjectURL(file)
 	const a = document.createElement("a")
-	a.setAttribute("style", "display: none")
 	a.href = url
 	a.download = file.name
 	a.click();
 	window.URL.revokeObjectURL(url);
+	a.remove()
 }
 
-/*
-* First param is price, next is count
-*/
 const load: Function = (file: File): void => {
 	const content = file.text().then(res => {
 		const json = JSON.parse(res)
@@ -324,6 +321,7 @@ let ID = setInterval(() => {
 }, 100)
 
 document.oncontextmenu = () => {
+	// In future create your own one
 	return false;
 }
 
