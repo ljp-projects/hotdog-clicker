@@ -326,8 +326,8 @@ document.oncontextmenu = () => {
 	window.onscroll = () => {
 		return false;
 	};
-	
-	document.addEventListener("click", () => {
+
+	document.addEventListener("dblclick", () => {
 		document.getElementById("main")?.setAttribute("class", "display")
 		document.getElementById("context")?.setAttribute("class", "hide")
 		window.onscroll = function() {};

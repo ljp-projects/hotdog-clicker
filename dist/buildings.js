@@ -285,7 +285,7 @@ document.oncontextmenu = () => {
     window.onscroll = () => {
         return false;
     };
-    document.addEventListener("click", () => {
+    document.addEventListener("dblclick", () => {
         var _a, _b;
         (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "display");
         (_b = document.getElementById("context")) === null || _b === void 0 ? void 0 : _b.setAttribute("class", "hide");
