@@ -298,9 +298,9 @@ if (saveBtn)
     };
 if (file != null && file.files != null)
     file.addEventListener('input', () => {
-        var _a, _b;
+        var _a;
         clearInterval(ID);
-        load((_b = (_a = file === null || file === void 0 ? void 0 : file.files) === null || _a === void 0 ? void 0 : _a.item(0)) === null || _b === void 0 ? void 0 : _b.text().then(res => res));
+        load((_a = file === null || file === void 0 ? void 0 : file.files) === null || _a === void 0 ? void 0 : _a.item(0));
         ID = setInterval(() => {
             if (clickCountElement != null) {
                 clickCount += passiveClicks / 10;
