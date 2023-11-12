@@ -145,9 +145,25 @@ const save = (): void => {
 const load: Function = (file: File): void => {
 	const content = file.text().then(res => {
 		const json = JSON.parse(res)
-		clickCount = json.Hotdogs
+		console.log(json)
+
+		clickCount = json.Hotdogs || 0
+		passiveClicks = json.HotdogsPerSecond || 0
+
+		bunCount = json.Bun.Owned || 0
+		bunRate = json.Bun.Rate || 0.2
+		bunCost = json.Bun.Price || 10
+
+		dadCount = json.Dad.Owned || 0
+		dadRate = json.Dad.Rate || 2
+		dadCost = json.Dad.Price || 100
+
+		grillCount = json.Grill.Owned || 0
+		grillRate = json.Grill.Rate || 2
+		grillCost = json.Grill.Price || 100
+
+		update()
 	})
-	update()
 }
 
 const checkBuyables = () => {
