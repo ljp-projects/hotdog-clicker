@@ -7,6 +7,7 @@ const increase: Function = (price: number, count: number): number => {
 const wipe = document.getElementById("wipe")
 const saveBtn = document.getElementById("save")
 const loadBtn = document.getElementById("load")
+const file = document.querySelector('#file') as HTMLInputElement
 
 const formatter = new Intl.NumberFormat('en-us', {minimumFractionDigits: 2})
 
@@ -141,7 +142,8 @@ const save = (): void => {
 /*
 * First param is price, next is count
 */
-const load: Function = (): void => {
+const load: Function = (file: File): void => {
+	console.log(file.text().then(res => res))
 	update()
 }
 
@@ -331,13 +333,13 @@ if (saveBtn) saveBtn.onclick = () => {
 		}
 	}, 100)
 }
-if (loadBtn) loadBtn.onclick = () => {
+if (file) file.addEventListener('input', () => {
 	clearInterval(ID)
-	load()
+	load(file.value)
 	ID = setInterval(() => {
 		if (clickCountElement != null) {
 			clickCount += passiveClicks / 10;
 			update();
 		}
 	}, 100)
-}
+})
