@@ -283,10 +283,16 @@ document.oncontextmenu = () => {
     // In future create your own one
     (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "blur display");
     (_b = document.getElementById("context")) === null || _b === void 0 ? void 0 : _b.setAttribute("class", "display");
+    window.onscroll = function () {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+        window.scrollTo(scrollLeft, scrollTop);
+    };
     document.addEventListener("click", () => {
         var _a, _b;
         (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "display");
         (_b = document.getElementById("context")) === null || _b === void 0 ? void 0 : _b.setAttribute("class", "hide");
+        window.onscroll = function () { };
     });
     return false;
 };
