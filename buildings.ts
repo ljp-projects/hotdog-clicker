@@ -145,7 +145,7 @@ const save = (): void => {
 const load: Function = (file: File): void => {
 	const content = file.text().then(res => {
 		const json = JSON.parse(res)
-		console.log(json.Hotdogs)
+		clickCount = json.Hotdogs
 	})
 	update()
 }

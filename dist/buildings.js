@@ -112,7 +112,7 @@ const save = () => {
 const load = (file) => {
     const content = file.text().then(res => {
         const json = JSON.parse(res);
-        console.log(json.Hotdogs);
+        clickCount = json.Hotdogs;
     });
     update();
 };
