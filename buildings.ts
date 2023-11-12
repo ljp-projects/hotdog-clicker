@@ -321,14 +321,12 @@ let ID = setInterval(() => {
 }, 100)
 
 document.oncontextmenu = () => {
-	// In future create your own one
 	document.getElementById("main")?.setAttribute("class", "blur display")
 	document.getElementById("context")?.setAttribute("class", "display")
-	window.onscroll = function () {
-		const scrollTop = window.scrollY || document.documentElement.scrollTop;
-		const scrollLeft = window.scrollX || document.documentElement.scrollLeft
-		window.scrollTo(scrollLeft, scrollTop);
+	window.onscroll = () => {
+		return false;
 	};
+	
 	document.addEventListener("click", () => {
 		document.getElementById("main")?.setAttribute("class", "display")
 		document.getElementById("context")?.setAttribute("class", "hide")
