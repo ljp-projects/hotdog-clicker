@@ -95,56 +95,20 @@ const update = () => {
     freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
 };
 const save = () => {
-    const set = (key, value) => {
-        localStorage.setItem(key, value);
-    };
-    set('hotdogs', `${clickCount.toFixed(2)}`);
-    set('hotdogs-sec', `${passiveClicks.toFixed(2)}`);
-    set('bun', `${bunCount.toFixed(2)},${bunRate.toFixed(2)},${bunCost.toFixed(2)}`);
-    set('dad', `${dadCount.toFixed(2)},${dadRate.toFixed(2)},${dadCost.toFixed(2)}`);
-    set('grill', `${grillCount.toFixed(2)},${grillRate.toFixed(2)},${grillCost.toFixed(2)}`);
-    set('farm', `${farmCount.toFixed(2)},${farmRate.toFixed(2)},${farmCost.toFixed(2)}`);
-    set('factory', `${facCount.toFixed(2)},${facRate.toFixed(2)},${facCost.toFixed(2)}`);
-    set('bank', `${bankCount.toFixed(2)},${bankRate.toFixed(2)},${bankCost.toFixed(2)}`);
-    set('freezer', `${freezerCount.toFixed(2)},${freezerRate.toFixed(2)},${freezerCost.toFixed(2)}`);
+    const save = `{"Hotdogs":${clickCount},"HotdogsPerSecond":${passiveClicks},"Bun":{"Owned":${bunCount},"Rate":${bunRate},"Price": ${bunCost}},"Dad":{"Owned":${dadCount},"Rate":${dadRate},"Price":${dadCost}},"Grill":{"Owned": ${grillCount},"Rate": ${grillRate},"Price":${grillCost}},"Farm":{"Owned":${farmCost},"Rate":${farmRate},"Price":${farmCost}},"Factory":{"Owned":${facCount},"Rate":${facRate},"Price":${facCost}},"Bank":{"Owned":${bankCount},"Rate":${bankRate},"Price":${bankCost}},"Freezer":{"Owned":${freezerCount},"Rate":${freezerRate},"Price":${freezerCost}}}`;
+    const file = new File([`${save}`], "hotdog-clicker-save.json", { type: "application/json" });
+    const url = window.URL.createObjectURL(file);
+    const a = document.createElement("a");
+    a.setAttribute("style", "display: none");
+    a.href = url;
+    a.download = file.name;
+    a.click();
+    window.URL.revokeObjectURL(url);
 };
 /*
 * First param is price, next is count
 */
 const load = () => {
-    const get = (key) => {
-        return localStorage.getItem(key) || "";
-    };
-    clickCount = Number(get('hotdogs')) || 0;
-    passiveClicks = Number(get('hotdogs-sec')) || 0;
-    const bunInfo = get('bun').split(',');
-    const dadInfo = get('dad').split(',');
-    const grillInfo = get('grill').split(',');
-    const farmInfo = get('farm').split(',');
-    const facInfo = get('factory').split(',');
-    const bankInfo = get('bank').split(',');
-    const freezerInfo = get('freezer').split(',');
-    bunCount = Number(bunInfo[0]) || 0;
-    bunRate = Number(bunInfo[1]) || 0.2;
-    bunCost = Number(bunInfo[2]) || 10;
-    dadCount = Number(dadInfo[0]) || 0;
-    dadRate = Number(dadInfo[1]) || 2;
-    dadCost = Number(dadInfo[2]) || 100;
-    grillCount = Number(grillInfo[0]) || 0;
-    grillRate = Number(grillInfo[1]) || 10;
-    grillCost = Number(grillInfo[2]) || 500;
-    farmCount = Number(farmInfo[0]) || 0;
-    farmRate = Number(farmInfo[1]) || 50;
-    farmCost = Number(farmInfo[2]) || 5000;
-    facCount = Number(facInfo[0]) || 0;
-    facRate = Number(facInfo[1]) || 500;
-    facCost = Number(facInfo[2]) || 50000;
-    bankCount = Number(bankInfo[0]) || 0;
-    bankRate = Number(bankInfo[1]) || 2500;
-    bankCost = Number(bankInfo[2]) || 250000;
-    freezerCount = Number(freezerInfo[0]) || 0;
-    freezerRate = Number(freezerInfo[1]) || 15000;
-    freezerCost = Number(freezerInfo[2]) || 1000000;
     update();
 };
 const checkBuyables = () => {
@@ -299,10 +263,8 @@ let ID = setInterval(() => {
     if (clickCountElement != null) {
         clickCount += passiveClicks / 10;
         update();
-        setTimeout(save, 1000);
     }
 }, 100);
-load();
 document.oncontextmenu = () => {
     return false;
 };
@@ -317,7 +279,6 @@ if (wipe)
                 if (clickCountElement != null) {
                     clickCount += passiveClicks / 10;
                     update();
-                    setTimeout(save, 1000);
                 }
             }, 100);
         }
@@ -330,7 +291,6 @@ if (saveBtn)
             if (clickCountElement != null) {
                 clickCount += passiveClicks / 10;
                 update();
-                setTimeout(save, 1000);
             }
         }, 100);
     };
@@ -342,7 +302,6 @@ if (loadBtn)
             if (clickCountElement != null) {
                 clickCount += passiveClicks / 10;
                 update();
-                setTimeout(save, 1000);
             }
         }, 100);
     };
