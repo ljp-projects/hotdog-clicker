@@ -39,11 +39,18 @@
         }
 
         .display {
-            display: block;
+            opacity: 1;
+            transition-duration: 1s;
+        }
+
+        .hide {
+            opacity: 0;
+            transition-duration: 1s;
         }
 
         .blur {
             filter: blur(1rem);
+            transition-duration: 1s;
         }
     </style>
 </head>
@@ -114,6 +121,9 @@
             </div>
         </div>
         <script src="./dist/buildings.min.js"></script>
+    </div>
+    <div id="context" class="hide">
+        <h1>Context Menu</h1>
     </div>
 </body>
 </html>

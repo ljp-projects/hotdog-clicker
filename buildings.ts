@@ -323,7 +323,11 @@ let ID = setInterval(() => {
 document.oncontextmenu = () => {
 	// In future create your own one
 	document.getElementById("main")?.setAttribute("class", "blur display")
-	document.addEventListener("click", () => document.getElementById("main")?.setAttribute("class", "display"))
+	document.getElementById("context")?.setAttribute("class", "display")
+	document.addEventListener("click", () => {
+		document.getElementById("main")?.setAttribute("class", "display")
+		document.getElementById("context")?.setAttribute("class", "hide")
+	})
 	return false;
 }
 

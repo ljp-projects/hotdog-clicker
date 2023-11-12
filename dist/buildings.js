@@ -279,10 +279,15 @@ let ID = setInterval(() => {
     }
 }, 100);
 document.oncontextmenu = () => {
-    var _a;
+    var _a, _b;
     // In future create your own one
     (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "blur display");
-    document.addEventListener("click", () => { var _a; return (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "display"); });
+    (_b = document.getElementById("context")) === null || _b === void 0 ? void 0 : _b.setAttribute("class", "display");
+    document.addEventListener("click", () => {
+        var _a, _b;
+        (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "display");
+        (_b = document.getElementById("context")) === null || _b === void 0 ? void 0 : _b.setAttribute("class", "hide");
+    });
     return false;
 };
 if (wipe)
