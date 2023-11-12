@@ -333,9 +333,9 @@ if (saveBtn) saveBtn.onclick = () => {
 		}
 	}, 100)
 }
-if (file) file.addEventListener('input', () => {
+if (file != null && file.files != null) file.addEventListener('input', () => {
 	clearInterval(ID)
-	load(file.value)
+	load(file?.files?.item(0)?.text().then(res => res))
 	ID = setInterval(() => {
 		if (clickCountElement != null) {
 			clickCount += passiveClicks / 10;
