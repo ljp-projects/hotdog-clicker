@@ -6,6 +6,7 @@ const increase = (price, count) => {
 const wipe = document.getElementById("wipe");
 const saveBtn = document.getElementById("save");
 const loadBtn = document.getElementById("load");
+const file = document.querySelector('#file');
 const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
 const bunBuyable = "./Can-Buy-Bun-Button.svg";
 const bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
@@ -108,7 +109,8 @@ const save = () => {
 /*
 * First param is price, next is count
 */
-const load = () => {
+const load = (file) => {
+    console.log(file.text().then(res => res));
     update();
 };
 const checkBuyables = () => {
@@ -294,14 +296,14 @@ if (saveBtn)
             }
         }, 100);
     };
-if (loadBtn)
-    loadBtn.onclick = () => {
+if (file)
+    file.addEventListener('input', () => {
         clearInterval(ID);
-        load();
+        load(file.value);
         ID = setInterval(() => {
             if (clickCountElement != null) {
                 clickCount += passiveClicks / 10;
                 update();
             }
         }, 100);
-    };
+    });
