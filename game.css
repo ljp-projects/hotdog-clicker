@@ -1,0 +1,54 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+p,
+label,
+span,
+button {
+	font-family: arial, sans-serif, system-ui;
+	color: white;
+	transition-duration: 0.5s;
+}
+
+body {
+	background-color: #101010;
+}
+
+button {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+#wipe {
+	color: crimson;
+}
+
+#save {
+	color: lawngreen;
+}
+
+.display {
+	opacity: 1;
+	transition-duration: 1s;
+}
+
+.hide {
+	opacity: 0;
+	transition-duration: 1s;
+}
+
+.blur {
+	filter: blur(1rem);
+	transition-duration: 1s;
+}
+
+#context {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%, -50%);
+}
