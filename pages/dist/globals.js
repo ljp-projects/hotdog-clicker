@@ -76,3 +76,38 @@ const farmImage = document.getElementById("farmImg");
 const facImage = document.getElementById("facImg");
 const bankImage = document.getElementById("bankImg");
 const freezerImage = document.getElementById("freezerImg");
+const update = () => {
+    checkBuyables();
+    clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(2))) : null;
+    passiveClicksElement != null ? passiveClicksElement.innerText = formatter.format(Number(passiveClicks.toFixed(2))) : null;
+    bunCountElement != null ? bunCountElement.innerText = formatter.format(bunCount) : null;
+    bunPriceElement != null ? bunPriceElement.innerText = formatter.format(bunCost) : null;
+    dadCountElement != null ? dadCountElement.innerText = formatter.format(dadCount) : null;
+    dadPriceElement != null ? dadPriceElement.innerText = formatter.format(dadCost) : null;
+    grillCountElement != null ? grillCountElement.innerText = formatter.format(grillCount) : null;
+    grillPriceElement != null ? grillPriceElement.innerText = formatter.format(grillCost) : null;
+    farmCountElement != null ? farmCountElement.innerText = formatter.format(farmCount) : null;
+    farmPriceElement != null ? farmPriceElement.innerText = formatter.format(farmCost) : null;
+    facCountElement != null ? facCountElement.innerText = formatter.format(facCount) : null;
+    facPriceElement != null ? facPriceElement.innerText = formatter.format(facCost) : null;
+    bankCountElement != null ? bankCountElement.innerText = formatter.format(bankCount) : null;
+    bankPriceElement != null ? bankPriceElement.innerText = formatter.format(bankCost) : null;
+    freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null;
+    freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
+};
+const checkBuyables = () => {
+    const worker = new Worker('./dist/check.js');
+    worker.postMessage([
+        clickCount,
+        {
+            bunImage: bunImage,
+            dadImage: dadImage,
+            grillImage: grillImage,
+            farmImage: farmImage,
+            facImage: facImage,
+            bankImage: bankImage,
+            freezerImage: freezerImage,
+        }
+    ]);
+    worker.terminate();
+};
