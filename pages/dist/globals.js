@@ -98,16 +98,7 @@ const update = () => {
 const checkBuyables = () => {
     const worker = new Worker('./dist/check.js');
     worker.postMessage([
-        clickCount,
-        {
-            bunImage: bunImage,
-            dadImage: dadImage,
-            grillImage: grillImage,
-            farmImage: farmImage,
-            facImage: facImage,
-            bankImage: bankImage,
-            freezerImage: freezerImage,
-        }
+        clickCount
     ]);
     worker.terminate();
 };
