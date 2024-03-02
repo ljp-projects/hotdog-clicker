@@ -1,45 +1,48 @@
 onmessage = e => {
     const clickCount = e.data[0]
+	const buyables = [];
 
     if (clickCount >= bunCost) {
-		bunImage.src = bunBuyable
+		buyables.push(bunBuyable)
 	} else {
-		bunImage.src = bunUnBuyable
+		buyables.push(bunUnBuyable)
 	}
 
 	if (clickCount >= dadCost) {
-		dadImage.src = dadBuyable
+		buyables.push(dadBuyable)
 	} else {
-		dadImage.src = dadUnBuyable
+		buyables.push(dadUnBuyable)
 	}
 
 	if (clickCount >= grillCost) {
-		grillImage.src = grillBuyable
+		buyables.push(grillBuyable)
 	} else {
-		grillImage.src = grillUnBuyable
+		buyables.push(grillUnBuyable)
 	}
 
 	if (clickCount >= farmCost) {
-		farmImage.src = farmBuyable
+		buyables.push(farmBuyable)
 	} else {
-		farmImage.src = farmUnBuyable
+		buyables.push(farmUnBuyable)
 	}
 
 	if (clickCount >= facCost) {
-		facImage.src = facBuyable
+		buyables.push(facBuyable)
 	} else {
-		facImage.src = facUnBuyable
+		buyables.push(facUnBuyable)
 	}
 
 	if (clickCount >= bankCost) {
-		bankImage.src = bankBuyable
+		buyables.push(bankBuyable)
 	} else {
-		bankImage.src = bankUnBuyable
+		buyables.push(bankUnBuyable)
 	}
 
 	if (clickCount >= freezerCost) {
-		freezerImage.src = freezerBuyable
+		buyables.push(freezerBuyable)
 	} else {
-		freezerImage.src = freezerUnBuyable
+		buyables.push(freezerUnBuyable)
 	}
+
+	postMessage(buyables)
 }

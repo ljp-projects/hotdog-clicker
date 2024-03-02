@@ -130,9 +130,22 @@ const update = (): void => {
 const checkBuyables = () => {
 	const worker = new Worker('./dist/check.js')
 
+	// We need to know which items we can buy
 	worker.postMessage([
 		clickCount
 	]);
+
+	worker.onmessage = e => {
+		const buyables: string[] = e.data;
+
+		bunImage.src = buyables[0];
+		dadImage.src = buyables[1];
+		grillImage.src = buyables[2];
+		farmImage.src = buyables[3];
+		facImage.src = buyables[4];
+		bankImage.src = buyables[5];
+		freezerImage.src = buyables[6];
+	}
 
 	worker.terminate();
 }
