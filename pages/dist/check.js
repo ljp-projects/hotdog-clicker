@@ -1,48 +1,46 @@
-"use strict";
-onmessage = e => {
-    const clickCount = e.data[0];
-    const buyables = [];
-    if (clickCount >= bunCost) {
-        buyables.push(bunBuyable);
+import * as globals from "./globals.js";
+export const check = () => {
+    const clickCount = globals.clickCount;
+    if (clickCount >= globals.bunCost) {
+        globals.bunImage.src = globals.bunBuyable;
     }
     else {
-        buyables.push(bunUnBuyable);
+        globals.bunImage.src = globals.bunUnBuyable;
     }
-    if (clickCount >= dadCost) {
-        buyables.push(dadBuyable);
-    }
-    else {
-        buyables.push(dadUnBuyable);
-    }
-    if (clickCount >= grillCost) {
-        buyables.push(grillBuyable);
+    if (clickCount >= globals.dadCost) {
+        globals.dadImage.src = globals.dadBuyable;
     }
     else {
-        buyables.push(grillUnBuyable);
+        globals.dadImage.src = globals.dadUnBuyable;
     }
-    if (clickCount >= farmCost) {
-        buyables.push(farmBuyable);
-    }
-    else {
-        buyables.push(farmUnBuyable);
-    }
-    if (clickCount >= facCost) {
-        buyables.push(facBuyable);
+    if (clickCount >= globals.grillCost) {
+        globals.grillImage.src = globals.grillBuyable;
     }
     else {
-        buyables.push(facUnBuyable);
+        globals.grillImage.src = globals.grillUnBuyable;
     }
-    if (clickCount >= bankCost) {
-        buyables.push(bankBuyable);
-    }
-    else {
-        buyables.push(bankUnBuyable);
-    }
-    if (clickCount >= freezerCost) {
-        buyables.push(freezerBuyable);
+    if (clickCount >= globals.farmCost) {
+        globals.farmImage.src = globals.farmBuyable;
     }
     else {
-        buyables.push(freezerUnBuyable);
+        globals.farmImage.src = globals.farmUnBuyable;
     }
-    postMessage(buyables);
+    if (clickCount >= globals.facCost) {
+        globals.facImage.src = globals.facBuyable;
+    }
+    else {
+        globals.facImage.src = globals.facUnBuyable;
+    }
+    if (clickCount >= globals.bankCost) {
+        globals.bankImage.src = globals.bankBuyable;
+    }
+    else {
+        globals.bankImage.src = globals.bankUnBuyable;
+    }
+    if (clickCount >= globals.freezerCost) {
+        globals.freezerImage.src = globals.freezerBuyable;
+    }
+    else {
+        globals.freezerImage.src = globals.freezerUnBuyable;
+    }
 };
