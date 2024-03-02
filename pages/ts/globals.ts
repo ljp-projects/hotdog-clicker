@@ -145,7 +145,7 @@ const checkBuyables = () => {
 		facImage.src = buyables[4];
 		bankImage.src = buyables[5];
 		freezerImage.src = buyables[6];
-	}
 
-	worker.terminate();
+		worker.terminate()
+	}
 }
