@@ -1,4 +1,3 @@
-import { check } from "./check.js";
 export const increment = 1.3;
 export const increase = (price, count) => {
     return price * increment + count / increment;
@@ -8,20 +7,20 @@ export const saveBtn = document.getElementById("save");
 export const loadBtn = document.getElementById("load");
 export const file = document.querySelector('#file');
 export const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 });
-export const bunBuyable = "./Can-Buy-Bun-Button.svg";
-export const bunUnBuyable = "./Cant-Buy-Bun-Button.svg";
-export const dadBuyable = "./Can-Buy-Dad-Button.svg";
-export const dadUnBuyable = "./Cant-Buy-Dad-Button.svg";
-export const grillBuyable = "./Can-Buy-Grill-Button.svg";
-export const grillUnBuyable = "./Cant-Buy-Grill-Button.svg";
-export const farmBuyable = "./Can-Buy-Farm-Button.svg";
-export const farmUnBuyable = "./Cant-Buy-Farm-Button.svg";
-export const facBuyable = "./Can-Buy-Fac-Button.svg";
-export const facUnBuyable = "./Cant-Buy-Fac-Button.svg";
-export const bankBuyable = "./Can-Buy-Bank-Button.svg";
-export const bankUnBuyable = "./Cant-Buy-Bank-Button.svg";
-export const freezerBuyable = './Can-Buy-Freezer-Button.svg';
-export const freezerUnBuyable = './Cant-Buy-Freezer-Button.svg';
+export const bunBuyable = "./icons/Can-Buy-Bun-Button.svg";
+export const bunUnBuyable = "./icons/Cant-Buy-Bun-Button.svg";
+export const dadBuyable = "./icons/Can-Buy-Dad-Button.svg";
+export const dadUnBuyable = "./icons/Cant-Buy-Dad-Button.svg";
+export const grillBuyable = "./icons/Can-Buy-Grill-Button.svg";
+export const grillUnBuyable = "./icons/Cant-Buy-Grill-Button.svg";
+export const farmBuyable = "./icons/Can-Buy-Farm-Button.svg";
+export const farmUnBuyable = "./icons/Cant-Buy-Farm-Button.svg";
+export const facBuyable = "./icons/Can-Buy-Fac-Button.svg";
+export const facUnBuyable = "./icons/Cant-Buy-Fac-Button.svg";
+export const bankBuyable = "./icons/Can-Buy-Bank-Button.svg";
+export const bankUnBuyable = "./icons/Cant-Buy-Bank-Button.svg";
+export const freezerBuyable = './icons/Can-Buy-Freezer-Button.svg';
+export const freezerUnBuyable = './icons/Cant-Buy-Freezer-Button.svg';
 export let passiveClicks = 0;
 export let clickCount = 0;
 export let bunCount = 0;
@@ -95,7 +94,50 @@ export const update = () => {
     freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null;
     freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
 };
-const checkBuyables = check;
+const checkBuyables = () => {
+    if (clickCount >= bunCost) {
+        bunImage.src = bunBuyable;
+    }
+    else {
+        bunImage.src = bunUnBuyable;
+    }
+    if (clickCount >= dadCost) {
+        dadImage.src = dadBuyable;
+    }
+    else {
+        dadImage.src = dadUnBuyable;
+    }
+    if (clickCount >= grillCost) {
+        grillImage.src = grillBuyable;
+    }
+    else {
+        grillImage.src = grillUnBuyable;
+    }
+    if (clickCount >= farmCost) {
+        farmImage.src = farmBuyable;
+    }
+    else {
+        farmImage.src = farmUnBuyable;
+    }
+    if (clickCount >= facCost) {
+        facImage.src = facBuyable;
+    }
+    else {
+        facImage.src = facUnBuyable;
+    }
+    if (clickCount >= bankCost) {
+        bankImage.src = bankBuyable;
+    }
+    else {
+        bankImage.src = bankUnBuyable;
+    }
+    if (clickCount >= freezerCost) {
+        freezerImage.src = freezerBuyable;
+    }
+    else {
+        freezerImage.src = freezerUnBuyable;
+    }
+};
 hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEventListener("click", function () {
     if (clickCountElement != null) {
         clickCount++;
@@ -202,10 +244,10 @@ crispButton === null || crispButton === void 0 ? void 0 : crispButton.addEventLi
 });
 setInterval(() => {
     if (clickCountElement != null) {
-        clickCount += passiveClicks / 10;
+        clickCount += passiveClicks / 100;
         update();
     }
-}, 100);
+}, 10);
 document.oncontextmenu = () => {
     var _a, _b;
     (_a = document.getElementById("main")) === null || _a === void 0 ? void 0 : _a.setAttribute("class", "blur display");
