@@ -1,105 +1,105 @@
-export const increment: number = 1.3;
+const increment: number = 1.3;
 
-export const increase = (price: number, count: number): number => {
+const increase = (price: number, count: number): number => {
 	return price * increment + count / increment
 }
 
-export const wipe = document.getElementById("wipe")
-export const saveBtn = document.getElementById("save")
-export const loadBtn = document.getElementById("load")
-export const file = document.querySelector('#file') as HTMLInputElement
+const wipe = document.getElementById("wipe")
+const saveBtn = document.getElementById("save")
+const loadBtn = document.getElementById("load")
+const file = document.querySelector('#file') as HTMLInputElement
 
-export const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 })
+const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 })
 
-export const bunBuyable: string = "./icons/Can-Buy-Bun-Button.svg"
-export const bunUnBuyable: string = "./icons/Cant-Buy-Bun-Button.svg"
+const bunBuyable: string = "./icons/Can-Buy-Bun-Button.svg"
+const bunUnBuyable: string = "./icons/Cant-Buy-Bun-Button.svg"
 
-export const dadBuyable: string = "./icons/Can-Buy-Dad-Button.svg"
-export const dadUnBuyable: string = "./icons/Cant-Buy-Dad-Button.svg"
+const dadBuyable: string = "./icons/Can-Buy-Dad-Button.svg"
+const dadUnBuyable: string = "./icons/Cant-Buy-Dad-Button.svg"
 
-export const grillBuyable: string = "./icons/Can-Buy-Grill-Button.svg"
-export const grillUnBuyable: string = "./icons/Cant-Buy-Grill-Button.svg"
+const grillBuyable: string = "./icons/Can-Buy-Grill-Button.svg"
+const grillUnBuyable: string = "./icons/Cant-Buy-Grill-Button.svg"
 
-export const farmBuyable: string = "./icons/Can-Buy-Farm-Button.svg"
-export const farmUnBuyable: string = "./icons/Cant-Buy-Farm-Button.svg"
+const farmBuyable: string = "./icons/Can-Buy-Farm-Button.svg"
+const farmUnBuyable: string = "./icons/Cant-Buy-Farm-Button.svg"
 
-export const facBuyable: string = "./icons/Can-Buy-Fac-Button.svg"
-export const facUnBuyable: string = "./icons/Cant-Buy-Fac-Button.svg"
+const facBuyable: string = "./icons/Can-Buy-Fac-Button.svg"
+const facUnBuyable: string = "./icons/Cant-Buy-Fac-Button.svg"
 
-export const bankBuyable: string = "./icons/Can-Buy-Bank-Button.svg"
-export const bankUnBuyable: string = "./icons/Cant-Buy-Bank-Button.svg"
+const bankBuyable: string = "./icons/Can-Buy-Bank-Button.svg"
+const bankUnBuyable: string = "./icons/Cant-Buy-Bank-Button.svg"
 
-export const freezerBuyable: string = './icons/Can-Buy-Freezer-Button.svg'
-export const freezerUnBuyable: string = './icons/Cant-Buy-Freezer-Button.svg'
+const freezerBuyable: string = './icons/Can-Buy-Freezer-Button.svg'
+const freezerUnBuyable: string = './icons/Cant-Buy-Freezer-Button.svg'
 
-export let passiveClicks: number = 0;
-export let clickCount: number = 0;
-export let bunCount: number = 0;
-export let dadCount: number = 0;
-export let grillCount: number = 0;
-export let farmCount: number = 0;
-export let facCount: number = 0;
-export let bankCount: number = 0;
-export let freezerCount: number = 0;
+let passiveClicks: number = 0;
+let clickCount: number = 0;
+let bunCount: number = 0;
+let dadCount: number = 0;
+let grillCount: number = 0;
+let farmCount: number = 0;
+let facCount: number = 0;
+let bankCount: number = 0;
+let freezerCount: number = 0;
 
-export let bunCost: number = 10;
-export let bunRate: number = 0.2;
+let bunCost: number = 10;
+let bunRate: number = 0.2;
 
-export let dadCost: number = 100;
-export let dadRate: number = 2;
+let dadCost: number = 100;
+let dadRate: number = 2;
 
-export let grillCost: number = 500;
-export let grillRate: number = 10;
+let grillCost: number = 500;
+let grillRate: number = 10;
 
-export let farmCost: number = 5000;
-export let farmRate: number = 50;
+let farmCost: number = 5000;
+let farmRate: number = 50;
 
-export let facCost: number = 50000;
-export let facRate: number = 500;
+let facCost: number = 50000;
+let facRate: number = 500;
 
-export let bankCost: number = 250000;
-export let bankRate: number = 2500;
+let bankCost: number = 250000;
+let bankRate: number = 2500;
 
-export let freezerCost: number = 1000000
-export let freezerRate: number = 15000
+let freezerCost: number = 1000000
+let freezerRate: number = 15000
 
-export const passiveClicksElement: HTMLElement | null = document.getElementById("passive");
-export const clickCountElement: HTMLElement | null = document.getElementById("clickCount");
+const passiveClicksElement: HTMLElement | null = document.getElementById("passive");
+const clickCountElement: HTMLElement | null = document.getElementById("clickCount");
 
-export const grillCountElement: HTMLElement | null = document.getElementById("grillCount");
-export const bunCountElement: HTMLElement | null = document.getElementById("bunCount");
-export const dadCountElement: HTMLElement | null = document.getElementById("dadCount");
-export const farmCountElement: HTMLElement | null = document.getElementById("farmCount");
-export const facCountElement: HTMLElement | null = document.getElementById("dogFacCount");
-export const bankCountElement: HTMLElement | null = document.getElementById("dogBankCount");
-export const freezerCountElement: HTMLElement | null = document.getElementById("freezerCount");
+const grillCountElement: HTMLElement | null = document.getElementById("grillCount");
+const bunCountElement: HTMLElement | null = document.getElementById("bunCount");
+const dadCountElement: HTMLElement | null = document.getElementById("dadCount");
+const farmCountElement: HTMLElement | null = document.getElementById("farmCount");
+const facCountElement: HTMLElement | null = document.getElementById("dogFacCount");
+const bankCountElement: HTMLElement | null = document.getElementById("dogBankCount");
+const freezerCountElement: HTMLElement | null = document.getElementById("freezerCount");
 
-export const hotdogButton: HTMLElement | null = document.getElementById("hotdogButton");
-export const bunButton: HTMLElement | null = document.getElementById("bunButton");
-export const dadButton: HTMLElement | null = document.getElementById("dadButton");
-export const grillButton: HTMLElement | null = document.getElementById("grillButton");
-export const farmButton: HTMLElement | null = document.getElementById("farmButton");
-export const facButton: HTMLElement | null = document.getElementById("dogFacButton");
-export const bankButton: HTMLElement | null = document.getElementById("dogBankButton");
-export const freezerButton: HTMLElement | null = document.getElementById("freezerButton");
+const hotdogButton: HTMLElement | null = document.getElementById("hotdogButton");
+const bunButton: HTMLElement | null = document.getElementById("bunButton");
+const dadButton: HTMLElement | null = document.getElementById("dadButton");
+const grillButton: HTMLElement | null = document.getElementById("grillButton");
+const farmButton: HTMLElement | null = document.getElementById("farmButton");
+const facButton: HTMLElement | null = document.getElementById("dogFacButton");
+const bankButton: HTMLElement | null = document.getElementById("dogBankButton");
+const freezerButton: HTMLElement | null = document.getElementById("freezerButton");
 
-export const bunPriceElement: HTMLElement | null = document.getElementById("bunPrice")
-export const dadPriceElement: HTMLElement | null = document.getElementById("dadPrice")
-export const grillPriceElement: HTMLElement | null = document.getElementById("grillPrice")
-export const farmPriceElement: HTMLElement | null = document.getElementById("farmPrice")
-export const facPriceElement: HTMLElement | null = document.getElementById("facPrice")
-export const bankPriceElement: HTMLElement | null = document.getElementById("bankPrice")
-export const freezerPriceElement: HTMLElement | null = document.getElementById("freezerPrice")
+const bunPriceElement: HTMLElement | null = document.getElementById("bunPrice")
+const dadPriceElement: HTMLElement | null = document.getElementById("dadPrice")
+const grillPriceElement: HTMLElement | null = document.getElementById("grillPrice")
+const farmPriceElement: HTMLElement | null = document.getElementById("farmPrice")
+const facPriceElement: HTMLElement | null = document.getElementById("facPrice")
+const bankPriceElement: HTMLElement | null = document.getElementById("bankPrice")
+const freezerPriceElement: HTMLElement | null = document.getElementById("freezerPrice")
 
-export const bunImage: HTMLImageElement = document.getElementById("bunImg") as HTMLImageElement
-export const dadImage: HTMLImageElement = document.getElementById("dadImg") as HTMLImageElement
-export const grillImage: HTMLImageElement = document.getElementById("grillImg") as HTMLImageElement
-export const farmImage: HTMLImageElement = document.getElementById("farmImg") as HTMLImageElement
-export const facImage: HTMLImageElement = document.getElementById("facImg") as HTMLImageElement
-export const bankImage: HTMLImageElement = document.getElementById("bankImg") as HTMLImageElement
-export const freezerImage: HTMLImageElement = document.getElementById("freezerImg") as HTMLImageElement
+const bunImage: HTMLImageElement = document.getElementById("bunImg") as HTMLImageElement
+const dadImage: HTMLImageElement = document.getElementById("dadImg") as HTMLImageElement
+const grillImage: HTMLImageElement = document.getElementById("grillImg") as HTMLImageElement
+const farmImage: HTMLImageElement = document.getElementById("farmImg") as HTMLImageElement
+const facImage: HTMLImageElement = document.getElementById("facImg") as HTMLImageElement
+const bankImage: HTMLImageElement = document.getElementById("bankImg") as HTMLImageElement
+const freezerImage: HTMLImageElement = document.getElementById("freezerImg") as HTMLImageElement
 
-export const update = (): void => {
+const update = (): void => {
 	checkBuyables()
 
 	clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(2))) : null
