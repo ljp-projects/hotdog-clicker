@@ -1,3 +1,3 @@
 prepare:
 	tsc
-	cleancss --batch-suffix "" -O2 -b pages/*.css pages/dist
+	cleancss --batch-suffix "" -O3 -b pages/*.css pages/dist
