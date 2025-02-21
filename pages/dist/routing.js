@@ -37,27 +37,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var heightToWidthRatio, widthToHeightRatio, _a, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
-            case 0:
-                heightToWidthRatio = window.innerHeight / window.innerWidth;
-                widthToHeightRatio = window.innerWidth / window.innerHeight;
-                if (!(widthToHeightRatio > heightToWidthRatio)) return [3 /*break*/, 3];
-                _a = document.body.parentElement;
-                return [4 /*yield*/, fetch("https://hdc.ljpprojects.org/desktop")];
-            case 1: return [4 /*yield*/, (_c.sent()).text()];
-            case 2:
-                _a.outerHTML = _c.sent();
-                return [3 /*break*/, 6];
-            case 3:
-                _b = document.body.parentElement;
-                return [4 /*yield*/, fetch("https://hdc.ljpprojects.org/mobile")];
-            case 4: return [4 /*yield*/, (_c.sent()).text()];
-            case 5:
-                _b.outerHTML = _c.sent();
-                _c.label = 6;
-            case 6: return [2 /*return*/];
+    var heightToWidthRatio, widthToHeightRatio;
+    return __generator(this, function (_a) {
+        heightToWidthRatio = window.innerHeight / window.innerWidth;
+        widthToHeightRatio = window.innerWidth / window.innerHeight;
+        console.log(heightToWidthRatio);
+        console.log(widthToHeightRatio);
+        if (heightToWidthRatio < widthToHeightRatio) {
+            window.location.href = "https://hdc.ljpprojects.org/desktop";
         }
+        else {
+            window.location.href = "https://hdc.ljpprojects.org/mobile";
+        }
+        return [2 /*return*/];
     });
 }); })();
