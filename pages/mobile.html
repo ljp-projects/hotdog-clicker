@@ -10,30 +10,39 @@
 		<link rel="canonical" href="https://hdc.ljpprojects.org/" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<link rel="stylesheet" href="./index.css" />
+
+		<style>
+			:root {
+				font-size-adjust: 1;
+			}
+
+			p,
+			b {
+				font-size: 2rem !important;
+			}
+		</style>
 	</head>
 
-	<body>
-		<div id="main" class="display">
-			<h1>Hot Dog Clicker Mobile</h1>
+	<body style="min-width: 100vw;">
+		<div id="main" class="display" style="min-width: 100vw;">
 			<button id="hotdogButton">
 				<img
-					src="./icons/Hotdog.svg"
-					width="1000px"
-					height="500px"
-					alt="Hotdog"
-					draggable="false"
+						src="./icons/Hotdog.svg"
+						style="width: 80vw; height: 50vh; aspect-ratio: 1/2;"
+						alt="Hotdog"
+						draggable="false"
 				/>
 			</button>
+
 			<h2>Hot Dogs: <span id="clickCount">0</span></h2>
 			<h2>Hot Dogs Per Second: <span id="passive">0</span></h2>
-			<div id="store">
-				<div id="buildings">
-					<button id="bunButton">
+			<div id="store" style="min-width: 100vw;">
+				<div id="buildings" style="display: flex; overflow-x: auto; scrollbar-width: none; min-width: 100vw;">
+					<button style="font-size: 2rem;" id="bunButton">
 						<img
 							id="bunImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/>
 						<br />
@@ -42,12 +51,11 @@
 						<b>Buns owned: <span id="bunCount">0</span></b>
 						<p>0.2 Hot Dogs/sec</p>
 					</button>
-					<button id="dadButton">
+					<button style="font-size: 2rem;" id="dadButton">
 						<img
 							id="dadImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/><br />
 						(<span id="dadPrice">100</span> Hot Dogs)
@@ -55,12 +63,11 @@
 						<b>Dads owned: <span id="dadCount">0</span></b>
 						<p>2 Hot Dogs/sec</p>
 					</button>
-					<button id="grillButton">
+					<button style="font-size: 2rem;" id="grillButton">
 						<img
 							id="grillImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/><br />
 						(<span id="grillPrice">500</span> Hot Dogs)
@@ -68,12 +75,11 @@
 						<b>Grills owned: <span id="grillCount">0</span></b>
 						<p>10 Hot Dogs/sec</p>
 					</button>
-					<button id="farmButton">
+					<button style="font-size: 2rem;" id="farmButton">
 						<img
 							id="farmImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/><br />
 						(<span id="farmPrice">5 000</span> Hot Dogs)
@@ -81,12 +87,11 @@
 						<b>Hotdog Farms owned: <span id="farmCount">0</span></b>
 						<p>50 Hot Dogs/sec</p>
 					</button>
-					<button id="dogFacButton">
+					<button style="font-size: 2rem;" id="dogFacButton">
 						<img
 							id="facImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/><br />
 						(<span id="facPrice">50,000</span> Hot Dogs)
@@ -97,12 +102,11 @@
 						>
 						<p>500 Hot Dogs/sec</p>
 					</button>
-					<button id="dogBankButton">
+					<button style="font-size: 2rem;" id="dogBankButton">
 						<img
 							id="bankImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/><br />
 						(<span id="bankPrice">250,000</span> Hot Dogs)
@@ -113,12 +117,11 @@
 						>
 						<p>2,500 Hot Dogs/sec</p>
 					</button>
-					<button id="freezerButton">
+					<button style="font-size: 2rem;" id="freezerButton">
 						<img
 							id="freezerImg"
 							src="./icons/Locked-Button.svg"
-							width="250px"
-							height="150"
+							style="width: 35vw; aspect-ratio: 5/3;"
 							draggable="false"
 						/>
 						<br />
@@ -128,14 +131,16 @@
 						<p>15,000 Hot Dogs/sec</p>
 					</button>
 				</div>
-				<div id="upgrades">
-					<button id="tSauceButton">
+				<div id="upgrades" style="display: block;">
+					<button style="font-size: 2.5rem;" id="tSauceButton">
 						Buy Tomato Sauce (1000 Hot Dogs)
 					</button>
-					<button id="mustardButton">
+					<br>
+					<button style="font-size: 2.5rem;" id="mustardButton">
 						Buy Mustard (5000 Hot Dogs)
 					</button>
-					<button id="crispButton">
+					<br>
+					<button style="font-size: 2.5rem;" id="crispButton">
 						Buy Extra Crispy Buns (5000 Hot Dogs)
 					</button>
 				</div>
@@ -143,6 +148,7 @@
 
 			<script defer src="./dist/game.js"></script>
 		</div>
+
 		<div id="context" class="hide">
 			<h1>Main Menu</h1>
 			<button id="wipe">WIPE</button><br />
