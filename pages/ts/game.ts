@@ -171,7 +171,7 @@ const checkBuyables = () => {
 	}
 }
 
-hotdogButton?.addEventListener("click", function () {
+hotdogButton?.addEventListener("click", () => {
 	if (clickCountElement != null) {
 		clickCount++
 		update()
@@ -180,7 +180,7 @@ hotdogButton?.addEventListener("click", function () {
 	}
 });
 
-bunButton?.addEventListener("click", function () {
+bunButton?.addEventListener("click", () => {
 	if (clickCount >= bunCost && bunPriceElement != null && clickCountElement != null && bunCountElement != null && passiveClicksElement != null) {
 		clickCount -= bunCost;
 		bunCost = increase(bunCost, bunCount)
@@ -190,7 +190,7 @@ bunButton?.addEventListener("click", function () {
 	}
 });
 
-dadButton?.addEventListener("click", function () {
+dadButton?.addEventListener("click", () => {
 	if (clickCount >= dadCost && dadPriceElement != null && clickCountElement != null && dadCountElement != null && passiveClicksElement != null) {
 		clickCount -= dadCost;
 		dadCost = increase(dadCost, dadCount)
@@ -200,7 +200,7 @@ dadButton?.addEventListener("click", function () {
 	}
 });
 
-grillButton?.addEventListener("click", function () {
+grillButton?.addEventListener("click", () => {
 	if (clickCount >= grillCost && grillPriceElement != null && clickCountElement != null && grillCountElement != null && passiveClicksElement != null) {
 		clickCount -= grillCost;
 		grillCost = increase(grillCost, grillCount)
@@ -210,7 +210,7 @@ grillButton?.addEventListener("click", function () {
 	}
 });
 
-farmButton?.addEventListener("click", function () {
+farmButton?.addEventListener("click", () => {
 	if (clickCount >= farmCost && farmPriceElement != null && clickCountElement != null && farmCountElement != null && passiveClicksElement != null) {
 		clickCount -= farmCost;
 		farmCost = increase(farmCost, farmCount)
@@ -220,7 +220,7 @@ farmButton?.addEventListener("click", function () {
 	}
 });
 
-facButton?.addEventListener("click", function () {
+facButton?.addEventListener("click", () => {
 	if (clickCount >= facCost && facPriceElement != null && clickCountElement != null && facCountElement != null && passiveClicksElement != null) {
 		clickCount -= facCost;
 		facCost = increase(facCost, facCount)
@@ -230,7 +230,7 @@ facButton?.addEventListener("click", function () {
 	}
 });
 
-bankButton?.addEventListener("click", function () {
+bankButton?.addEventListener("click", () => {
 	if (clickCount >= bankCost && bankPriceElement != null && clickCountElement != null && bankCountElement != null && passiveClicksElement != null) {
 		clickCount -= bankCost;
 		bankCost = increase(bankCost, bankCount)
@@ -240,7 +240,7 @@ bankButton?.addEventListener("click", function () {
 	}
 });
 
-freezerButton?.addEventListener("click", function () {
+freezerButton?.addEventListener("click", () => {
 	if (clickCount >= freezerCost && freezerPriceElement != null && freezerCountElement != null && clickCountElement != null && passiveClicksElement != null) {
 		clickCount -= freezerCost;
 		freezerCost = increase(freezerCost, freezerCount)
@@ -260,7 +260,7 @@ const tSauceButton = document.getElementById("tSauceButton");
 const mustardButton = document.getElementById("mustardButton");
 const crispButton = document.getElementById("crispButton");
 
-tSauceButton?.addEventListener("click", function () {
+tSauceButton?.addEventListener("click", () => {
 	if (clickCount >= tSauceCost && clickCountElement != null && passiveClicksElement != null) {
 		clickCount -= tSauceCost;
 		tSauceButton.style.display = "none";
@@ -269,7 +269,7 @@ tSauceButton?.addEventListener("click", function () {
 	}
 });
 
-mustardButton?.addEventListener("click", function () {
+mustardButton?.addEventListener("click", () => {
 	if (clickCount >= mustardCost && clickCountElement != null && passiveClicksElement != null) {
 		clickCount -= mustardCost;
 		clickCountElement.textContent = clickCount.toFixed(2);
@@ -279,7 +279,7 @@ mustardButton?.addEventListener("click", function () {
 	}
 });
 
-crispButton?.addEventListener("click", function () {
+crispButton?.addEventListener("click", () => {
 	if (clickCount >= crispCost && clickCountElement != null) {
 		clickCount -= crispCost;
 		crispButton.style.display = "none";
@@ -298,6 +298,7 @@ setInterval(() => {
 document.oncontextmenu = () => {
 	document.getElementById("main")?.setAttribute("class", "blur display")
 	document.getElementById("context")?.setAttribute("class", "display")
+
 	window.onscroll = () => {
 		return false;
 	};
@@ -307,5 +308,6 @@ document.oncontextmenu = () => {
 		document.getElementById("context")?.setAttribute("class", "hide")
 		window.onscroll = function() {};
 	})
+
 	return false;
 }
