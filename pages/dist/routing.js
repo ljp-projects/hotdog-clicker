@@ -52,7 +52,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 return [3 /*break*/, 6];
             case 3:
                 _b = document.body.parentElement;
-                return [4 /*yield*/, fetch("https://hdc.ljpprojects.org/mobileq")];
+                return [4 /*yield*/, fetch("https://hdc.ljpprojects.org/mobile")];
             case 4: return [4 /*yield*/, (_c.sent()).text()];
             case 5:
                 _b.outerHTML = _c.sent();
