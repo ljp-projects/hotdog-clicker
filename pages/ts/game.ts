@@ -1,4 +1,4 @@
-{
+(async () => {
 	const increment: number = 1.3;
 
 	const increase = (price: number, count: number): number => {
@@ -312,4 +312,4 @@
 
 		return false;
 	}
-}
+})()
