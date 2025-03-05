@@ -8,7 +8,7 @@
 		ownedFarms: number
 		ownedFactories: number
 		ownedBanks: number
-		ownedFactories: number
+		ownedFreezers: number
 	}
 
 	const increment: number = 1.3;
@@ -22,9 +22,9 @@
 	const loadBtn = document.getElementById("load")
 	const defaultSaveData = "0,0;0;0;0;0;0;0;0;";
 
-	const decodeSaveData = (): HDCSaveData => {
+	/*const decodeSaveData = (): HDCSaveData => {
 
-	}
+	}*/
 
 	const file = document.querySelector('#file') as HTMLInputElement
 
