@@ -149,6 +149,7 @@
 			const toggleMenu = () => {
 				document.getElementById("main").setAttribute("class", "blur display")
 				document.getElementById("context").setAttribute("class", "display")
+				document.getElementById("showctx").setAttribute("class", "hide")
 
 				window.onscroll = () => {
 					return false;
@@ -157,7 +158,8 @@
 				document.addEventListener("dblclick", () => {
 					document.getElementById("main").setAttribute("class", "display")
 					document.getElementById("context").setAttribute("class", "hide")
-					window.onscroll = function() {};
+					document.getElementById("showctx").setAttribute("class", "")
+					window.onscroll = () => {};
 				})
 
 				return false;
@@ -171,8 +173,8 @@
 		</div>
 
 		<!-- Additional controls for displaying the main menu -->
-		<div style="position: fixed; bottom: 0; left: 0; width: 100vw; padding: 2.5rem;">
-			<button style="font-size-adjust: 2;" onclick="toggleMenu()">Menu</button>
+		<div style="position: fixed; top: 0; right: 0; width: 100vw; padding: 2.5rem;">
+			<button id="showctx" style="font-size-adjust: 2;" onclick="toggleMenu()">Menu</button>
 		</div>
 	</body>
 </html>
