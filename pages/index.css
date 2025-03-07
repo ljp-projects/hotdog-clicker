@@ -51,7 +51,7 @@ button {
 }
 
 .blur {
-    filter: blur(1rem);
+    filter: blur(1.5rem);
     transition-duration: 1s;
 }
 
