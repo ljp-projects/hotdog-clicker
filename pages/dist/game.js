@@ -13,7 +13,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     const increase = (price, count) => {
         return price * increment + count / increment;
     };
-    const wipe = document.getElementById("wipe");
+    const calcCost = (startPrice, count) => {
+        let acc = startPrice;
+        for (let i = 0; i < count; i++) {
+            acc = increase(acc, i);
+        }
+        return acc;
+    };
+    const wipeBtn = document.getElementById("wipe");
     const saveBtn = document.getElementById("save");
     const loadBtn = document.getElementById("load");
     const file = document.querySelector('#file');
@@ -55,6 +62,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     let bankRate = 2500;
     let freezerCost = 1000000;
     let freezerRate = 15000;
+    const defaultSaveData = `0/0:0:0:0:0:0:0:0`;
     const passiveClicksElement = document.getElementById("passive");
     const clickCountElement = document.getElementById("clickCount");
     const grillCountElement = document.getElementById("grillCount");
@@ -86,6 +94,42 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     const facImage = document.getElementById("facImg");
     const bankImage = document.getElementById("bankImg");
     const freezerImage = document.getElementById("freezerImg");
+    const decodeSaveData = (data) => {
+        const sections = data.split(":");
+        const [hdc, hdps] = sections[0].split("/").map(n => Number(n));
+        const [ownedBuns, ownedDads, ownedGrills, ownedFarms, ownedFactories, ownedBanks, ownedFreezers] = sections.slice(1).map(n => Number(n));
+        return {
+            hdc,
+            hdps,
+            ownedBuns,
+            ownedDads,
+            ownedGrills,
+            ownedFarms,
+            ownedFactories,
+            ownedBanks,
+            ownedFreezers,
+        };
+    };
+    const generateSaveData = () => {
+        let builder = "";
+        builder += `${clickCount.toFixed(2)}/${passiveClicks.toFixed(2)}:`;
+        builder += `${bunCount}:${dadCount}:`;
+        builder += `${grillCount}:${farmCount}:`;
+        builder += `${facCount}:${bankCount}:`;
+        builder += `${freezerCount}`;
+        return builder;
+    };
+    const save = () => {
+        const saveData = generateSaveData();
+        console.log(saveData);
+        document.cookie = `saved=${saveData}; Max-Age=7776000; path=/;`;
+    };
+    const wipe = () => {
+        document.cookie = `saved=${defaultSaveData}; Max-Age=7776000; path=/;`;
+        window.location.reload();
+    };
+    saveBtn.onclick = save;
+    wipeBtn.onclick = wipe;
     const update = () => {
         checkBuyables();
         clickCountElement != null ? clickCountElement.innerText = formatter.format(Number(clickCount.toFixed(2))) : null;
@@ -104,6 +148,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         bankPriceElement != null ? bankPriceElement.innerText = formatter.format(bankCost) : null;
         freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null;
         freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
+    };
+    const load = () => {
+        const saveData = decodeSaveData(document.cookie.split("=")[1]);
+        clickCount = Number(saveData.hdc);
+        passiveClicks = Number(saveData.hdps);
+        bunCount = saveData.ownedBuns;
+        bunCost = calcCost(bunCost, bunCount);
+        dadCount = saveData.ownedDads;
+        dadCost = calcCost(dadCost, dadCount);
+        grillCount = saveData.ownedGrills;
+        grillCost = calcCost(grillCost, grillCount);
+        farmCount = saveData.ownedFarms;
+        farmCost = calcCost(farmCost, farmCount);
+        facCount = saveData.ownedFactories;
+        facCost = calcCost(facCost, facCount);
+        bankCount = saveData.ownedBanks;
+        bankCost = calcCost(bankCost, bankCount);
+        freezerCount = saveData.ownedFreezers;
+        freezerCost = calcCost(freezerCost, freezerCount);
+        update();
     };
     const checkBuyables = () => {
         if (clickCount >= bunCost) {
@@ -149,6 +213,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
             freezerImage.src = freezerUnBuyable;
         }
     };
+    load();
+    setInterval(save, 1000);
     hotdogButton === null || hotdogButton === void 0 ? void 0 : hotdogButton.addEventListener("click", () => {
         if (clickCountElement != null) {
             clickCount++;

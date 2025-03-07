@@ -19,7 +19,7 @@
 		</style>
 	</head>
 
-	<body style="min-width: 100vw;">
+	<body style="min-width: 100vw; overflow: hidden;">
 		<div id="main" class="display" style="min-width: 100vw;">
 			<button id="hotdogButton">
 				<img
@@ -145,12 +145,34 @@
 			<script defer src="./dist/game.js"></script>
 		</div>
 
+		<script defer>
+			const toggleMenu = () => {
+				document.getElementById("main").setAttribute("class", "blur display")
+				document.getElementById("context").setAttribute("class", "display")
+
+				window.onscroll = () => {
+					return false;
+				};
+
+				document.addEventListener("dblclick", () => {
+					document.getElementById("main").setAttribute("class", "display")
+					document.getElementById("context").setAttribute("class", "hide")
+					window.onscroll = function() {};
+				})
+
+				return false;
+			}
+		</script>
+
 		<div id="context" class="hide">
 			<h1>Main Menu</h1>
 			<button id="wipe">WIPE</button><br />
 			<button id="save"><a id="download">SAVE</a></button><br />
-			<label for="file">LOAD FROM FILE:&nbsp;</label>
-			<input type="file" id="file" />
+		</div>
+
+		<!-- Additional controls for displaying the main menu -->
+		<div style="position: fixed; bottom: 0; left: 0; width: 100vw; padding: 2.5rem;">
+			<button style="font-size-adjust: 2;" onclick="toggleMenu()">Menu</button>
 		</div>
 	</body>
 </html>
