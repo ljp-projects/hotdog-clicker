@@ -9,7 +9,7 @@ h6,
 label,
 p,
 span {
-    font-family: arial, sans-serif, system-ui;
+    font-family: system-ui, -apple-system, sans-serif;
     color: #fff;
     transition-duration: .5s;
 }
