@@ -141,7 +141,7 @@
         freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null;
     };
     const load = () => {
-        const saveData = decodeSaveData(document.cookie.split("=")[1]);
+        const saveData = decodeSaveData(document.cookie.split("=")[1] || defaultSaveData);
         clickCount = Number(saveData.hdc);
         passiveClicks = Number(saveData.hdps);
         bunCount = saveData.ownedBuns;
