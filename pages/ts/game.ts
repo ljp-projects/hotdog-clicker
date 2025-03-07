@@ -1,16 +1,4 @@
-{
-	interface HDCSaveData {
-		hdc: number
-		hdps: number
-		ownedBuns: number
-		ownedDads: number
-		ownedGrills: number
-		ownedFarms: number
-		ownedFactories: number
-		ownedBanks: number
-		ownedFreezers: number
-	}
-
+(async () => {
 	const increment: number = 1.3;
 
 	const increase = (price: number, count: number): number => {
@@ -30,10 +18,10 @@
 	const wipeBtn = document.getElementById("wipe")
 	const saveBtn = document.getElementById("save")
 	const loadBtn = document.getElementById("load")
-
+  
 	const file = document.querySelector('#file') as HTMLInputElement
 
-	const formatter = new Intl.NumberFormat('en-au', { minimumFractionDigits: 2 })
+	const formatter = new Intl.NumberFormat('en-us', { minimumFractionDigits: 2 })
 
 	const bunBuyable: string = "./icons/Can-Buy-Bun-Button.svg"
 	const bunUnBuyable: string = "./icons/Cant-Buy-Bun-Button.svg"
@@ -418,4 +406,4 @@
 
 		return false;
 	}
-}
+})()
