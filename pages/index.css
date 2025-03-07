@@ -9,7 +9,7 @@ h6,
 label,
 p,
 span {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
     color: #fff;
     transition-duration: .5s;
 }
