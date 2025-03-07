@@ -17,14 +17,19 @@
 		return price * increment + count / increment
 	}
 
-	const wipe = document.getElementById("wipe")
+	const calcCost = (startPrice: number, count: number) => {
+		let acc = startPrice;
+
+		for (let i = 0; i < count; i++) {
+			acc = increase(acc, i)
+		}
+
+		return acc
+	}
+
+	const wipeBtn = document.getElementById("wipe")
 	const saveBtn = document.getElementById("save")
 	const loadBtn = document.getElementById("load")
-	const defaultSaveData = "0,0;0;0;0;0;0;0;0;";
-
-	/*const decodeSaveData = (): HDCSaveData => {
-
-	}*/
 
 	const file = document.querySelector('#file') as HTMLInputElement
 
@@ -82,6 +87,8 @@
 	let freezerCost: number = 1000000
 	let freezerRate: number = 15000
 
+	const defaultSaveData = `0/0:0:0:0:0:0:0:0`;
+
 	const passiveClicksElement: HTMLElement | null = document.getElementById("passive");
 	const clickCountElement: HTMLElement | null = document.getElementById("clickCount");
 
@@ -118,6 +125,53 @@
 	const bankImage: HTMLImageElement = document.getElementById("bankImg") as HTMLImageElement
 	const freezerImage: HTMLImageElement = document.getElementById("freezerImg") as HTMLImageElement
 
+	const decodeSaveData = (data: string): HDCSaveData => {
+		const sections = data.split(":");
+
+		const [hdc, hdps] = sections[0].split("/").map(n => Number(n))
+		const [ownedBuns, ownedDads, ownedGrills, ownedFarms, ownedFactories, ownedBanks, ownedFreezers] = sections.slice(1).map(n => Number(n))
+
+		return {
+			hdc,
+			hdps,
+			ownedBuns,
+			ownedDads,
+			ownedGrills,
+			ownedFarms,
+			ownedFactories,
+			ownedBanks,
+			ownedFreezers,
+		}
+	}
+
+	const generateSaveData = (): string => {
+		let builder = "";
+
+		builder += `${clickCount.toFixed(2)}/${passiveClicks.toFixed(2)}:`;
+		builder += `${bunCount}:${dadCount}:`;
+		builder += `${grillCount}:${farmCount}:`;
+		builder += `${facCount}:${bankCount}:`;
+		builder += `${freezerCount}`;
+
+		return builder;
+	}
+
+	const save = () => {
+		const saveData = generateSaveData()
+
+		console.log(saveData)
+
+		document.cookie = `saved=${saveData}; Max-Age=7776000; path=/;`
+	}
+
+	const wipe = () => {
+		document.cookie = `saved=${defaultSaveData}; Max-Age=7776000; path=/;`
+		window.location.reload()
+	}
+
+	saveBtn!!.onclick = save
+	wipeBtn!!.onclick = wipe
+
 	const update = (): void => {
 		checkBuyables()
 
@@ -144,6 +198,36 @@
 
 		freezerCountElement != null ? freezerCountElement.innerText = formatter.format(freezerCount) : null
 		freezerPriceElement != null ? freezerPriceElement.innerText = formatter.format(freezerCost) : null
+	}
+
+	const load = () => {
+		const saveData = decodeSaveData(document.cookie.split("=")[1])
+
+		clickCount = Number(saveData.hdc)
+		passiveClicks = Number(saveData.hdps)
+
+		bunCount = saveData.ownedBuns
+		bunCost = calcCost(bunCost, bunCount)
+
+		dadCount = saveData.ownedDads
+		dadCost = calcCost(dadCost, dadCount)
+
+		grillCount = saveData.ownedGrills
+		grillCost = calcCost(grillCost, grillCount)
+
+		farmCount = saveData.ownedFarms
+		farmCost = calcCost(farmCost, farmCount)
+
+		facCount = saveData.ownedFactories
+		facCost = calcCost(facCost, facCount)
+
+		bankCount = saveData.ownedBanks
+		bankCost = calcCost(bankCost, bankCount)
+
+		freezerCount = saveData.ownedFreezers
+		freezerCost = calcCost(freezerCost, freezerCount)
+
+		update()
 	}
 
 	const checkBuyables = () => {
@@ -189,6 +273,10 @@
 			freezerImage.src = freezerUnBuyable
 		}
 	}
+
+	load()
+
+	setInterval(save, 1000)
 
 	hotdogButton?.addEventListener("click", () => {
 		if (clickCountElement != null) {
