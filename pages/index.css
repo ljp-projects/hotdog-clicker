@@ -23,6 +23,15 @@ button {
     border-color: transparent;
 }
 
+button img {
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.26, 0.91, 0.76, 1);
+}
+
+button img:active {
+    transform: scale(0.9);
+}
+
 #wipe {
     color: #dc143c;
 }
