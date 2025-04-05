@@ -12,12 +12,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const heightToWidthRatio = window.innerHeight / window.innerWidth;
     const widthToHeightRatio = window.innerWidth / window.innerHeight;
-    console.log(heightToWidthRatio);
-    console.log(widthToHeightRatio);
     if (heightToWidthRatio < widthToHeightRatio) {
-        window.location.href = "https://hdc.ljpprojects.org/desktop";
+        window.location.href = "./desktop";
     }
     else {
-        window.location.href = "https://hdc.ljpprojects.org/mobile";
+        window.location.href = "./mobile";
     }
 }))();

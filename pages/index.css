@@ -9,13 +9,17 @@ h6,
 label,
 p,
 span {
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        sans-serif;
     color: #fff;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
 
 body {
-    background-color: #101010
+    background-color: #101010;
 }
 
 button {
@@ -55,7 +59,7 @@ button img:active {
     transition-duration: 1s;
     position: absolute;
     left: 100vw;
-    transition: all .5s;
+    transition: all 0.5s;
     z-index: -1;
 }
 
@@ -64,9 +68,10 @@ button img:active {
     transition-duration: 1s;
 }
 
-#context {
+#context,
+#loading {
     position: absolute;
     top: 50%;
     right: 50%;
-    transform: translate(50%,-50%);
+    transform: translate(50%, -50%);
 }
